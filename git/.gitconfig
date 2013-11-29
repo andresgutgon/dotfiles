@@ -98,7 +98,7 @@
 [core]
   autocrlf = false
   editor = vim
-  excludesfile = /Users/tbd1/.gitignore_global
+  excludesfile = /Users/[Your Home Directory]/.gitignore_global
 [advice]
   statusHints = false
 [diff]
@@ -111,5 +111,5 @@
   enabled = true
 
 [user]
-	name = Andres Gutierrez
-	email = andres@teambox.com
+	name = [Your Name here]
+	email = you@email.com
