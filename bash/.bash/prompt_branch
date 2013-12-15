@@ -1,31 +1,60 @@
-function parse_git_branch {
-  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+#function parse_git_branch {
+#  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/[\1]/'
+#}
+#function precmd() {
+#  PROMPT="%n@%m %~$(parse_git_branch)%# "
+#}
+#export PATH="/usr/local/mysql/bin:${PATH}:/usr/local/git/bin"
+#function proml {
+#  local        BLUE="\[\033[0;34m\]"
+#  local         RED="\[\033[0;31m\]"
+#  local   LIGHT_RED="\[\033[1;31m\]"
+#  local       GREEN="\[\033[0;32m\]"
+#  local LIGHT_GREEN="\[\033[1;32m\]"
+#  local       WHITE="\[\033[0;37m\]"
+#  local  LIGHT_GRAY="\[\033[0;37m\]"
+#  case $TERM in
+#    xterm*)
+#    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
+#    ;;
+#    *)
+#    TITLEBAR=""
+#    ;;
+#  esac
+# 
+#PS1="${TITLEBAR}\
+#$GREEN\w$BLUE\$(parse_git_branch)\
+#$WHITE: "
+#PS2='> '
+#PS4='+ '
+#}
+#proml
+
+RED="$(tput bold)$(tput setaf 1)"
+GREEN="$(tput bold)$(tput setaf 2)"
+YELLOW="$(tput bold)$(tput setaf 3)"
+NORMAL=$(tput sgr0)
+
+function git_ps1 {
+
+  git branch &>/dev/null
+
+  if [ $? -eq 0 ]; then
+    GIT_BRANCH=`git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ \1/"`
+
+    if [[ $(git status 2> /dev/null | tail -n1) != "nothing to commit, working directory clean" ]]; then
+      GIT_COLOR="${RED}"
+    else
+      GIT_COLOR="${GREEN}"
+    fi
+  else
+    GIT_BRANCH=""
+    GIT_COLOR="${NORMAL}"
+  fi
+
+  PS1="${debian_chroot:+($debian_chroot)}\[\033[01;34m\]\w\[\033[00m\]\[${YELLOW}\]${GIT_BRANCH}\[${GIT_COLOR}\] ▶\[${NORMAL}\] "
 }
-function precmd() {
-  PROMPT="%n@%m %~$(parse_git_branch)%# "
-}
-export PATH="/usr/local/mysql/bin:${PATH}:/usr/local/git/bin"
-function proml {
-  local        BLUE="\[\033[0;34m\]"
-  local         RED="\[\033[0;31m\]"
-  local   LIGHT_RED="\[\033[1;31m\]"
-  local       GREEN="\[\033[0;32m\]"
-  local LIGHT_GREEN="\[\033[1;32m\]"
-  local       WHITE="\[\033[0;37m\]"
-  local  LIGHT_GRAY="\[\033[0;37m\]"
-  case $TERM in
-    xterm*)
-    TITLEBAR='\[\033]0;\u@\h:\w\007\]'
-    ;;
-    *)
-    TITLEBAR=""
-    ;;
-  esac
- 
-PS1="${TITLEBAR}\
-$GREEN\w$BLUE\$(parse_git_branch)\
-$WHITE: "
-PS2='> '
-PS4='+ '
-}
-proml
+
+PROMPT_COMMAND=git_ps1
+
+
