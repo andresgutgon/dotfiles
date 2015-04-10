@@ -18,6 +18,6 @@ You can check my `vimrc` file to see options for this plugin. Also check my `ack
 
 To search type:
 ```
-:Ack --type js YOUR SEARCH 
+:Ack --js --php YOUR SEARCH 
 ```
-This will search in current directory all the files that have `YOUR SEARCH` and their extension is `.js`
+This will search in current directory all the files that have `YOUR SEARCH` and their extension is `.js` or `.php`
