@@ -1,9 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =7
-let g:netrw_dirhist_1='/Users/rbd/.vim'
-let g:netrw_dirhist_2='/Users/rbd/.bash'
-let g:netrw_dirhist_3='/Users/rbd/code/ftb'
-let g:netrw_dirhist_4='/Users/rbd'
-let g:netrw_dirhist_5='/Users/rbd/code/ftb'
-let g:netrw_dirhist_6='/Users/rbd'
-let g:netrw_dirhist_7='/Users/rbd/code/ftb'
