@@ -49,6 +49,6 @@ calc() {
 # Weather
 
 meteo() {
-  local CITY=${1:-Utrecht}
+  local CITY=${1:-Barcelona}
   curl -4 "wttr.in/$CITY"
 }
