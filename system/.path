@@ -3,6 +3,11 @@
 
 is-executable getconf && PATH=$(`command -v getconf` PATH)
 
+# Go code must live under GOPATH
+# Something something Google mono big repo
+export GOROOT=/usr/local/opt/go/libexec
+export GOPATH=$HOME/code/go
+
 # Prepend new items to path (if directory exists)
 
 prepend-path "/bin"
@@ -14,12 +19,12 @@ prepend-path "$HOME/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
+prepend-path $GOROOT/bin
+prepend-path $GOPATH/bin
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
 
 PATH=`echo -n $PATH | awk -v RS=: '{ if (!arr[$0]++) {printf("%s%s",!ln++?"":":",$0)}}'`
-
-# Wrap up
 
 export PATH

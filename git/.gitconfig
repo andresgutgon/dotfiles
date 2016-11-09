@@ -37,7 +37,7 @@
   # tag
   t = tag -n                        # show tags with <n> lines of each tag message
 
-  # Git grep 
+  # Git grep
   gr = grep -Ii
 
 
@@ -52,8 +52,8 @@
 	pamvimlog= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && HASHZ=`echo ${HASH} | awk '{ print $1 }'` && FILES=`git show --pretty='format:'  --name-only $HASHZ | fzf -x -m` && vim ${FILES}
 	pamreset= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && git reset --soft `echo ${HASH} | awk '{ print $1 }'`^
 
-[grep]                                                                                                                           
-  linenumber = true        
+[grep]
+  linenumber = true
 
 [format]
   pretty = format:%C(blue)%ad%Creset %C(yellow)%h%C(green)%d%Creset %C(blue)%s %C(magenta) [%an]%Creset
@@ -66,7 +66,7 @@
   whitespace = nowarn
 
 [branch]
-  autosetuprebase = always 
+  autosetuprebase = always
 
 [push]
   # 'git push' will push the current branch to its tracking branch
@@ -94,3 +94,9 @@
 [user]
 	name = sp-andres-gutierrez
 	email = andres.gutierrez@socialpoint.es
+
+## Hack needed because Go language get packages in this way:
+## git clone https://github.com/something/lol
+## Git is the best :muscle: Thank you Linus!
+[url "git@github.com:"]
+	insteadOf = https://github.com/
