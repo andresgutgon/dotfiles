@@ -85,17 +85,28 @@ bash_prompt_command() {
   # Parse Git branch name
   P_GIT=$(parse_git_branch)
 
-  # Exit code
-  if [[ $EXIT_CODE != 0 ]]; then
-    P_EXIT+="${P_RED}✘ "
+  # Parse Git status
+  P_GIT_STATUS=$(find_git_dirty)
+
+  # Branch color
+  if [[ ${P_GIT_STATUS} != "" ]]; then
+    BRANCH_COLOR=${P_RED}
+  else
+    BRANCH_COLOR=${P_GREEN}
   fi
 
-  PS1="${P_EXIT} ${P_YELLOW}${P_PWD}${P_GREEN}${P_GIT}${P_YELLOW} ❯ ${P_RESET}"
+
+  PS1="${P_YELLOW}${P_PWD}${BRANCH_COLOR}${P_GIT} ${P_RED}${P_GIT_STATUS}${P_YELLOW}❯ ${P_RESET}"
 }
 
 parse_git_branch() {
   local OUT=`git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'`
   if [ "$OUT" != "" ]; then echo " $OUT"; fi
+}
+
+find_git_dirty() {
+  local status=$(git status --porcelain 2> /dev/null)
+  if [[ "$status" != "" ]]; then echo '✘ '; fi
 }
 
 _bash_prompt_config
