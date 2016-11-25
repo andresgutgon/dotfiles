@@ -302,7 +302,7 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
   (set-fontset-font t 'unicode \"Apple Color Emoji\" nil 'prepend)
 `dotspacemacs/user-config' first."
-  (set-fontset-font t 'symbol (font-spec :family "Apple Color Emoji") frame 'prepend)
+  (set-fontset-font t 'unicode \"Apple Color Emoji\" nil 'prepend)
   (setq-default git-magit-status-fullscreen t)
 )
 
@@ -318,6 +318,13 @@ layers configuration. "
   (defalias 'l 'ls)
   (spacemacs/toggle-line-numbers) ;; enable line numbers
   (setq-default dotspacemacs-line-numbers t)
+
+  ;; Do NOT auto save files. Thanks Emacs
+  (setq auto-save-default nil)
+
+  ;; Open magit status in current buffer where you launch it
+  (setq magit-display-buffer-function
+        'magit-display-buffer-same-window-except-diff-v1)
 
   ;; Less coarse undo via evil.  More close to vim style
   (setq evil-want-fine-undo t)
