@@ -27,7 +27,7 @@ fi
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,android}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,android,powconfig}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
