@@ -16,4 +16,5 @@ ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
 ln -sfv "$DOTFILES_DIR/runcom/.jsbeautifyrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
+ln -sfv "$DOTFILES_DIR/git/.gitattributes" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
