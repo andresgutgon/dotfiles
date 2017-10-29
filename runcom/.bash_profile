@@ -7,6 +7,7 @@
 if [ "$(uname -s)" = "Darwin" ]; then
   OS="OSX"
 else
+  source "$HOME/.fzf.bash"
   OS=$(uname -s)
 fi
 

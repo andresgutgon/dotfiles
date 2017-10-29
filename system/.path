@@ -4,9 +4,9 @@
 is-executable getconf && PATH=$(`command -v getconf` PATH)
 
 # Go code must live under GOPATH
-# Something something Google mono big repo
-export GOROOT=/usr/local/opt/go/libexec
-export GOPATH=$HOME/code/go
+export GOPATH=$HOME/code/andresgutgon/go
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$GOPATH/bin
 
 # Prepend new items to path (if directory exists)
 
@@ -20,8 +20,6 @@ prepend-path "$HOME/.rbenv/bin"
 prepend-path "/sbin"
 prepend-path "/usr/sbin"
 prepend-path "/usr/local/sbin"
-prepend-path $GOROOT/bin
-prepend-path $GOPATH/bin
 
 # Remove duplicates (preserving prepended items)
 # Source: http://unix.stackexchange.com/a/40755
