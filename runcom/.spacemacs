@@ -130,12 +130,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
+                         monokai
                          railscasts
                          sanityinc-solarized-light
-                         spacemacs-dark
-                         spacemacs-light
-                         gruvbox
-                         sanityinc-solarized-dark
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -196,7 +193,7 @@ values."
    ;; auto-save the file in-place, `cache' to auto-save the file to another
    ;; file stored in the cache directory and `nil' to disable auto-saving.
    ;; (default 'cache)
-   dotspacemacs-auto-save-file-location 'cache
+   dotspacemacs-auto-save-file-location nil
    ;; Maximum number of rollback slots to keep in the cache. (default 5)
    dotspacemacs-max-rollback-slots 5
    ;; If non nil, `helm' will try to minimize the space it uses. (default nil)
@@ -299,6 +296,13 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; https://github.com/syl20bnr/spacemacs/issues/3920
+  (setq exec-path-from-shell-arguments '("-l"))
+  (setq default-frame-alist '((height . 50) (width . 160)))
+  (setq-default git-magit-status-fullscreen t)
+  ;; This add nvm binaries to emacs path.
+  ;; Helpful for `tern' binary installed with `nvm'
+  (add-to-list 'exec-path "/usr/local/bin")
   )
 
 (defun dotspacemacs/user-config ()
