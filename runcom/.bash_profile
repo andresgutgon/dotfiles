@@ -1,6 +1,26 @@
 # If not running interactively, don't do anything
 
-[ -z "$PS1" ] && return
+#[ -z "$PS1" ] && return
+
+#if not running interactively, don't do anything
+if [ -z "$PS1" ]; then
+  run_bashrc_scripts .bashrc_not_interactive.d
+  return
+fi
+
+# Run all scripts in ~/.bashrc.d
+# Skip any non-executable ones
+function run_bashrc_scripts
+{
+  for script in ~/$1/*; do
+
+    # skip non-executable snippets
+    [ -x "$script" ] || continue
+
+    # execute $script in the context of the current shell
+    . $script
+  done
+}
 
 # OS
 
@@ -51,3 +71,14 @@ unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
 # Export
 
 export OS DOTFILES_DIR
+
+#run any scripts in ~/.bashrc.d
+if [ -d ~/.bashrc.d ]; then
+  run_bashrc_scripts .bashrc.d
+fi
+
+# Run Spacemacs as Daemon
+# -t -> Open in terminal
+# -c -> Open the client
+export ALTERNATE_EDITOR=""
+alias e='emacsclient -t'
