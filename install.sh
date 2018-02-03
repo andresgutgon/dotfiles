@@ -14,9 +14,13 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
+
 # Spacemacs private layers
-ln -sfv "$DOTFILES_DIR/spacemacs_layers/flow-type" ~/.emacs.d/private/flow-type
+# NOT WORKING. Let's keep commented for now
+# ln -sfv "$DOTFILES_DIR/spacemacs_layers/flow-type" ~/.emacs.d/private/flow-type
+
 ln -sfv "$DOTFILES_DIR/runcom/.jsbeautifyrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitattributes" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
+ln -sfv "$DOTFILES_DIR/bin" ~/bin

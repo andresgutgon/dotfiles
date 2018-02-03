@@ -80,5 +80,7 @@ fi
 # Run Spacemacs as Daemon
 # -t -> Open in terminal
 # -c -> Open the client
+# To kill emacs I have an script on /bin/se
+# Just do `se`
 export ALTERNATE_EDITOR=""
 alias e='emacsclient -t'
