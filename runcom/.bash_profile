@@ -77,10 +77,14 @@ if [ -d ~/.bashrc.d ]; then
   run_bashrc_scripts .bashrc.d
 fi
 
+# Emacs in console
+# ::::::::::::::::
+# Kill emacs server
+# https://gist.github.com/alexmurray/6bf59b4d7338538d53b0
+# To kill emacs I have an script on /bin/se
+# Just do `se`
 # Run Spacemacs as Daemon
 # -t -> Open in terminal
 # -c -> Open the client
-# To kill emacs I have an script on /bin/se
-# Just do `se`
 export ALTERNATE_EDITOR=""
 alias e='emacsclient -t'
