@@ -27,7 +27,7 @@ function run_bashrc_scripts
 if [ "$(uname -s)" = "Darwin" ]; then
   OS="OSX"
 else
-  source "$HOME/.fzf.bash"
+  # source "$HOME/.fzf.bash"
   OS=$(uname -s)
 fi
 
@@ -48,7 +48,7 @@ fi
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,powconfig}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,powconfig,pythonvirtualenv}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
@@ -59,7 +59,6 @@ if [ "$OS" = "OSX" ]; then
 fi
 
 # Set LSCOLORS
-
 eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
 
 # Hook for extra/custom stuff
