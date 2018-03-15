@@ -42,6 +42,7 @@
 	recent = !git for-each-ref --sort=-committerdate --format='%(refname:short)' refs/heads/ | head -n 20
 
 
+	wip = !git add --all . && git commit -m 'WIP'
   # Welcome to pam/fzf heaven. xargs hell
 	pam= !BRANCH=`git recent | fzf` && git checkout ${BRANCH}
 	pamadd= !FILES=`git status -s | awk '{ print $2 }' | fzf -x -m` && git add --all ${FILES}
@@ -51,7 +52,7 @@
 	pamrebase= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && git rebase -i `echo ${HASH} | awk '{ print $1 }'`^
 	pamgrep= !sh -c 'FILES=`git grep -l -A 0 -B 0 $1 $2 | fzf -x -m` && vim `echo ${FILES} | cut -d':' -f1 | xargs`' -
 	pamvimlog= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && HASHZ=`echo ${HASH} | awk '{ print $1 }'` && FILES=`git show --pretty='format:'  --name-only $HASHZ | fzf -x -m` && vim ${FILES}
-	pamreset= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && git reset --soft `echo ${HASH} | awk '{ print $1 }'`^
+	pamreset= !HASH=`git log --pretty=oneline | head -n 50 | fzf` && git reset `echo ${HASH} | awk '{ print $1 }'`^
 
 [grep]
   linenumber = true
