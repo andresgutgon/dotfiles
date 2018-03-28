@@ -87,3 +87,6 @@ fi
 # -c -> Open the client
 export ALTERNATE_EDITOR=""
 alias e='emacsclient -t'
+
+# Only valid f! devenv
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
