@@ -23,4 +23,10 @@ ln -sfv "$DOTFILES_DIR/runcom/.jsbeautifyrc" ~
 ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitattributes" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
-ln -sfv "$DOTFILES_DIR/bin" ~/bin
+
+# Binaries
+ln -sfv "$DOTFILES_DIR/bin/fbs" ~/bin/fbs
+ln -sfv "$DOTFILES_DIR/bin/fbc" ~/bin/fbc
+ln -sfv "$DOTFILES_DIR/bin/fin" ~/bin/fin
+ln -sfv "$DOTFILES_DIR/bin/fserve" ~/bin/fserve
+ln -sfv "$DOTFILES_DIR/bin/se" ~/bin/se
