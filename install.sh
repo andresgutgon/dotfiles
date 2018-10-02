@@ -14,6 +14,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
+ln -sfv "$DOTFILES_DIR/runcom/.byebugrc" ~
 
 # Spacemacs private layers
 # NOT WORKING. Let's keep commented for now
