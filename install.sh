@@ -11,7 +11,12 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 
-ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+if [ "$(uname -s)" = "Darwin" ]; then
+  ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
+else
+  ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~/.bashrc
+fi
+
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
 ln -sfv "$DOTFILES_DIR/runcom/.byebugrc" ~
