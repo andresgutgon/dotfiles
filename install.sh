@@ -20,6 +20,7 @@ fi
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
 ln -sfv "$DOTFILES_DIR/runcom/.byebugrc" ~
+ln -sfv "$DOTFILES_DIR/runcom/.tmux.conf" ~
 
 # Spacemacs private layers
 # NOT WORKING. Let's keep commented for now
