@@ -1,1 +1,1 @@
-cd /srv/app/current && bundle exec rails server webrick -p 8081
+cd /srv/app/current && bundle exec rails server webrick -b 0.0.0.0 -p 8081
