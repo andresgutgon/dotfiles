@@ -1,5 +1,4 @@
 # If not running interactively, don't do anything
-
 #[ -z "$PS1" ] && return
 
 #if not running interactively, don't do anything
@@ -27,7 +26,7 @@ function run_bashrc_scripts
 if [ "$(uname -s)" = "Darwin" ]; then
   OS="OSX"
 else
-  # source "$HOME/.fzf.bash"
+  source "$HOME/.fzf.bash"
   OS=$(uname -s)
 fi
 
