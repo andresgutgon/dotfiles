@@ -47,7 +47,7 @@ fi
 
 # Finally we can source the dotfiles (order matters)
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,powconfig,pythonvirtualenv}; do
+for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,rbenv,powconfig}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
