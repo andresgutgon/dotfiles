@@ -31,6 +31,13 @@ ln -sfv "$DOTFILES_DIR/git/.gitconfig" ~
 ln -sfv "$DOTFILES_DIR/git/.gitattributes" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
+# VIM
+# message "Vim"
+# ln -snf "${PWD}/vimrc" ~/.vimrc
+# ln -snf "${PWD}/vim" ~/.vim
+# mkdir -p ~/.vim/{tmpdir,undodir}
+# chmod 700 ~/.vim/{tmpdir,undodir}
+
 # Binaries
 ln -sfv "$DOTFILES_DIR/bin/fbs" ~/bin/fbs
 ln -sfv "$DOTFILES_DIR/bin/fbc" ~/bin/fbc
