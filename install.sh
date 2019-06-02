@@ -1,5 +1,11 @@
 #!/usr/bin/env bash
 
+message ()
+{
+  RCOLOR=$(( ( RANDOM % 6 )  + 1 ))
+  echo -e "Installing \033[1;3${RCOLOR}m$1\033[0m scripts..."
+}
+
 # Get current dir (so run this script from anywhere)
 
 export DOTFILES_DIR
@@ -32,11 +38,11 @@ ln -sfv "$DOTFILES_DIR/git/.gitattributes" ~
 ln -sfv "$DOTFILES_DIR/git/.gitignore_global" ~
 
 # VIM
-# message "Vim"
-# ln -snf "${PWD}/vimrc" ~/.vimrc
-# ln -snf "${PWD}/vim" ~/.vim
-# mkdir -p ~/.vim/{tmpdir,undodir}
-# chmod 700 ~/.vim/{tmpdir,undodir}
+message "Vim"
+ln -snf "${PWD}/vimrc" ~/.vimrc
+ln -snf "${PWD}/vim" ~/.vim
+mkdir -p ~/.vim/{tmpdir,undodir}
+chmod 700 ~/.vim/{tmpdir,undodir}
 
 # Binaries
 ln -sfv "$DOTFILES_DIR/bin/fbs" ~/bin/fbs
