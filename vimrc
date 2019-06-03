@@ -161,10 +161,10 @@ nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>o :only<cr>
 
 " Panes
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+nnoremap <C-j> <C-w><C-j>
+nnoremap <C-k> <C-w><C-k>
+nnoremap <C-l> <C-w><C-l>
+nnoremap <C-h> <C-w><C-h>
 
 " Sequences
 nmap <leader>s :for i in range(1,10) \| put ='192.168.0.'.i \| endfor
@@ -180,6 +180,9 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
       \ if line("'\"") > 1 && line("'\"") <= line("$") && &ft !~# 'commit'
       \ |   exe "normal! g`\""
       \ | endif
+
+" Remove trailing spaces when saving a file
+autocmd BufWritePre * %s/\s\+$//e
 
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
