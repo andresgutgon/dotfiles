@@ -162,10 +162,10 @@ nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>o :only<cr>
 
 " Move between windows
-nnoremap <silent><leader>wj :wincmd j<CR>
-nnoremap <silent><leader>wk :wincmd k<CR>
-nnoremap <silent><leader>wl :wincmd l<CR>
-nnoremap <silent><leader>wh :wincmd h<CR>
+nnoremap <silent><leader>j :wincmd j<CR>
+nnoremap <silent><leader>k :wincmd k<CR>
+nnoremap <silent><leader>l :wincmd l<CR>
+nnoremap <silent><leader>h :wincmd h<CR>
 
 " Move windows around
 nnoremap <silent><leader>wJ :wincmd J<CR>
