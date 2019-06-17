@@ -22,6 +22,7 @@ Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'SirVer/ultisnips'           " Track the engine.
 Plug 'honza/vim-snippets'         " Snippets are separated from the engine. Add this if you want them:
 Plug 'ap/vim-css-color'           " Colorize hexadecimal colors
+Plug 'elixir-editors/vim-elixir'  " Vim configuration files for Elixir
 Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
@@ -57,10 +58,10 @@ syntax on                 " Turn on syntax on
 scriptencoding utf-8
 set encoding=utf-8
 
-colorscheme meta5 " My favourite schemecolor
+"colorscheme meta5 " My favourite schemecolor
 
-" set background=dark
-" colorscheme PaperColor
+set background=dark
+colorscheme PaperColor
 
 let test#strategy = "dispatch"
 let test#ruby#rspec#executable = 'bundle exec rspec %'
@@ -160,11 +161,21 @@ nnoremap <leader>b :FZFBuffers<cr>
 nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>o :only<cr>
 
-" Panes
-nnoremap <C-j> <C-w><C-j>
-nnoremap <C-k> <C-w><C-k>
-nnoremap <C-l> <C-w><C-l>
-nnoremap <C-h> <C-w><C-h>
+" Move between windows
+nnoremap <silent><leader>wj :wincmd j<CR>
+nnoremap <silent><leader>wk :wincmd k<CR>
+nnoremap <silent><leader>wl :wincmd l<CR>
+nnoremap <silent><leader>wh :wincmd h<CR>
+
+" Move windows around
+nnoremap <silent><leader>wJ :wincmd J<CR>
+nnoremap <silent><leader>wK :wincmd K<CR>
+nnoremap <silent><leader>wL :wincmd L<CR>
+nnoremap <silent><leader>wH :wincmd H<CR>
+
+" Split screens
+nnoremap <silent><leader>wv :wincmd v<CR>
+nnoremap <silent><leader>ws :wincmd s<CR>
 
 " Sequences
 nmap <leader>s :for i in range(1,10) \| put ='192.168.0.'.i \| endfor
