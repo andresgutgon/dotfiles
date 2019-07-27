@@ -19,6 +19,7 @@ Plug 'alvan/vim-closetag'         " Auto close tags
 Plug 'neomake/neomake'            " Async engine for code analysis
 Plug 'mattn/emmet-vim'            " Expansions
 Plug 'vim-syntastic/syntastic'    " Syntax support
+Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
 Plug 'SirVer/ultisnips'           " Track the engine.
 Plug 'honza/vim-snippets'         " Snippets are separated from the engine. Add this if you want them:
 Plug 'ap/vim-css-color'           " Colorize hexadecimal colors
@@ -202,6 +203,9 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window.
 
 let delimitMate_expand_cr=1
+
+" TypeScript
+let g:syntastic_typescript_tsc_args = "-t ES5 -m commonjs --experimentalDecorators --emitDecoratorMetadata --sourceMap true --moduleResolution node"
 
 " Typo aliases
 :command WQ wq
