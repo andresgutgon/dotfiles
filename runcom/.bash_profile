@@ -1,91 +1,89 @@
-# If not running interactively, don't do anything
-#[ -z "$PS1" ] && return
-
-#if not running interactively, don't do anything
-if [ -z "$PS1" ]; then
-  run_bashrc_scripts .bashrc_not_interactive.d
-  return
-fi
-
-# Run all scripts in ~/.bashrc.d
-# Skip any non-executable ones
-function run_bashrc_scripts
-{
-  for script in ~/$1/*; do
-
-    # skip non-executable snippets
-    [ -x "$script" ] || continue
-
-    # execute $script in the context of the current shell
-    . $script
-  done
-}
-
-# OS
-
+# ~/.bashrc: executed by bash(1) for non-login shells.
+# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
+# for examples
 if [ "$(uname -s)" = "Darwin" ]; then
   OS="OSX"
 else
-  source "$HOME/.fzf.bash"
   OS=$(uname -s)
 fi
 
-# Resolve DOTFILES_DIR (assuming ~/.dotfiles on distros without readlink and/or $BASH_SOURCE/$0)
+# If not running interactively, don't do anything
+[ -z "$PS1" ] && return
 
-READLINK=$(which greadlink || which readlink)
-CURRENT_SCRIPT=$BASH_SOURCE
+# don't put duplicate lines in the history. See bash(1) for more options
+# ... or force ignoredups and ignorespace
+HISTCONTROL=ignoredups:ignorespace
 
-if [[ -n $CURRENT_SCRIPT && -x "$READLINK" ]]; then
-  SCRIPT_PATH=$($READLINK -f "$CURRENT_SCRIPT")
-  DOTFILES_DIR=$(dirname "$(dirname "$SCRIPT_PATH")")
-elif [ -d "$HOME/.dotfiles" ]; then
-  DOTFILES_DIR="$HOME/.dotfiles"
-else
-  echo "Unable to find dotfiles, exiting."
-  return # `exit 1` would quit the shell itself
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# set variable identifying the chroot you work in (used in the prompt below)
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# Finally we can source the dotfiles (order matters)
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+  test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+fi
 
-for DOTFILE in "$DOTFILES_DIR"/system/.{function,path,env,alias,grep,prompt,nvm,powconfig,rbenv}; do
+# enable programmable completion features (you don't need to enable
+# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
+# sources /etc/bash.bashrc).
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+  . /etc/bash_completion
+fi
+
+# Locale
+export LC_ALL=en_US.UTF-8
+
+# Trim path directories
+export PROMPT_DIRTRIM=2
+
+# Love
+export EDITOR=vim
+
+# Enable vi mode in bash
+set -o vi
+
+# Enable Ctrl+L in vi mode
+bind -m vi-insert "\C-l":clear-screen
+
+# Disable flow control. Ctrl-s + Ctrl-q
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
+
+# Map capslock to ctrl
+if which setxkbmap > /dev/null; then
+  setxkbmap -layout us -option ctrl:nocaps
+fi
+
+
+# NodeJs bin
+export PATH=./node_modules/.bin:$PATH
+
+for DOTFILE in $HOME/dotfiles/system/.{function,env,alias,grep,prompt,nvm,powconfig}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
 
 if [ "$OS" = "OSX" ]; then
-  for DOTFILE in "$DOTFILES_DIR"/system/.{env,alias,function}; do
+  for DOTFILE in $HOME/dotfiles/system/.{env,alias,function}; do
     [ -f "$DOTFILE" ] && . "$DOTFILE"
   done
 fi
 
-# Set LSCOLORS
-eval "$(dircolors "$DOTFILES_DIR"/system/.dir_colors)"
-
-# Hook for extra/custom stuff
-
-# Clean up
-
-unset READLINK CURRENT_SCRIPT SCRIPT_PATH DOTFILE
-
-# Export
-
-export OS DOTFILES_DIR
-
-#run any scripts in ~/.bashrc.d
-if [ -d ~/.bashrc.d ]; then
-  run_bashrc_scripts .bashrc.d
+# Awesome command search
+if [ -f ~/.fzf.bash ]; then
+  source ~/.fzf.bash
 fi
 
-# Emacs in console
-# ::::::::::::::::
-# Kill emacs server
-# https://gist.github.com/alexmurray/6bf59b4d7338538d53b0
-# To kill emacs I have an script on /bin/se
-# Just do `se`
-# Run Spacemacs as Daemon
-# -t -> Open in terminal
-# -c -> Open the client
-export ALTERNATE_EDITOR=""
-alias e='emacsclient -t'
-
-# Only valid f! devenv
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash

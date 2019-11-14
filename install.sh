@@ -16,12 +16,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # Bunch of symlinks
-
-if [ "$(uname -s)" = "Darwin" ]; then
-  ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~
-else
-  ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~/.bashrc
-fi
+ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~/.bash_profile
 
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.spacemacs" ~
@@ -44,9 +39,3 @@ ln -snf "${PWD}/vim" ~/.vim
 mkdir -p ~/.vim/{tmpdir,undodir}
 chmod 700 ~/.vim/{tmpdir,undodir}
 
-# Binaries
-ln -sfv "$DOTFILES_DIR/bin/fbs" ~/bin/fbs
-ln -sfv "$DOTFILES_DIR/bin/fbc" ~/bin/fbc
-ln -sfv "$DOTFILES_DIR/bin/fin" ~/bin/fin
-ln -sfv "$DOTFILES_DIR/bin/fserve" ~/bin/fserve
-ln -sfv "$DOTFILES_DIR/bin/se" ~/bin/se

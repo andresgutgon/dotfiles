@@ -1,7 +1,6 @@
 ## Prompt
 
 _bash_prompt_config() {
-
   local USER_SYMBOL="\u"
   local HOST_SYMBOL="\h"
   local ESC_OPEN="\["
@@ -112,4 +111,4 @@ find_git_dirty() {
 _bash_prompt_config
 unset _bash_prompt_config
 
-PROMPT_COMMAND=bash_prompt_command
+export PROMPT_COMMAND=bash_prompt_command
