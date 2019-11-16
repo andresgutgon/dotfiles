@@ -17,7 +17,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 ln -sfv "$DOTFILES_DIR/runcom/dir_colors" ~/.dir_colors
-ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bashrc
+ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
 ln -sfv "$DOTFILES_DIR/runcom/inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/runcom/byebugrc" ~/.byebugrc
 ln -sfv "$DOTFILES_DIR/runcom/tmux.conf" ~/.tmux.conf

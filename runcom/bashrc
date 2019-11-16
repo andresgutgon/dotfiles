@@ -45,10 +45,6 @@ fi
 [ -f $HOME/dotfiles/system/.prompt ] && . $HOME/dotfiles/system/.prompt
 [ -f $HOME/dotfiles/system/.grep ] && . $HOME/dotfiles/system/.nvm
 
-#for DOTFILE in $HOME/dotfiles/system/.{function,env,alias,grep,nvm}; do
-  #[ -f "$DOTFILE" ] && . "$DOTFILE"
-#done
-
 # Awesome command search
 if [ -f ~/.fzf.bash ]; then
   source ~/.fzf.bash
