@@ -46,7 +46,7 @@ fi
 export LC_ALL=en_US.UTF-8
 
 # Trim path directories
-export PROMPT_DIRTRIM=2
+#export PROMPT_DIRTRIM=2
 
 # Love
 export EDITOR=vim

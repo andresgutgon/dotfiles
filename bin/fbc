@@ -1,1 +1,0 @@
-cd /srv/app/current && bundle exec rails console

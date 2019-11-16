@@ -111,4 +111,4 @@ find_git_dirty() {
 _bash_prompt_config
 unset _bash_prompt_config
 
-export PROMPT_COMMAND=bash_prompt_command
+PROMPT_COMMAND=bash_prompt_command
