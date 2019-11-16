@@ -1,49 +1,36 @@
 if [ "$(uname -s)" = "Darwin" ]; then
   OS="OSX"
+  PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+  MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 else
   OS=$(uname -s)
 fi
 
 ## set variable identifying the chroot you work in (used in the prompt below)
-#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
-  #debian_chroot=$(cat /etc/debian_chroot)
-#fi
+if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+  debian_chroot=$(cat /etc/debian_chroot)
+fi
 
 ## enable color support of ls and also add handy aliases
-#if [ -x /usr/bin/dircolors ]; then
-  #test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-#else
-  #test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
-  #export LSCOLORS=Exfxcxdxbxegedabagacad
-#fi
-
-## enable programmable completion features (you don't need to enable
-## this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-## sources /etc/bash.bashrc).
-#if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-  #. /etc/bash_completion
-#fi
+test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 
 ## Disable flow control. Ctrl-s + Ctrl-q
-#stty stop ''
-#stty start ''
-#stty -ixon
-#stty -ixoff
+stty stop ''
+stty start ''
+stty -ixon
+stty -ixoff
 
 ## Map capslock to ctrl
-#if which setxkbmap > /dev/null; then
-  #setxkbmap -layout us -option ctrl:nocaps
-#fi
+if which setxkbmap > /dev/null; then
+  setxkbmap -layout us -option ctrl:nocaps
+fi
 
 ## NodeJs bin
-#export PATH=./node_modules/.bin:$PATH
+export PATH=./node_modules/.bin:$PATH
 
-[ -f $HOME/dotfiles/system/.function ] && . $HOME/dotfiles/system/.function
-[ -f $HOME/dotfiles/system/.alias ] && . $HOME/dotfiles/system/.alias
-[ -f $HOME/dotfiles/system/.env ] && . $HOME/dotfiles/system/.env
-[ -f $HOME/dotfiles/system/.grep ] && . $HOME/dotfiles/system/.grep
-[ -f $HOME/dotfiles/system/.prompt ] && . $HOME/dotfiles/system/.prompt
-[ -f $HOME/dotfiles/system/.grep ] && . $HOME/dotfiles/system/.nvm
+for DOTFILE in $HOME/dotfiles/system/.{function,env,alias,grep,prompt,nvm}; do
+  [ -f "$DOTFILE" ] && . "$DOTFILE"
+done
 
 # Awesome command search
 if [ -f ~/.fzf.bash ]; then
