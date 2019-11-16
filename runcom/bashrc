@@ -16,7 +16,8 @@ fi
 if [ -x /usr/bin/dircolors ]; then
   test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
 else
-  export LSCOLORS="Gxfxcxdxbxegedabagacad"
+  test -r ~/.dircolors && eval "$(gdircolors -b ~/.dircolors)" || eval "$(gdircolors -b)"
+  export LSCOLORS=Exfxcxdxbxegedabagacad
 fi
 
 # enable programmable completion features (you don't need to enable

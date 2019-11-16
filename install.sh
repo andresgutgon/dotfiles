@@ -16,7 +16,8 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/runcom/.bash_profile" ~/.bash_profile
+ln -sfv "$DOTFILES_DIR/runcom/dircolors" ~/.dircolors
+ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bashrc
 ln -sfv "$DOTFILES_DIR/runcom/.inputrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.byebugrc" ~
 ln -sfv "$DOTFILES_DIR/runcom/.tmux.conf" ~
