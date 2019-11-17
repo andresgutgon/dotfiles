@@ -22,9 +22,11 @@ Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
 Plug 'SirVer/ultisnips'           " Track the engine.
 Plug 'honza/vim-snippets'         " Snippets are separated from the engine. Add this if you want them:
-Plug 'ap/vim-css-color'           " Colorize hexadecimal colors
+Plug 'ap/vim-css-color'           " Colorize hxadecimal colors
+Plug 'cespare/vim-toml'           " Toml syntax
 Plug 'elixir-editors/vim-elixir'  " Vim configuration files for Elixir
 Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
+Plug 'chr4/nginx.vim'             " Nginx syntax highlight
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
