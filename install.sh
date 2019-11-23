@@ -41,6 +41,6 @@ ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 message "Vim"
 ln -snf "${PWD}/vimrc" ~/.vimrc
 ln -snf "${PWD}/vim" ~/.vim
-mkdir -p ~/.vim/{tmpdir,undodir}
-chmod 700 ~/.vim/{tmpdir,undodir}
+#mkdir -p ~/.vim/{tmpdir,undodir}
+#chmod 700 ~/.vim/{tmpdir,undodir}
 
