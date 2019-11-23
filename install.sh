@@ -17,6 +17,8 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Bunch of symlinks
 ln -sfv "$DOTFILES_DIR/runcom/dir_colors" ~/.dir_colors
+
+# Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile
 if [[ ! -v SYMLINK_BASHRC ]]; then
   echo "Symlinking ~/.bash_profile"
   ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
@@ -24,6 +26,7 @@ else
   echo "Symlinking ~/.bashrc"
   ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bashrc
 fi
+
 ln -sfv "$DOTFILES_DIR/runcom/inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/runcom/byebugrc" ~/.byebugrc
 ln -sfv "$DOTFILES_DIR/runcom/tmux.conf" ~/.tmux.conf
@@ -36,8 +39,8 @@ ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 
 # VIM
 message "Vim"
-ln -snf "${PWD}/vimrc" ~/.vimrc
-ln -snf "${PWD}/vim" ~/.vim
-mkdir -p ~/.vim/{tmpdir,undodir}
-chmod 700 ~/.vim/{tmpdir,undodir}
+#ln -snf "${PWD}/vimrc" ~/.vimrc
+#ln -snf "${PWD}/vim" ~/.vim
+#mkdir -p ~/.vim/{tmpdir,undodir}
+#chmod 700 ~/.vim/{tmpdir,undodir}
 
