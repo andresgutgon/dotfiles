@@ -5,6 +5,11 @@ alias ll="ls -lA --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
 
+# Factorial
+alias be="bin/container-run bundle exec"
+alias cb="bin/container-bash"
+alias cr="bin/container-run"
+
 # Network
 
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
