@@ -43,3 +43,9 @@ ln -snf "${DOTFILES_DIR}/vimrc" ~/.vimrc
 ln -snf "${DOTFILES_DIR}/vim" ~/.vim
 mkdir -p ~/.vim/{tmpdir,undodir}
 chmod 700 ~/.vim/{tmpdir,undodir}
+
+# VIM config for Factorial
+if [[ -v FACTORIAL ]]; then
+  message "Installing Vim config for Factorial"
+  ln -snf "${DOTFILES_DIR}/factorial-vimrc" /srv/app/.local.vimrc
+fi

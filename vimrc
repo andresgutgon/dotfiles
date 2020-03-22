@@ -19,6 +19,7 @@ Plug 'alvan/vim-closetag'         " Auto close tags
 Plug 'mattn/emmet-vim'            " Expansions
 Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
+Plug 'thinca/vim-localrc'         " Local vimrc config
 Plug 'w0rp/ale'                   " Linter
 Plug 'ap/vim-css-color'           " Colorize hxadecimal colors
 Plug 'cespare/vim-toml'           " Toml syntax
@@ -142,7 +143,6 @@ let g:CommandTMaxHeight=20
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_sign_column_always = 1
 
-let g:ale_ruby_rubocop_executable = './bin/container-rubocop'
 let g:ale_linters = {
       \ 'ruby': ['rubocop'],
       \ 'typescript': ['eslint', 'tsserver'],
