@@ -16,12 +16,11 @@ Plug 'junegunn/goyo.vim'          " Focus mode for writing
 Plug 'matze/vim-move'             " Move blocks of code
 Plug 'Raimondi/delimitMate'       " Auto close special chars
 Plug 'alvan/vim-closetag'         " Auto close tags
-Plug 'neomake/neomake'            " Async engine for code analysis
 Plug 'mattn/emmet-vim'            " Expansions
 Plug 'vim-syntastic/syntastic'    " Syntax support
 Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
-"Plug 'SirVer/ultisnips'           " Track the engine.
-"Plug 'honza/vim-snippets'         " Snippets are separated from the engine. Add this if you want them:
+Plug 'thinca/vim-localrc'         " Local vimrc config
+Plug 'w0rp/ale'                   " Linter
 Plug 'ap/vim-css-color'           " Colorize hxadecimal colors
 Plug 'cespare/vim-toml'           " Toml syntax
 Plug 'elixir-editors/vim-elixir'  " Vim configuration files for Elixir
@@ -140,15 +139,28 @@ map <leader>p :set invpaste paste?<CR>
 " Command-T configuration
 let g:CommandTMaxHeight=20
 
-" Neomake
-let blacklisted_files = ['schema.rb', 'routes.rb']
-autocmd! BufWritePost,BufEnter * if index(blacklisted_files, expand('%:t')) < 0 | Neomake
+" ALE {{{
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_sign_column_always = 1
 
-let g:neomake_ruby_enabled_makers = ['rubocop', 'reek']
-let g:neomake_ruby_rubocop_maker = { 'exe': 'bundle', 'args': ['exec', 'rubocop', '--format', 'emacs'] }
-let g:neomake_ruby_reek_maker = { 'exe': 'bundle', 'args': ['exec', 'reek'] }
-let g:neomake_javascript_enabled_makers = ['eslint']
-let g:neomake_javascript_eslint_exe = $PWD .'/node_modules/.bin/eslint'
+let g:ale_linters = {
+      \ 'ruby': ['rubocop'],
+      \ 'typescript': ['eslint', 'tsserver'],
+      \ 'javascript': ['eslint', 'flow'],
+      \}
+
+let g:ale_fixers = {
+      \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+      \ 'ruby': ['rubocop'],
+      \ 'javascript': ['prettier'],
+      \ 'typescript': ['prettier'],
+      \}
+
+nnoremap <silent><leader>lf :ALEFix<CR>
+nnoremap <silent><leader>ld :ALEDetail<CR>
+nnoremap <silent><leader>lo :lopen<CR>
+nnoremap <silent><leader>lc :lclose<CR>
+"}}}
 
 " FZF
 let g:fzf_command_prefix = 'FZF'
