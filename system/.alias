@@ -11,8 +11,15 @@ alias cb="bin/container-bash"
 alias cr="bin/container-run"
 alias sshAndres="cd ~/code/factorial/infrastructure & bin/factorio remote_devenv ssh --name=andres"
 
-# Network
+# Git
+alias gp="git pull"
+alias gps="git push"
+alias gs="git status"
+alias ga="git add"
+alias gd="git diff"
+alias gw="git wip"
 
+# Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
 
