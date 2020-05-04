@@ -9,7 +9,7 @@ alias egrep="egrep --color=always"
 alias be="bin/container-run bundle exec"
 alias cb="bin/container-bash"
 alias cr="bin/container-run"
-alias sshAndres="cd ~/code/factorial/infrastructure & bin/factorio remote_devenv ssh --name=andres"
+alias sshAndres="cd ~/code/factorial/infrastructure && ./bin/factorio remote_devenv ssh --name=andres"
 
 # Git
 alias gp="git pull"

@@ -18,6 +18,7 @@ Plug 'Raimondi/delimitMate'       " Auto close special chars
 Plug 'alvan/vim-closetag'         " Auto close tags
 Plug 'mattn/emmet-vim'            " Expansions
 Plug 'vim-syntastic/syntastic'    " Syntax support
+Plug 'rodjek/vim-puppet'    " Puppet Syntax support
 Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
 Plug 'thinca/vim-localrc'         " Local vimrc config
 Plug 'w0rp/ale'                   " Linter
