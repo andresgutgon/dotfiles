@@ -18,8 +18,9 @@ Plug 'Raimondi/delimitMate'       " Auto close special chars
 Plug 'alvan/vim-closetag'         " Auto close tags
 Plug 'mattn/emmet-vim'            " Expansions
 Plug 'vim-syntastic/syntastic'    " Syntax support
-Plug 'rodjek/vim-puppet'    " Puppet Syntax support
-Plug 'leafgarland/typescript-vim' " Syntax for TypeScript
+Plug 'leafgarland/typescript-vim' " TypeScript syntax support
+Plug 'ianks/vim-tsx'              " TypeScript .tsx support
+Plug 'rodjek/vim-puppet'          " Puppet Syntax support
 Plug 'thinca/vim-localrc'         " Local vimrc config
 Plug 'w0rp/ale'                   " Linter
 Plug 'ap/vim-css-color'           " Colorize hxadecimal colors
@@ -220,7 +221,7 @@ let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your w
 let delimitMate_expand_cr=1
 
 " TypeScript
-let g:syntastic_typescript_tsc_args = "-t ES5 -m commonjs --experimentalDecorators --emitDecoratorMetadata --sourceMap true --moduleResolution node"
+let g:syntastic_typescript_checkers = ['tslint']
 
 " Typo aliases
 :command WQ wq
