@@ -23,7 +23,7 @@ ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
 
 ln -sfv "$DOTFILES_DIR/runcom/inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/runcom/byebugrc" ~/.byebugrc
-ln -sfv "$DOTFILES_DIR/runcom/tmux.conf" ~/.tmux.conf
+ln -sfv "$DOTFILES_DIR/tmux/tmux.conf" ~/.tmux.conf
 ln -sfv "$DOTFILES_DIR/runcom/jsbeautifyrc" ~/.jsbeautifyrc
 
 # GIT
