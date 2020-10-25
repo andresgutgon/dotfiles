@@ -212,6 +212,13 @@ set viminfo='10,\"100,:20,%,n~/.viminfo
 " Remove trailing spaces when saving a file
 autocmd BufWritePre * %s/\s\+$//e
 
+" Automaticaly rebalance windows on vim resize
+autocmd VimResized * :wincmd =
+
+" zoom a vim pane, <C-w>= to re-balance
+nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
+nnoremap <leader>= :wincmd =<cr>
+
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
