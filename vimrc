@@ -231,9 +231,3 @@ let delimitMate_expand_cr=1
 " TypeScript
 let g:syntastic_typescript_checkers = ['tslint']
 
-" Typo aliases
-:command WQ wq
-:command Wa wa
-:command Wq wq
-:command W w
-:command Q q
