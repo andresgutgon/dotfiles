@@ -1,33 +1,34 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'        " File navigator
-Plug 'bling/vim-airline'          " Vim fancy status line
-Plug 'tpope/vim-surround'         " Surround, wrap or replace code with chars
-Plug 'tpope/vim-fugitive'         " Git in vim
-Plug 'ervandew/supertab'          " Perform all your vim insert mode completions with Tab
-Plug 'scrooloose/nerdcommenter'   " Comment code with super powers
-Plug 'christophermca/meta5'       " Best colorscheme
-Plug 'NLKNguyen/papercolor-theme' " Another colorscheme
-Plug 'diepm/vim-rest-console'     " REST console
-Plug 'janko-m/vim-test'           " Run test file from vim
-Plug 'tpope/vim-dispatch'         " Asynchronous build and test dispatcher
-Plug 'wincent/ferret'             " Enhanced multi-file search for Vim
-Plug 'junegunn/goyo.vim'          " Focus mode for writing
-Plug 'matze/vim-move'             " Move blocks of code
-Plug 'Raimondi/delimitMate'       " Auto close special chars
-Plug 'alvan/vim-closetag'         " Auto close tags
-Plug 'mattn/emmet-vim'            " Expansions
-Plug 'vim-syntastic/syntastic'    " Syntax support
-Plug 'leafgarland/typescript-vim' " TypeScript syntax support
-Plug 'ianks/vim-tsx'              " TypeScript .tsx support
-Plug 'rodjek/vim-puppet'          " Puppet Syntax support
-Plug 'thinca/vim-localrc'         " Local vimrc config
-Plug 'w0rp/ale'                   " Linter
-Plug 'ap/vim-css-color'           " Colorize hxadecimal colors
-Plug 'cespare/vim-toml'           " Toml syntax
-Plug 'elixir-editors/vim-elixir'  " Vim configuration files for Elixir
-Plug 'wellle/targets.vim'         " Modify faster (){}[] contents
-Plug 'chr4/nginx.vim'             " Nginx syntax highlight
+Plug 'scrooloose/nerdtree'            " File navigator
+Plug 'bling/vim-airline'              " Vim fancy status line
+Plug 'tpope/vim-surround'             " Surround, wrap or replace code with chars
+Plug 'tpope/vim-fugitive'             " Git in vim
+Plug 'ervandew/supertab'              " Perform all your vim insert mode completions with Tab
+Plug 'scrooloose/nerdcommenter'       " Comment code with super powers
+Plug 'christophermca/meta5'           " Best colorscheme
+Plug 'NLKNguyen/papercolor-theme'     " Another colorscheme
+Plug 'diepm/vim-rest-console'         " REST console
+Plug 'janko-m/vim-test'               " Run test file from vim
+Plug 'tpope/vim-dispatch'             " Asynchronous build and test dispatcher
+Plug 'wincent/ferret'                 " Enhanced multi-file search for Vim
+Plug 'junegunn/goyo.vim'              " Focus mode for writing
+Plug 'matze/vim-move'                 " Move blocks of code
+Plug 'Raimondi/delimitMate'           " Auto close special chars
+Plug 'alvan/vim-closetag'             " Auto close tags
+Plug 'mattn/emmet-vim'                " Expansions
+Plug 'vim-syntastic/syntastic'        " Syntax support
+Plug 'leafgarland/typescript-vim'     " TypeScript syntax support
+Plug 'ianks/vim-tsx'                  " TypeScript .tsx support
+Plug 'rodjek/vim-puppet'              " Puppet Syntax support
+Plug 'thinca/vim-localrc'             " Local vimrc config
+Plug 'w0rp/ale'                       " Linter
+Plug 'ap/vim-css-color'               " Colorize hxadecimal colors
+Plug 'cespare/vim-toml'               " Toml syntax
+Plug 'elixir-editors/vim-elixir'      " Vim configuration files for Elixir
+Plug 'wellle/targets.vim'             " Modify faster (){}[] contents
+Plug 'chr4/nginx.vim'                 " Nginx syntax highlight
+Plug 'christoomey/vim-tmux-navigator' " Vim - tmux pane navigation
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
@@ -179,10 +180,10 @@ nnoremap <leader>t :TestNearest<cr>
 nnoremap <leader>o :only<cr>
 
 " Move between windows
-nnoremap <silent><leader>j :wincmd j<CR>
-nnoremap <silent><leader>k :wincmd k<CR>
-nnoremap <silent><leader>l :wincmd l<CR>
-nnoremap <silent><leader>h :wincmd h<CR>
+nnoremap <silent><C-j> :wincmd j<CR>
+nnoremap <silent><C-k> :wincmd k<CR>
+nnoremap <silent><C-l> :wincmd l<CR>
+nnoremap <silent><C-h> :wincmd h<CR>
 
 " Move windows around
 nnoremap <silent><leader>wJ :wincmd J<CR>
