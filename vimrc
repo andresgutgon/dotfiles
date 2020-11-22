@@ -1,39 +1,41 @@
 call plug#begin('~/.vim/plugged')
 
-Plug 'scrooloose/nerdtree'            " File navigator
-Plug 'bling/vim-airline'              " Vim fancy status line
+" Vim tools
 Plug 'tpope/vim-surround'             " Surround, wrap or replace code with chars
-Plug 'tpope/vim-fugitive'             " Git in vim
-Plug 'ervandew/supertab'              " Perform all your vim insert mode completions with Tab
-Plug 'scrooloose/nerdcommenter'       " Comment code with super powers
-Plug 'christophermca/meta5'           " Best colorscheme
-Plug 'NLKNguyen/papercolor-theme'     " Another colorscheme
-Plug 'diepm/vim-rest-console'         " REST console
-Plug 'janko-m/vim-test'               " Run test file from vim
 Plug 'tpope/vim-dispatch'             " Asynchronous build and test dispatcher
-Plug 'wincent/ferret'                 " Enhanced multi-file search for Vim
-Plug 'junegunn/goyo.vim'              " Focus mode for writing
-Plug 'matze/vim-move'                 " Move blocks of code
-Plug 'Raimondi/delimitMate'           " Auto close special chars
-Plug 'alvan/vim-closetag'             " Auto close tags
-Plug 'mattn/emmet-vim'                " Expansions
-Plug 'vim-syntastic/syntastic'        " Syntax support
-Plug 'leafgarland/typescript-vim'     " TypeScript syntax support
-Plug 'ianks/vim-tsx'                  " TypeScript .tsx support
-Plug 'rodjek/vim-puppet'              " Puppet Syntax support
-Plug 'thinca/vim-localrc'             " Local vimrc config
-Plug 'w0rp/ale'                       " Linter
-Plug 'ap/vim-css-color'               " Colorize hxadecimal colors
-Plug 'cespare/vim-toml'               " Toml syntax
-Plug 'elixir-editors/vim-elixir'      " Vim configuration files for Elixir
-Plug 'wellle/targets.vim'             " Modify faster (){}[] contents
-Plug 'chr4/nginx.vim'                 " Nginx syntax highlight
-Plug 'christoomey/vim-tmux-navigator' " Vim - tmux pane navigation
-
+Plug 'tpope/vim-repeat'               " Repeat more things
+Plug 'tpope/vim-fugitive'             " Git in vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
+Plug 'wincent/ferret'                 " Enhanced multi-file search for Vim
+Plug 'christoomey/vim-tmux-navigator' " Vim - tmux pane navigation
+Plug 'thinca/vim-localrc'             " Local vimrc config
+Plug 'janko-m/vim-test'               " Run test file from vim
+Plug 'scrooloose/nerdtree'            " File navigator
+Plug 'scrooloose/nerdcommenter'       " Comment code with super powers
+Plug 'diepm/vim-rest-console'         " REST console
+Plug 'matze/vim-move'                 " Move blocks of code
+Plug 'wellle/targets.vim'             " Modify faster text inside this (){}[] targets
 
+" Vim languages
+Plug 'vim-syntastic/syntastic'        " Syntax support
+Plug 'w0rp/ale'                       " Linter
+Plug 'chr4/nginx.vim'                 " Nginx syntax highlight
+Plug 'elixir-editors/vim-elixir'      " Vim configuration files for Elixir
+Plug 'ianks/vim-tsx'                  " TypeScript .tsx support
+Plug 'cespare/vim-toml'               " Toml syntax
+Plug 'ap/vim-css-color'               " Colorize hxadecimal colors
+Plug 'rodjek/vim-puppet'              " Puppet Syntax support
+Plug 'leafgarland/typescript-vim'     " TypeScript syntax support
+
+" Theme
+Plug 'NLKNguyen/papercolor-theme'     " Another colorscheme {{{
+set background=dark
+"}}}
+Plug 'bling/vim-airline'              " Vim fancy status line
 call plug#end()
+
+colorscheme PaperColor
 
 set shiftwidth=2    " Use indents of 2 spaces
 set tabstop=2       " An indentation every four columns
@@ -63,29 +65,32 @@ syntax on                 " Turn on syntax on
 scriptencoding utf-8
 set encoding=utf-8
 
-"colorscheme meta5 " My favourite schemecolor
+" Sets the leader key
+let mapleader="\<Space>"
 
-set background=dark
-colorscheme PaperColor
+" Disable jump to the existing window if possible
+let g:fzf_buffers_jump = 1
 
-let test#strategy = "dispatch"
-let test#ruby#rspec#executable = 'bundle exec rspec %'
+" Autoclose just some chars
+let delimitMate_matchpairs = "(:),[:],{:}"
 
-let mapleader=" "   " Sets the leader key
+" Split new buffer in quickfix
+set switchbuf=vsplit
 
-let g:move_key_modifier = 'C' " Move plugin
-
-let g:fzf_buffers_jump = 1 " Disable jump to the existing window if possible
-
-let delimitMate_matchpairs = "(:),[:],{:}" " Autoclose just some chars
-
-set switchbuf=vsplit " Split new buffer in quickfix
-
-set list listchars=tab:..,trail:☠ " Display extra whitespace
+" Display extra whitespace
+set list listchars=tab:..,trail:☠
 
 " Undo file
 set undofile
 set undodir=~/.vim/undodir/
+
+" https://github/com/diepm/vim-rest-connsole
+" Create a file example.rest with something like
+" https://swapi.dev
+" GET /api/planets/1/
+" Hit <C-j>
+:set ft=rest
+" Make REST request from your VIM ----> DEMO ->>>
 
 " Utilities
 cab uniq %s/^\(.*\)\(\n\1\)\+$/\1/
@@ -103,6 +108,12 @@ set wildignore+=*.o,*.obj,*.jpg,*.png,*.gif,*.log,*.gz,*.bin,*.gem,*.rbc,*.class
 set wildignore+=*.min.js,**/node_modules/**,**/images/**
 set wildignore+=**/assets/**/original/**,**/assets/**/thumb/**,**/assets/**/small/**
 set wildignore+=tmp,public,vendor/bundle/*,vendor/cache/*,test/fixtures/*,vendor/gems/*,spec/cov,a/*
+
+" Split edit your vimrc. Type space, v, r in sequence to trigger
+nmap <leader>vr :sp $MYVIMRC<cr>
+
+" " Source (reload) your vimrc. Type space, s, o in sequence to trigger
+nmap <leader>so :source $MYVIMRC<cr>
 
 " Delete without saving it to the registry. (Uses black hole registry)
 noremap  x "_x
@@ -171,13 +182,14 @@ let g:fzf_commits_log_options = '--pretty=oneline'
 
 let $FZF_DEFAULT_COMMAND = 'ag -g ""'
 
-" Move to next mayus
-map m /[A-Z]<cr><esc>:noh<return>a
-
 nnoremap <leader><space> :FZFFiles<cr>
 nnoremap <leader>b :FZFBuffers<cr>
-nnoremap <leader>t :TestNearest<cr>
-nnoremap <leader>o :only<cr>
+
+let test#strategy = "dispatch"
+let test#ruby#rspec#executable = 'bundle exec rspec %'
+nmap <silent> t<C-n> :TestNearest<CR>
+nmap <silent> t<C-f> :TestFile<CR>
+nmap <silent> t<C-l> :TestLast<CR>
 
 " Move between windows
 nnoremap <silent><C-j> :wincmd j<CR>
@@ -197,9 +209,6 @@ nnoremap <silent><leader>ws :wincmd s<CR>
 
 " Sequences
 nmap <leader>s :for i in range(1,10) \| put ='192.168.0.'.i \| endfor
- "
-" Goyo mode toggler
-map <leader>z :Goyo<CR>
 
 " Tell vim to remember certain things when we exit
 set viminfo='10,\"100,:20,%,n~/.viminfo

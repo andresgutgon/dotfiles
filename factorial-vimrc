@@ -1,1 +1,3 @@
 let g:ale_ruby_rubocop_executable = './bin/container-rubocop'
+
+let test#ruby#rspec#executable = 'bin/container-run bundle exec rspec %'
