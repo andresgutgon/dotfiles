@@ -1,6 +1,9 @@
 [color]
   ui = true
 
+[init]
+  defaultBranch = main
+
 [color "branch"]
   current = yellow reverse
   local = yellow
