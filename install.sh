@@ -19,7 +19,7 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ln -sfv "$DOTFILES_DIR/runcom/dir_colors" ~/.dir_colors
 
 # Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile
-ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
+ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bashrc
 
 ln -sfv "$DOTFILES_DIR/runcom/inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/runcom/byebugrc" ~/.byebugrc
