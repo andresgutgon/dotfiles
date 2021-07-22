@@ -27,6 +27,7 @@ Plug 'cespare/vim-toml'               " Toml syntax
 Plug 'ap/vim-css-color'               " Colorize hxadecimal colors
 Plug 'rodjek/vim-puppet'              " Puppet Syntax support
 Plug 'leafgarland/typescript-vim'     " TypeScript syntax support
+Plug 'pantharshit00/vim-prisma'       " Prisma2 syntax
 
 " Theme
 Plug 'NLKNguyen/papercolor-theme'     " Another colorscheme {{{

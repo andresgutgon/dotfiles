@@ -4,3 +4,4 @@ vim/undodir
 vim/plugged
 vim/autoload/*.old
 vim/.netrwhist
+tmux-client-*.log
