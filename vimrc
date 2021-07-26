@@ -1,39 +1,44 @@
 call plug#begin('~/.vim/plugged')
 
 " Vim tools
-Plug 'tpope/vim-surround'             " Surround, wrap or replace code with chars
-Plug 'tpope/vim-dispatch'             " Asynchronous build and test dispatcher
-Plug 'tpope/vim-repeat'               " Repeat more things
-Plug 'tpope/vim-fugitive'             " Git in vim
+Plug 'tpope/vim-surround'                                         " Surround, wrap or replace code with chars
+Plug 'tpope/vim-dispatch'                                         " Asynchronous build and test dispatcher
+Plug 'tpope/vim-repeat'                                           " Repeat more things
+Plug 'tpope/vim-fugitive'                                         " Git in vim
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' } " Fuzzy file finder
 Plug 'junegunn/fzf.vim'
-Plug 'wincent/ferret'                 " Enhanced multi-file search for Vim
-Plug 'christoomey/vim-tmux-navigator' " Vim - tmux pane navigation
-Plug 'thinca/vim-localrc'             " Local vimrc config
-Plug 'janko-m/vim-test'               " Run test file from vim
-Plug 'scrooloose/nerdtree'            " File navigator
-Plug 'scrooloose/nerdcommenter'       " Comment code with super powers
-Plug 'diepm/vim-rest-console'         " REST console
-Plug 'matze/vim-move'                 " Move blocks of code
-Plug 'wellle/targets.vim'             " Modify faster text inside this (){}[] targets
+Plug 'wincent/ferret'                                             " Enhanced multi-file search for Vim
+Plug 'christoomey/vim-tmux-navigator'                             " Vim - tmux pane navigation
+Plug 'thinca/vim-localrc'                                         " Local vimrc config
+Plug 'janko-m/vim-test'                                           " Run test file from vim
+Plug 'scrooloose/nerdtree'                                        " File navigator
+Plug 'scrooloose/nerdcommenter'                                   " Comment code with super powers
+Plug 'diepm/vim-rest-console'                                     " REST console
+Plug 'matze/vim-move'                                             " Move blocks of code
+Plug 'wellle/targets.vim'                                         " Modify faster text inside this (){}[] targets
 
 " Vim languages
-Plug 'vim-syntastic/syntastic'        " Syntax support
-Plug 'w0rp/ale'                       " Linter
-Plug 'chr4/nginx.vim'                 " Nginx syntax highlight
-Plug 'elixir-editors/vim-elixir'      " Vim configuration files for Elixir
-Plug 'ianks/vim-tsx'                  " TypeScript .tsx support
-Plug 'cespare/vim-toml'               " Toml syntax
-Plug 'ap/vim-css-color'               " Colorize hxadecimal colors
-Plug 'rodjek/vim-puppet'              " Puppet Syntax support
-Plug 'leafgarland/typescript-vim'     " TypeScript syntax support
-Plug 'pantharshit00/vim-prisma'       " Prisma2 syntax
+Plug 'vim-syntastic/syntastic'                                    " Syntax support
+Plug 'w0rp/ale'                                                   " Linter
+Plug 'chr4/nginx.vim'                                             " Nginx syntax highlight
+Plug 'elixir-editors/vim-elixir'                                  " Vim configuration files for Elixir
+Plug 'ianks/vim-tsx'                                              " TypeScript .tsx support
+Plug 'cespare/vim-toml'                                           " Toml syntax
+Plug 'ap/vim-css-color'                                           " Colorize hxadecimal colors
+Plug 'rodjek/vim-puppet'                                          " Puppet Syntax support
+Plug 'leafgarland/typescript-vim'                                 " TypeScript syntax support
+Plug 'pantharshit00/vim-prisma'                                   " Prisma2 syntax
+
+" Snippets
+Plug 'SirVer/ultisnips'                                           " Snippets Manager
+Plug 'honza/vim-snippets'                                         " Snippets Provider
+Plug 'cristianoliveira/vim-react-html-snippets'                   " Snippets for React / HTML
 
 " Theme
-Plug 'NLKNguyen/papercolor-theme'     " Another colorscheme {{{
+Plug 'NLKNguyen/papercolor-theme'                                 " Another colorscheme {{{
 set background=dark
 "}}}
-Plug 'bling/vim-airline'              " Vim fancy status line
+Plug 'bling/vim-airline'                                          " Vim fancy status line
 call plug#end()
 
 colorscheme PaperColor
@@ -230,11 +235,10 @@ autocmd VimResized * :wincmd =
 nnoremap <leader>- :wincmd _<cr>:wincmd \|<cr>
 nnoremap <leader>= :wincmd =<cr>
 
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+" Snippets
 let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsEditSplit="vertical" " If you want :UltiSnipsEdit to split your window.
+" " list all snippets for current filetype
+let g:UltiSnipsListSnippets="<c-l>"
 
 let delimitMate_expand_cr=1
 
