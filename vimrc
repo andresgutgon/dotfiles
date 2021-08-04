@@ -29,6 +29,9 @@ Plug 'rodjek/vim-puppet'                                          " Puppet Synta
 Plug 'leafgarland/typescript-vim'                                 " TypeScript syntax support
 Plug 'pantharshit00/vim-prisma'                                   " Prisma2 syntax
 
+" Language server
+Plug 'neoclide/coc.nvim'                                          " Coc
+
 " Snippets
 Plug 'SirVer/ultisnips'                                           " Snippets Manager
 Plug 'honza/vim-snippets'                                         " Snippets Provider
@@ -245,3 +248,11 @@ let delimitMate_expand_cr=1
 " TypeScript
 let g:syntastic_typescript_checkers = ['tslint']
 
+" Search with Ferret
+" Instead of <leader>a, use <leader>x.
+nmap <leader>x <Plug>(FerretAck)
+
+" Extra config. Like 'coc'
+for f in glob('~/.vim/config/*.vim', 0, 1)
+  execute 'source' f
+endfor
