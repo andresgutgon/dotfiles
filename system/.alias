@@ -11,6 +11,11 @@ alias cb="bin/container-bash"
 alias cr="bin/container-run"
 alias sshAndres="cd ~/code/factorial/infrastructure && bin/factorial-ssh remote_devenv ssh"
 
+# Vim alias
+if [ -h '/opt/homebrew/bin/vim' ]; then
+  alias vim='/opt/homebrew/bin/vim'
+fi
+
 # Git
 alias gp="git pull"
 alias gps="git push"
