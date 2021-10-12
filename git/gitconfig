@@ -84,7 +84,7 @@
 
 [core]
   autocrlf = false
-  editor = vim
+  editor = /opt/homebrew/bin/vim
   excludesfile = /Users/[Your Home Directory]/.gitignore_global
 
 [advice]
