@@ -10,6 +10,25 @@ if [ -h '/opt/homebrew/bin/vim' ]; then
   alias vim='/opt/homebrew/bin/vim'
 fi
 
+# Docker Volume inspecting
+# ::::::::::::::::::::::::
+
+# Mount a new small container for inspecting Docker volumes
+# Because content of Docker volumes are not in your machine are inside
+# Docker's host VM
+
+# More info:
+# https://www.freshblurbs.com/blog/2017/04/16/inspect-docker-volumes-on-mac.html
+
+# How to use it:
+# First your run:
+# docker volume ls
+# Then you pick the volume you want to inspect
+# docker volume inspect MY_VOLUME
+# Then you pick the `Mountpoint` path and use this alias:
+# dm-disk ls -l /docker/MOUNT_POINT_PATH
+alias dm-disk='docker run --rm -it -v /:/docker alpine:edge $@'
+
 # Git
 alias gp="git pull"
 alias gps="git push"
