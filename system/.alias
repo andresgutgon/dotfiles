@@ -47,9 +47,10 @@ fixssh() {
 # docker volume ls
 # Then you pick the volume you want to inspect
 # docker_ls YOUR_VOLUME
-docker_ls () {
+docker_inspect_volume () {
   DOCKER_VOLUME_OUTPUT=$(docker volume inspect $1);
   DOCKER_VOLUME_OUTPUT=$(echo "$DOCKER_VOLUME_OUTPUT" | grep -E '"Mountpoint": "[^,]*')
   DOCKER_VOLUME_OUTPUT=$(echo "$DOCKER_VOLUME_OUTPUT" | sed -r 's/("Mountpoint"\: ")(.*)(",)/\/docker\2/')
-  docker run --rm -it -v /:/docker alpine:edge ls -l $DOCKER_VOLUME_OUTPUT
+  echo "$DOCKER_VOLUME_OUTPUT"
+  docker run --rm -it -w $DOCKER_VOLUME_OUTPUT -v /:/docker alpine:edge
 }
