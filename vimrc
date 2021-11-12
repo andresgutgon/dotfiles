@@ -17,6 +17,10 @@ Plug 'diepm/vim-rest-console'                                     " REST console
 Plug 'matze/vim-move'                                             " Move blocks of code
 Plug 'wellle/targets.vim'                                         " Modify faster text inside this (){}[] targets
 
+" Ruby tools
+Plug 'tpope/vim-rake'                                             " Ruby on Rails power tools
+Plug 'tpope/vim-bundler'                                          " Lightweight support for Ruby's Bundler
+
 " Vim languages
 Plug 'vim-syntastic/syntastic'                                    " Syntax support
 Plug 'w0rp/ale'                                                   " Linter

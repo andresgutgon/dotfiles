@@ -5,12 +5,6 @@ alias ll="ls -lA --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
 
-# Factorial
-alias be="bin/container-run bundle exec"
-alias cb="bin/container-bash"
-alias cr="bin/container-run"
-alias sshAndres="cd ~/code/factorial/infrastructure && bin/factorial-ssh remote_devenv ssh"
-
 # Vim alias
 if [ -h '/opt/homebrew/bin/vim' ]; then
   alias vim='/opt/homebrew/bin/vim'
