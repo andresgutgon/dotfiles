@@ -256,6 +256,9 @@ let g:syntastic_typescript_checkers = ['tslint']
 " Instead of <leader>a, use <leader>x.
 nmap <leader>x <Plug>(FerretAck)
 
+" No fucking swap files
+set noswapfile
+
 " Extra config. Like 'coc'
 for f in glob('~/.vim/config/*.vim', 0, 1)
   execute 'source' f
