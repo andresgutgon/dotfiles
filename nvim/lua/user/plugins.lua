@@ -48,6 +48,9 @@ return packer.startup(function(use)
   -- TMUX navigator
   use { "numToStr/Navigator.nvim", config = function() require('Navigator').setup() end } 
 
+  -- Colorschemes
+  use "lunarvim/darkplus.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
