@@ -35,5 +35,9 @@ ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 message "Vim"
 ln -snf "${DOTFILES_DIR}/vimrc" ~/.vimrc
 ln -snf "${DOTFILES_DIR}/vim" ~/.vim
+
+message "NeoVim"
+ln -snf "${DOTFILES_DIR}/nvim" ~/.config/nvim
+
 mkdir -p ~/.vim/{tmpdir,undodir}
 chmod 700 ~/.vim/{tmpdir,undodir}
