@@ -37,4 +37,8 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
-
+-- Tmux Navigator
+keymap('n', "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
+keymap('n', "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
+keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
+keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
