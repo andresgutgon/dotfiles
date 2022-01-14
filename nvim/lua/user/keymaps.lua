@@ -10,7 +10,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Normal --
+-- Split windows
+-- <C-w> s - Split horizontal
+-- <C-w> v - Split vertical
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
