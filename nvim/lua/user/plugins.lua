@@ -101,6 +101,9 @@ local plugins = function(use)
   -- p  - Preview a git commit
   use "tpope/vim-fugitive"
 
+  -- Theme
+  use { "catppuccin/nvim", as = "catppuccin" }
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
