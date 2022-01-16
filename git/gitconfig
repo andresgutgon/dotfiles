@@ -84,7 +84,7 @@
 
 [core]
   autocrlf = false
-  editor = /opt/homebrew/bin/vim
+  editor = /opt/homebrew/bin/nvim
   excludesfile = /Users/[Your Home Directory]/.gitignore_global
 
 [advice]

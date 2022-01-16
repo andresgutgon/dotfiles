@@ -28,6 +28,9 @@ fi
 ## NodeJs bin
 export PATH=./node_modules/.bin:$PATH
 
+## Rust
+export PATH="$HOME/.cargo/bin:$PATH"
+
 for DOTFILE in $HOME/dotfiles/system/.{function,env,alias,grep,prompt,nvm}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
 done
@@ -39,9 +42,7 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# Binaries from Homebrew
-# export PATH=/opt/homebrew/bin:$PATH
-
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
+
 eval "$(rbenv init -)"

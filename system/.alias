@@ -5,6 +5,9 @@ alias ll="ls -lA --color=always"
 alias grep="grep --color=always"
 alias egrep="egrep --color=always"
 
+# NeoVim
+alias neo="nvim"
+
 # Vim alias
 if [ -h '/opt/homebrew/bin/vim' ]; then
   alias vim='/opt/homebrew/bin/vim'
