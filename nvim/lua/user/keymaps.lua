@@ -49,6 +49,7 @@ keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 -- Telescope
 keymap("n", "<leader><space>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", opts)
 keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>w", "<cmd>Telescope grep_string<cr>", opts)
 
 -- NerdTree
 keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)

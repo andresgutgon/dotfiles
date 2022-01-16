@@ -8,8 +8,6 @@ Blog post: https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602
 
 ## iTerm
 Go to Preferences (⌘ + ,) > preferences and click the checkbox that says `Load preferences from a custom URL folder` then sync with a folder in your dotfiles. In my case it's called `iterm` how original.
-Theme con catppuccin
-clone the repo: git@github.com:catppuccin/iterm.git the settings stored in this dotfiles already point to this theme.
 
 ## Nerd fonts
 [This video explains how to install it and what are nerd fonts](https://www.youtube.com/watch?v=fR4ThXzhQYI&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=7)

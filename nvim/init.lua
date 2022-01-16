@@ -12,6 +12,5 @@ require "user.gitsigns"
 require "user.window"
 require "user.trailing-spaces"
 require "user.lualine"
-require "user.catppuccin"
 
 

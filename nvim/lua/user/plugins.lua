@@ -58,7 +58,7 @@ local plugins = function(use)
     end
   }
 
-  -- Colorschemes
+  -- Colorscheme
   use "lunarvim/darkplus.nvim"
 
   -- cmp plugins
@@ -100,9 +100,6 @@ local plugins = function(use)
   -- gq - Close blame panel
   -- p  - Preview a git commit
   use "tpope/vim-fugitive"
-
-  -- Theme
-  use { "catppuccin/nvim", as = "catppuccin" }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
