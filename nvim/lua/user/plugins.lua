@@ -39,7 +39,7 @@ packer.init {
 }
 
 -- Plugin manager: Packer
-return packer.startup(function(use)
+local plugins = function(use)
   -- General
   use "wbthomason/packer.nvim"                      -- Have packer manage itself
   use "nvim-lua/popup.nvim"                         -- An implementation of the Popup API from vim in Neovim
@@ -48,6 +48,7 @@ return packer.startup(function(use)
   use "numToStr/Comment.nvim"                       -- Easily comment stuff
   use 'preservim/nerdtree'                          -- Good old NerdTree
   use 'ryanoasis/vim-devicons'                      -- Icons for NERDTree
+  use 'nvim-lualine/lualine.nvim'                   -- Setup line with nice style
 
   -- TMUX navigator
   use {
@@ -105,4 +106,14 @@ return packer.startup(function(use)
   if PACKER_BOOTSTRAP then
     require("packer").sync()
   end
-end)
+end
+
+local config = {
+  display = {
+    open_fn = function()
+      return require("packer.util").float({ border = "rounded" })
+    end
+  }
+}
+
+packer.startup({plugins, config = config})
