@@ -22,6 +22,8 @@ brew install --cask font-hack-nerd-font
 Then if you're using iTerm go to Preferences (⌘ + ,) > Profiles > Text > Font and select `Hack` as your terminal fornt.
 Already done in my case because I store iTerm preferences in my dotfiles
 
+# LSP (Language Server Protocol)
+To see installed LSPs do `:LspInstallInfo` then you can install and see your used protocols
 
 ## Terminal theme
 
