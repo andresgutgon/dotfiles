@@ -4,5 +4,5 @@ vim/undodir
 vim/plugged
 vim/autoload/*.old
 vim/.netrwhist
-nvim/plugin/
+nvim/plugin/packer_compiled.lua
 tmux-client-*.log
