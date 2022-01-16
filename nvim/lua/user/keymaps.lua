@@ -47,7 +47,7 @@ keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
 keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader><space>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", opts)
 keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
 
 -- NerdTree
