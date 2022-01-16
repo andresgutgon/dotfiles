@@ -53,3 +53,6 @@ keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
 -- NerdTree
 keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
 keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
+
+-- Formatting with Null-ls
+keymap("n", "<leader>f", ":Format<cr>", opts)
