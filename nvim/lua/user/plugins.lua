@@ -82,6 +82,21 @@ return packer.startup(function(use)
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
+  -- Git related:
+  -- GitSigns Keybindings:
+  -- <leader>hs - stage_hunk
+  -- <leader>hu - undo_stage_hunk
+  -- <leader>hp - preview_hunk
+  -- <leader>hb - blame_line
+  use "lewis6991/gitsigns.nvim"
+  -- fugitive Keybindings:
+  -- :Git blame
+  -- in blame panel
+  -- g? - The help
+  -- gq - Close blame panel
+  -- p  - Preview a git commit
+  use "tpope/vim-fugitive"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
