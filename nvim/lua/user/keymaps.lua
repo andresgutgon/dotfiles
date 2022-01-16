@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -45,3 +43,7 @@ keymap('n', "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
 keymap('n', "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
 keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
 keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>f", "<cmd>lua require'telescope.builtin'.find_files(require('telescope.themes').get_dropdown({ previewer = false }))<cr>", opts)
+keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)

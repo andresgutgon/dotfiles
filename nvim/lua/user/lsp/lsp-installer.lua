@@ -3,7 +3,26 @@ if not status_ok then
 	return
 end
 
--- Register a handler that will be called for all installed servers.
+-- My servers (from Fran - github:franciscoj/dotfiles)
+local installable_servers = {
+  "tailwindcss",
+  "cssls",
+  "tsserver",
+  "jsonls",
+  "html",
+  "pyright",
+  "sumneko_lua"
+}
+for _, name in pairs(installable_servers) do
+  local found, server = lsp_installer.get_server(name)
+  if found then
+    if not server:is_installed() then
+      print("installing: " .. name)
+      server:install()
+    end
+  end
+end
+
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
 lsp_installer.on_server_ready(function(server)
 	local opts = {
