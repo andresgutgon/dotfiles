@@ -11,6 +11,8 @@ vim.g.maplocalleader = " "
 -- Split windows
 -- <C-w> s - Split horizontal
 -- <C-w> v - Split vertical
+keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
+keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)

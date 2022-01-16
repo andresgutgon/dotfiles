@@ -9,4 +9,6 @@ require "user.treesitter"
 require "user.autopairs"
 require "user.comment"
 require "user.gitsigns"
+require "user.window"
+require "user.trailing-spaces"
 
