@@ -68,8 +68,8 @@ keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
 
 keymap("n", "<leader>ga", "<CMD>Git add .<CR>", opts) -- Git add all .
 keymap("n", "<leader>ci", "<CMD>Git commit<CR>", opts)
-keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
-keymap("n", "<leader>gpl", "<CMD>Git pull<CR>", opts)
+keymap("n", "<leader>bl", "<CMD>Git blame<CR>", opts)
+keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
 
 -- NerdTree
 keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)

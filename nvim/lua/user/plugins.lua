@@ -106,6 +106,8 @@ local plugins = function(use)
   -- gq - Close blame panel
   -- p  - Preview a git commit
   use "tpope/vim-fugitive"
+  -- :GBrowse commits in GitHub
+  use "tpope/vim-rhubarb"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
