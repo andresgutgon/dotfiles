@@ -51,6 +51,26 @@ keymap("n", "<leader><space>", "<cmd>lua require'telescope.builtin'.find_files()
 keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>w", "<cmd>Telescope grep_string<cr>", opts)
 
+-- Telescope omni command
+keymap("n", "<leader>c", "<cmd>Telescope commands<cr>", opts)
+
+-- Telescope Git + Fuggitive
+keymap("n", "<leader>s", "<CMD>Telescope git_status<CR>", opts)
+keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
+keymap("n", "<leader>gc", "<CMD>Telescope git_bcommits<CR>", opts) -- commits for current file
+keymap("n", "<leader>ac", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files
+keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
+keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
+-- Once Git is open you can do
+-- 1. `=` - Put over a file and view what's changed
+-- 2. `-` - Add to stash all changes on a file or you can select visualy lines.
+-- 3. `-` - Discard all changes on a file or you can select visualy lines.
+
+keymap("n", "<leader>ga", "<CMD>Git add .<CR>", opts) -- Git add all .
+keymap("n", "<leader>ci", "<CMD>Git commit<CR>", opts)
+keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
+keymap("n", "<leader>gpl", "<CMD>Git pull<CR>", opts)
+
 -- NerdTree
 keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
 keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
