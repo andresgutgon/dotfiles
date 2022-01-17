@@ -57,3 +57,8 @@ keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Formatting with Null-ls
 keymap("n", "<leader>f", ":Format<cr>", opts)
+
+-- Trouble
+keymap("n", "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", opts)
+keymap("n", "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", opts)
+keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
