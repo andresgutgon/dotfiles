@@ -54,7 +54,10 @@ local plugins = function(use)
   use {
     "numToStr/Navigator.nvim",
     config = function()
-      require('Navigator').setup()
+      require('Navigator').setup({
+        auto_save = nil,
+        disable_on_zoom = false,
+      })
     end
   }
 
