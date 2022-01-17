@@ -93,11 +93,6 @@ local plugins = function(use)
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
   -- Git related:
-  -- GitSigns Keybindings:
-  -- <leader>hs - stage_hunk
-  -- <leader>hu - undo_stage_hunk
-  -- <leader>hp - preview_hunk
-  -- <leader>hb - blame_line
   use "lewis6991/gitsigns.nvim"
   -- fugitive Keybindings:
   -- :Git blame
