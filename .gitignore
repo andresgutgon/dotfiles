@@ -6,3 +6,4 @@ vim/autoload/*.old
 vim/.netrwhist
 nvim/plugin/packer_compiled.lua
 tmux-client-*.log
+.env

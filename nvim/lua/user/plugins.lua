@@ -42,6 +42,7 @@ local plugins = function(use)
   use "nvim-lualine/lualine.nvim"                   -- Setup line with nice style
   use "ap/vim-css-color"                            -- CSS colors preview in nvim
   use "diepm/vim-rest-console"                      -- Make requests to REST servers from nvim
+  use "tpope/vim-dotenv"                            -- Load env variables from .env file. Don't forget to ignore it
 
   -- TMUX navigator
   use {
@@ -59,6 +60,10 @@ local plugins = function(use)
   use "Mofiqul/vscode.nvim"
   use "rose-pine/neovim"
 
+  -- Database
+  use "tpope/vim-dadbod"                            -- Modern database interface for Vim
+  use "kristijanhusak/vim-dadbod-ui"                -- Database UI interface in nvim
+
   -- cmp plugins
   use "hrsh7th/nvim-cmp"                            -- The completion plugin
   use "hrsh7th/cmp-buffer"                          -- buffer completions
@@ -67,6 +72,7 @@ local plugins = function(use)
   use "saadparwaiz1/cmp_luasnip"                    -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
+  use "kristijanhusak/vim-dadbod-completion"        -- Completion for vim-dadbod
 
     -- snippets
   use "L3MON4D3/LuaSnip"                            --snippet engine
