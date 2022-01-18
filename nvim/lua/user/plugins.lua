@@ -41,6 +41,7 @@ local plugins = function(use)
   use "ryanoasis/vim-devicons"                      -- Icons for NERDTree
   use "nvim-lualine/lualine.nvim"                   -- Setup line with nice style
   use "ap/vim-css-color"                            -- CSS colors preview in nvim
+  use "diepm/vim-rest-console"                      -- Make requests to REST servers from nvim
 
   -- TMUX navigator
   use {

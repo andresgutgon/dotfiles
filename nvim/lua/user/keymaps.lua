@@ -85,3 +85,6 @@ keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
 
 -- Theme dark/light toggle
 keymap("n", "<leader>t", "<CMD>lua require 'user.colorscheme'.toggleThemeMode()<CR>", opts)
+
+-- VRC (Vim Rest Console)
+keymap("n", "<leader>rc", "<CMD>lua require 'user.rest-console'.console()<CR>", opts)
