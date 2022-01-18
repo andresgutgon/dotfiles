@@ -56,6 +56,7 @@ local plugins = function(use)
   -- Colorscheme
   use "lunarvim/darkplus.nvim"
   use "Mofiqul/vscode.nvim"
+  use "rose-pine/neovim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp"                            -- The completion plugin

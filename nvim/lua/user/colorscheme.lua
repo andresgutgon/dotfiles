@@ -1,3 +1,6 @@
+vim.g.vscode_style = "dark"
+require('rose-pine').set('dawn')
+
 local colorscheme = "vscode"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
@@ -6,22 +9,15 @@ if not status_ok then
   return
 end
 
-
--- vscode color scheme dark/light modes
-local theme_modes = { dark = "dark", light = "light" }
-vim.g.vscode_style = theme_modes.dark
-
 M = {}
 
 function M.toggleThemeMode()
-  local current = vim.g.vscode_style
-  local next = current
-  if current == theme_modes.dark then
-    next = theme_modes.light
+  local theme = vim.g.colors_name
+  if theme == "vscode" then
+    vim.cmd("colorscheme rose-pine")
   else
-    next = theme_modes.dark
+    vim.cmd("colorscheme vscode")
   end
-  require('vscode').change_style(next)
 end
 
 return M
