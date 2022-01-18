@@ -37,9 +37,10 @@ local plugins = function(use)
   use "nvim-lua/plenary.nvim"                       -- Useful lua functions used ny lots of plugins
   use "windwp/nvim-autopairs"                       -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"                       -- Easily comment stuff
-  use 'preservim/nerdtree'                          -- Good old NerdTree
-  use 'ryanoasis/vim-devicons'                      -- Icons for NERDTree
-  use 'nvim-lualine/lualine.nvim'                   -- Setup line with nice style
+  use "preservim/nerdtree"                          -- Good old NerdTree
+  use "ryanoasis/vim-devicons"                      -- Icons for NERDTree
+  use "nvim-lualine/lualine.nvim"                   -- Setup line with nice style
+  use "ap/vim-css-color"                            -- CSS colors preview in nvim
 
   -- TMUX navigator
   use {
@@ -54,6 +55,7 @@ local plugins = function(use)
 
   -- Colorscheme
   use "lunarvim/darkplus.nvim"
+  use "Mofiqul/vscode.nvim"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp"                            -- The completion plugin

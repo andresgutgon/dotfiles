@@ -3,7 +3,7 @@ local opts = { noremap = true, silent = true }
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
---Remap space as leader key
+-- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
@@ -82,3 +82,6 @@ keymap("n", "<leader>f", ":Format<cr>", opts)
 keymap("n", "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", opts)
 keymap("n", "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", opts)
 keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
+
+-- Theme dark/light toggle
+keymap("n", "<leader>t", "<CMD>lua require 'user.colorscheme'.toggleThemeMode()<CR>", opts)
