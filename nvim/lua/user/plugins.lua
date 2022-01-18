@@ -35,8 +35,10 @@ local plugins = function(use)
   use "wbthomason/packer.nvim"                      -- Have packer manage itself
   use "nvim-lua/popup.nvim"                         -- An implementation of the Popup API from vim in Neovim
   use "nvim-lua/plenary.nvim"                       -- Useful lua functions used ny lots of plugins
+  use "tjdevries/complextras.nvim"                  -- Some fun extenstions / extras for ins-completion in neovim
   use "windwp/nvim-autopairs"                       -- Autopairs, integrates with both cmp and treesitter
   use "numToStr/Comment.nvim"                       -- Easily comment stuff
+  use 'JoosepAlviste/nvim-ts-context-commentstring' -- Comments enhancement. Add context based on the file
   use "preservim/nerdtree"                          -- Good old NerdTree
   use "ryanoasis/vim-devicons"                      -- Icons for NERDTree
   use "nvim-lualine/lualine.nvim"                   -- Setup line with nice style
@@ -74,6 +76,7 @@ local plugins = function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
   use "kristijanhusak/vim-dadbod-completion"        -- Completion for vim-dadbod
+  use "onsails/lspkind-nvim"                        -- Autocomple icons
 
     -- snippets
   use "L3MON4D3/LuaSnip"                            --snippet engine
@@ -89,7 +92,6 @@ local plugins = function(use)
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
-  use 'JoosepAlviste/nvim-ts-context-commentstring' -- Comments enhancement. Add context based on the file
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }

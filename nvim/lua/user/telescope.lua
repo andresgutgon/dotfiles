@@ -5,7 +5,7 @@ end
 
 local actions = require "telescope.actions"
 
-telescope.setup {
+telescope.setup({
   defaults = {
 
     prompt_prefix = " ",
@@ -87,4 +87,4 @@ telescope.setup {
     }
   },
   extensions = {},
-}
+})
