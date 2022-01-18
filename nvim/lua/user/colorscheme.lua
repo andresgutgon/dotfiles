@@ -1,7 +1,7 @@
 vim.g.vscode_style = "dark"
-require('rose-pine').set('dawn')
+require("rose-pine").set("dawn")
 
-local colorscheme = "vscode"
+local colorscheme = "rose-pine"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
