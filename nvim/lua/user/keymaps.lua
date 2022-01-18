@@ -9,10 +9,14 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Split windows
--- <C-w> s - Split horizontal
--- <C-w> v - Split vertical
 keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
 keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
+
+-- Split resise
+keymap("n", "l", ":resize +5<CR>", opts)
+keymap("n", "q", ":resize -5<CR>", opts)
+keymap("n", "<C-S-Up>", ":vertical resize +5<CR>", opts)
+keymap("n", "<C-S-Down>", ":vertical resize -5<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -28,7 +32,7 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Visual --
--- Stay in indent mode
+-- Stay in indent moden
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
