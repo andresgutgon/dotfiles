@@ -93,6 +93,15 @@ local plugins = function(use)
   -- Telescope
   use "nvim-telescope/telescope.nvim"
 
+  -- Clipboard manager neovim plugin with telescope integration
+  use {
+    "AckslD/nvim-neoclip.lua",
+    requires = {'nvim-telescope/telescope.nvim'},
+    config = function()
+      require("neoclip").setup()
+    end
+  }
+
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
 
