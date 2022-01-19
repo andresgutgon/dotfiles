@@ -97,4 +97,4 @@ keymap("n", "<leader>rc", "<CMD>lua require 'user.rest-console'.console()<CR>", 
 -- Toggle neoclip if you want to stop putting in the clipboard
 keymap("n", "tn", "<Cmd>lua require('neoclip').toggle()<CR>", opts)
 -- Open neoclip
-keymap("n", "<C-n>", "Telescope neoclip", opts)
+keymap("n", "<C-n>", "<CMD>Telescope neoclip<CR>", opts)
