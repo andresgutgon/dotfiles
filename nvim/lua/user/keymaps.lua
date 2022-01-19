@@ -13,7 +13,7 @@ keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
 keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
 
 -- Split resise
-keymap("n", "l", ":resize +5<CR>", opts)
+keymap("n", "m", ":resize +5<CR>", opts)
 keymap("n", "q", ":resize -5<CR>", opts)
 keymap("n", "<C-S-Up>", ":vertical resize +5<CR>", opts)
 keymap("n", "<C-S-Down>", ":vertical resize -5<CR>", opts)
