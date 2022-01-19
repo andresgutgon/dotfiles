@@ -65,6 +65,7 @@ keymap("n", "<leader>gc", "<CMD>Telescope git_bcommits<CR>", opts) -- commits fo
 keymap("n", "<leader>ac", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files
 keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
 keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
+keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
 -- Once Git is open you can do
 -- 1. `=` - Put over a file and view what's changed
 -- 2. `-` - Add to stash all changes on a file or you can select visualy lines.
