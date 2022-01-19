@@ -5,13 +5,18 @@ end
 
 -- My servers (from Fran - github:franciscoj/dotfiles)
 local installable_servers = {
+  "bashls",
   "tailwindcss",
   "cssls",
   "tsserver",
-  "jsonls",
   "html",
   "pyright",
-  "sumneko_lua"
+  "sumneko_lua",
+  "jsonls",
+  "yamlls",
+  "eslint",
+  "sorbet",
+  "html"
 }
 for _, name in pairs(installable_servers) do
   local found, server = lsp_installer.get_server(name)
