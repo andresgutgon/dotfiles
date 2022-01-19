@@ -47,6 +47,21 @@ local plugins = function(use)
   use "tpope/vim-dotenv"                            -- Load env variables from .env file. Don't forget to ignore it
   use "tpope/vim-endwise"                           -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
 
+  -- A Vim plugin for Prettier
+  use {
+    "prettier/vim-prettier",
+    run = "yarn install",
+    ft = {
+      "javascript",
+      "typescript",
+      "css",
+      "scss",
+      "graphql",
+      "markdown",
+      "html"
+    }
+  }
+
   -- TMUX navigator
   use {
     "numToStr/Navigator.nvim",
