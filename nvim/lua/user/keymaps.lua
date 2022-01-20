@@ -60,15 +60,15 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<leader><space>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", opts)
 keymap("n", "<leader>a", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<leader>w", "<cmd>Telescope grep_string<cr>", opts)
-
--- Telescope omni command
-keymap("n", "<leader>c", "<cmd>Telescope commands<cr>", opts)
+keymap("n", "<leader>c", "<cmd>Telescope commands<cr>", opts) -- Telescope omni command
+keymap("n", "<leader>k", "<CMD>Telescope keymaps<CR>", opts)
+keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts) -- Open neoclip
 
 -- Telescope Git + Fuggitive
 keymap("n", "<leader>s", "<CMD>Telescope git_status<CR>", opts)
 keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
 keymap("n", "<leader>gc", "<CMD>Telescope git_bcommits<CR>", opts) -- commits for current file
-keymap("n", "<leader>ac", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files
+keymap("n", "<leader>bc", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files
 keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
 keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
 keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
@@ -102,5 +102,3 @@ keymap("n", "<leader>rc", "<CMD>lua require 'user.rest-console'.console()<CR>", 
 
 -- Toggle neoclip if you want to stop putting in the clipboard
 keymap("n", "tn", "<Cmd>lua require('neoclip').toggle()<CR>", opts)
--- Open neoclip
-keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts)
