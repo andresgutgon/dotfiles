@@ -8,6 +8,9 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Edit vim config
+keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
+
 -- Split windows
 keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
 keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
@@ -35,9 +38,6 @@ keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix
 keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix
 keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
-
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
