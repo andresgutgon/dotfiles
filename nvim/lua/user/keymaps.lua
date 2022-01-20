@@ -24,6 +24,18 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Tmux Navigator
+keymap('n', "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
+keymap('n', "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
+keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
+keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
+
+-- Quickfix list panel
+keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix
+keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix
+keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
+keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
+
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 
@@ -43,12 +55,6 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-
--- Tmux Navigator
-keymap('n', "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
-keymap('n', "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
-keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
-keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader><space>", "<cmd>lua require'telescope.builtin'.find_files()<CR>", opts)
@@ -97,4 +103,4 @@ keymap("n", "<leader>rc", "<CMD>lua require 'user.rest-console'.console()<CR>", 
 -- Toggle neoclip if you want to stop putting in the clipboard
 keymap("n", "tn", "<Cmd>lua require('neoclip').toggle()<CR>", opts)
 -- Open neoclip
-keymap("n", "<C-n>", "<CMD>Telescope neoclip<CR>", opts)
+keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts)
