@@ -16,6 +16,5 @@ require "user.lualine"
 require "user.trouble"
 require "user.prettier"
 require "user.spectre"
-require "user.markdown"
 
 
