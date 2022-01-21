@@ -15,5 +15,6 @@ require "user.trailing-spaces"
 require "user.lualine"
 require "user.trouble"
 require "user.prettier"
+require "user.spectre"
 
 

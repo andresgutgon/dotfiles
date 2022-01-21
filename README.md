@@ -12,7 +12,7 @@ https://github.com/mdo/ocean-terminal
 These packages need to be installed in Mac OS X
 
 1. For Telescope: `brew install ripgrep`
-2. For `nvim-spectre`: `brew install gnu-sed`
+2. For `nvim-spectre`: `brew install gnu-sed` & `brew install ripgrep`
 
 ## Nerd fonts
 [This video explains how to install it and what are nerd fonts](https://www.youtube.com/watch?v=fR4ThXzhQYI&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=7)

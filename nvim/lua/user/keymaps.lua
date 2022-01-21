@@ -39,12 +39,12 @@ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix
 keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
--- Navigate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
+-- Spectre: Find & replace
+keymap("n", "<leader>s", "<CMD>lua require 'spectre'.open_visual()<CR>", opts) -- Search all files
+keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts) -- Find current file
+keymap("n", "<leader>sw", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
 
--- Visual --
--- Stay in indent moden
+-- Indent multiple lines in visual mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
@@ -65,7 +65,6 @@ keymap("n", "<leader>k", "<CMD>Telescope keymaps<CR>", opts)
 keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts) -- Open neoclip
 
 -- Telescope Git + Fuggitive
-keymap("n", "<leader>s", "<CMD>Telescope git_status<CR>", opts)
 keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
 keymap("n", "<leader>gc", "<CMD>Telescope git_bcommits<CR>", opts) -- commits for current file
 keymap("n", "<leader>bc", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files

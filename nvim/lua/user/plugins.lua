@@ -47,20 +47,10 @@ local plugins = function(use)
   use "tpope/vim-dotenv"                            -- Load env variables from .env file. Don't forget to ignore it
   use "tpope/vim-endwise"                           -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
 
-  -- A Vim plugin for Prettier
-  use {
-    "prettier/vim-prettier",
-    run = "yarn install",
-    ft = {
-      "javascript",
-      "typescript",
-      "css",
-      "scss",
-      "graphql",
-      "markdown",
-      "html"
-    }
-  }
+  -- Colorscheme
+  use "lunarvim/darkplus.nvim"
+  use "Mofiqul/vscode.nvim"
+  use "rose-pine/neovim"
 
   -- TMUX navigator
   use {
@@ -73,14 +63,8 @@ local plugins = function(use)
     end
   }
 
-  -- Colorscheme
-  use "lunarvim/darkplus.nvim"
-  use "Mofiqul/vscode.nvim"
-  use "rose-pine/neovim"
-
-  -- Database
-  use "tpope/vim-dadbod"                            -- Modern database interface for Vim
-  use "kristijanhusak/vim-dadbod-ui"                -- Database UI interface in nvim
+  -- Find & replace things in your code
+  use "nvim-pack/nvim-spectre"
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp"                            -- The completion plugin
@@ -102,8 +86,24 @@ local plugins = function(use)
   use "williamboman/nvim-lsp-installer"             -- simple to use language server installer
   use "jose-elias-alvarez/null-ls.nvim"             -- for formatters and linters
   use "folke/lsp-colors.nvim"                       -- Dependency of trouble, Automatically creates missing LSP diagnostics highlight groups for color schemes
+
   -- Error, diagnostics display
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
+
+  -- A Vim plugin for Prettier
+  use {
+    "prettier/vim-prettier",
+    run = "yarn install",
+    ft = {
+      "javascript",
+      "typescript",
+      "css",
+      "scss",
+      "graphql",
+      "markdown",
+      "html"
+    }
+  }
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"
@@ -117,7 +117,7 @@ local plugins = function(use)
     end
   }
 
-  -- Treesitter
+  -- Treesitter: A nvim plugin for tree-sitter incremental parsing system.
   use {
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
@@ -134,6 +134,10 @@ local plugins = function(use)
   use "tpope/vim-fugitive"
   -- :GBrowse commits in GitHub
   use "tpope/vim-rhubarb"
+
+  -- Database
+  use "tpope/vim-dadbod"                            -- Modern database interface for Vim
+  use "kristijanhusak/vim-dadbod-ui"                -- Database UI interface in nvim
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
