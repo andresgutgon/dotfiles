@@ -1,4 +1,4 @@
-dotfiles
+## dotfiles
 ========
 This are the docfiles I use to set up my Terminal (iTerm).
 

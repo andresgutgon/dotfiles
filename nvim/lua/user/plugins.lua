@@ -46,6 +46,8 @@ local plugins = function(use)
   use "diepm/vim-rest-console"                      -- Make requests to REST servers from nvim
   use "tpope/vim-dotenv"                            -- Load env variables from .env file. Don't forget to ignore it
   use "tpope/vim-endwise"                           -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
+  use "tpope/vim-unimpaired"                        -- Pairs of handy mappings
+  use "Yggdroot/indentLine"                         -- Vertical indentation lines. Visual indicator
 
   -- Colorscheme
   use "lunarvim/darkplus.nvim"

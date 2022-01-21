@@ -10,6 +10,7 @@ vim.g.maplocalleader = " "
 
 -- Edit vim config
 keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
+keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
 
 -- Split windows
 keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
