@@ -136,7 +136,8 @@ local plugins = function(use)
   use "tpope/vim-fugitive"
   -- :GBrowse commits in GitHub
   use "tpope/vim-rhubarb"
-  -- A git commit browser in Vim
+  -- A git commit browser in Vim. If more is needed check:
+  -- https://github.com/cohama/agit.vim
   use "junegunn/gv.vim"
 
   -- Database
