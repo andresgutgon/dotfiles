@@ -67,8 +67,8 @@ keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts) -- Open neoclip
 
 -- Telescope Git + Fuggitive
 keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
-keymap("n", "<leader>gc", "<CMD>Telescope git_bcommits<CR>", opts) -- commits for current file
-keymap("n", "<leader>bc", "<CMD>Telescope git_commits<CR>", opts) -- Commits for all files
+keymap("n", "<leader>bc", ":GV<CR>", opts) -- Commits for all files
+keymap("n", "<leader>gc", ":GV!<CR>", opts) -- commits for current file
 keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
 keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
 keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
