@@ -41,6 +41,9 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+-- visible quotes on JSON files
+vim.cmd [[ set conceallevel=0 ]]
+
 -- Show hiden trailing cacharacters
 vim.cmd [[set list]]
 vim.cmd [[set listchars=eol:⏎,tab:»_,trail:·,nbsp:⎵]]
