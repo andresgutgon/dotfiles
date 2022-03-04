@@ -45,4 +45,10 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 # Rbenv
 export PATH="$HOME/.rbenv/bin:$PATH"
 
+# pnpm autocompletion
+# More info: https://pnpm.io/completio
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/bash/__tabtab.bash ] && . ~/.config/tabtab/bash/__tabtab.bash || true
+
 eval "$(rbenv init -)"
