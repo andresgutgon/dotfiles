@@ -33,7 +33,25 @@ local options = {
   scrolloff = 8,                           -- is one of my fav
   sidescrolloff = 8,
   guifont = "monospace:h17",               -- the font used in graphical neovim applications
+  foldmethod = "indent",                   -- Trigger folding
+  foldnestmax = 10,                        -- Max folding levels
+  foldenable = false,                      -- When off, all folds are open.
+  foldlevel = 2                            -- Folding level
 }
+
+-- FOLDING keymaps
+-- Fold/Unfold folders
+-- Only current cursor
+-- [za] - Open
+-- [zc] - Close
+--
+-- Relative to cursor position
+-- [zA] - Open all folds under that fold
+-- [zC] - Close all folds under that fold
+--
+-- Global in file
+-- [zR] - Open all folds
+-- [zM] - Close one fold
 
 vim.opt.shortmess:append "c"
 
