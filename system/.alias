@@ -23,6 +23,7 @@ alias gw="git wip"
 
 # Docker compose
 alias doc="docker-compose exec backend"
+alias dor="docker-compose run backend"
 
 # Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
