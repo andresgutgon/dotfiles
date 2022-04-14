@@ -23,7 +23,9 @@ alias gw="git wip"
 
 # Docker compose
 alias doc="docker-compose exec backend"
+alias dot="docker-compose exec backend -f docker-compose.test.yml"
 alias dor="docker-compose run backend"
+alias dspec="doc bundle exec rspec"
 
 # Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
