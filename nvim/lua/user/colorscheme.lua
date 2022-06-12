@@ -1,5 +1,4 @@
 vim.g.vscode_style = "dark"
-require("rose-pine").set("dawn")
 
 local colorscheme = "vscode"
 
@@ -14,8 +13,10 @@ M = {}
 function M.toggleThemeMode()
   local theme = vim.g.colors_name
   if theme == "vscode" then
+    vim.cmd("set background=light")
     vim.cmd("colorscheme rose-pine")
   else
+    vim.cmd("set background=dark")
     vim.cmd("colorscheme vscode")
   end
 end
