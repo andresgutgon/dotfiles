@@ -60,7 +60,7 @@ for k, v in pairs(options) do
 end
 
 -- visible quotes on JSON files
-vim.cmd [[ set conceallevel=0 ]]
+vim.cmd [[au! BufRead,BufNewFile *.json set conceallevel=0]]
 
 -- Show hiden trailing cacharacters
 vim.cmd [[set list]]
