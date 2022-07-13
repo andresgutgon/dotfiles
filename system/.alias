@@ -26,6 +26,7 @@ alias doc="docker-compose exec backend"
 alias dot="docker-compose exec backend -f ./docker-compose.test.yml bundle exec rspec"
 alias dor="docker-compose run backend"
 alias dspec="doc bundle exec rspec"
+alias dof="docker-compose exec frontend"
 
 # Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
