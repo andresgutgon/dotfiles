@@ -95,7 +95,7 @@ local plugins = function(use)
   -- A Vim plugin for Prettier
   use {
     "prettier/vim-prettier",
-    run = "yarn install",
+    run = "npm install",
     ft = {
       "javascript",
       "typescript",
