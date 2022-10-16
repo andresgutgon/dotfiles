@@ -54,6 +54,9 @@ local plugins = function(use)
   use "Mofiqul/vscode.nvim"
   use "rose-pine/neovim"
 
+  -- Syntax highlight
+  use 'pantharshit00/vim-prisma'                    -- Prisma2 syntax
+
   -- TMUX navigator
   use {
     "numToStr/Navigator.nvim",
