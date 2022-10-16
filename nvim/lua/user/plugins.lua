@@ -86,9 +86,20 @@ local plugins = function(use)
   use "L3MON4D3/LuaSnip"                            --snippet engine
   use "rafamadriz/friendly-snippets"                -- a bunch of snippets to use
 
-    -- LSP
-  use "neovim/nvim-lspconfig"                       -- enable LSP
-  use "williamboman/nvim-lsp-installer"             -- simple to use language server installer
+  -- LSP
+  use({ "williamboman/mason.nvim" })                -- An LSP installer
+  use({ "williamboman/mason-lspconfig.nvim" })      -- Bridge between lspconfig and mason
+  -- A collection of common configurations for Neovim's built-in language server client.
+  use({
+    "neovim/nvim-lspconfig",
+    config = function()
+      require("user/plugins/mason")
+      require("user/lsp")
+    end
+  })
+
+  -- LSP addons
+  use "jose-elias-alvarez/typescript.nvim"          -- A Lua plugin, written in TypeScript, to write TypeScript (Lua optional).
   use "jose-elias-alvarez/null-ls.nvim"             -- for formatters and linters
   use "folke/lsp-colors.nvim"                       -- Dependency of trouble, Automatically creates missing LSP diagnostics highlight groups for color schemes
 
