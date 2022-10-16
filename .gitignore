@@ -7,3 +7,4 @@ vim/.netrwhist
 nvim/plugin/packer_compiled.lua
 tmux-client-*.log
 .env
+.pnpm-debug.log
