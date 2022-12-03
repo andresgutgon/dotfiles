@@ -29,7 +29,7 @@ fi
 export PATH=./node_modules/.bin:$PATH
 
 ## Rust
-export PATH="$HOME/.cargo/bin:$PATH"
+. "$HOME/.cargo/env"
 
 for DOTFILE in $HOME/dotfiles/system/.{function,env,alias,grep,prompt,nvm}; do
   [ -f "$DOTFILE" ] && . "$DOTFILE"
