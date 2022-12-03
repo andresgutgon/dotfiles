@@ -1,5 +1,9 @@
 local opts = { noremap = true, silent = true }
 
+-- Comments:
+-- I use `numToStr/Comment.nvim` plugin for comments
+-- Do `gcc` to toggle comments in lines
+
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
