@@ -32,22 +32,22 @@ end
 -- Plugin manager: Packer
 local plugins = function(use)
   -- General
-  use "wbthomason/packer.nvim"                      -- Have packer manage itself
-  use "nvim-lua/popup.nvim"                         -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim"                       -- Useful lua functions used ny lots of plugins
-  use "tjdevries/complextras.nvim"                  -- Some fun extenstions / extras for ins-completion in neovim
-  use "steelsojka/pears.nvim"                       -- Autopairs expandions {} () ...
-  use "numToStr/Comment.nvim"                       -- Easily comment stuff
+  use "wbthomason/packer.nvim" -- Have packer manage itself
+  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
+  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
+  use "tjdevries/complextras.nvim" -- Some fun extenstions / extras for ins-completion in neovim
+  use "steelsojka/pears.nvim" -- Autopairs expandions {} () ...
+  use "numToStr/Comment.nvim" -- Easily comment stuff
   use 'JoosepAlviste/nvim-ts-context-commentstring' -- Comments enhancement. Add context based on the file
-  use "preservim/nerdtree"                          -- Good old NerdTree
-  use "ryanoasis/vim-devicons"                      -- Icons for NERDTree
-  use "nvim-lualine/lualine.nvim"                   -- Setup line with nice style
-  use "ap/vim-css-color"                            -- CSS colors preview in nvim
-  use "diepm/vim-rest-console"                      -- Make requests to REST servers from nvim
-  use "tpope/vim-dotenv"                            -- Load env variables from .env file. Don't forget to ignore it
-  use "tpope/vim-endwise"                           -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
-  use "tpope/vim-unimpaired"                        -- Pairs of handy mappings
-  use "Yggdroot/indentLine"                         -- Vertical indentation lines. Visual indicator
+  use "preservim/nerdtree" -- Good old NerdTree
+  use "ryanoasis/vim-devicons" -- Icons for NERDTree
+  use "nvim-lualine/lualine.nvim" -- Setup line with nice style
+  use "ap/vim-css-color" -- CSS colors preview in nvim
+  use "diepm/vim-rest-console" -- Make requests to REST servers from nvim
+  use "tpope/vim-dotenv" -- Load env variables from .env file. Don't forget to ignore it
+  use "tpope/vim-endwise" -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
+  use "tpope/vim-unimpaired" -- Pairs of handy mappings
+  use "Yggdroot/indentLine" -- Vertical indentation lines. Visual indicator
 
   -- Colorscheme
   use "lunarvim/darkplus.nvim"
@@ -55,7 +55,7 @@ local plugins = function(use)
   use "rose-pine/neovim"
 
   -- Syntax highlight
-  use 'pantharshit00/vim-prisma'                    -- Prisma2 syntax
+  use 'pantharshit00/vim-prisma' -- Prisma2 syntax
 
   -- TMUX navigator
   use {
@@ -72,23 +72,25 @@ local plugins = function(use)
   use "nvim-pack/nvim-spectre"
 
   -- cmp plugins
-  use "hrsh7th/nvim-cmp"                            -- The completion plugin
-  use "hrsh7th/cmp-buffer"                          -- buffer completions
-  use "hrsh7th/cmp-path"                            -- path completions
-  use "hrsh7th/cmp-cmdline"                         -- cmdline completions
-  use "saadparwaiz1/cmp_luasnip"                    -- snippet completions
+  use "hrsh7th/nvim-cmp" -- The completion plugin
+  use "hrsh7th/cmp-buffer" -- buffer completions
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
-  use "kristijanhusak/vim-dadbod-completion"        -- Completion for vim-dadbod
-  use "onsails/lspkind-nvim"                        -- Autocomple icons
+  use "kristijanhusak/vim-dadbod-completion" -- Completion for vim-dadbod
+  use "onsails/lspkind-nvim" -- Autocomple icons
 
-    -- snippets
-  use "L3MON4D3/LuaSnip"                            --snippet engine
-  use "rafamadriz/friendly-snippets"                -- a bunch of snippets to use
+  -- snippets
+  use "L3MON4D3/LuaSnip" --snippet engine
+  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
   -- LSP
-  use({ "williamboman/mason.nvim" })                -- An LSP installer
-  use({ "williamboman/mason-lspconfig.nvim" })      -- Bridge between lspconfig and mason
+  use({ "williamboman/mason.nvim" }) -- An LSP installer
+  use({ "williamboman/mason-lspconfig.nvim" }) -- Bridge between lspconfig and mason
+  use "simrat39/rust-tools.nvim" -- Tools for rust-analyser
+
   -- A collection of common configurations for Neovim's built-in language server client.
   use({
     "neovim/nvim-lspconfig",
@@ -99,9 +101,9 @@ local plugins = function(use)
   })
 
   -- LSP addons
-  use "jose-elias-alvarez/typescript.nvim"          -- A Lua plugin, written in TypeScript, to write TypeScript (Lua optional).
-  use "jose-elias-alvarez/null-ls.nvim"             -- for formatters and linters
-  use "folke/lsp-colors.nvim"                       -- Dependency of trouble, Automatically creates missing LSP diagnostics highlight groups for color schemes
+  use "jose-elias-alvarez/typescript.nvim" -- A Lua plugin, written in TypeScript, to write TypeScript (Lua optional).
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "folke/lsp-colors.nvim" -- Dependency of trouble, Automatically creates missing LSP diagnostics highlight groups for color schemes
 
   -- Error, diagnostics display
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
@@ -127,7 +129,7 @@ local plugins = function(use)
   -- Clipboard manager neovim plugin with telescope integration
   use {
     "AckslD/nvim-neoclip.lua",
-    requires = {'nvim-telescope/telescope.nvim'},
+    requires = { 'nvim-telescope/telescope.nvim' },
     config = function()
       require("neoclip").setup()
     end
@@ -155,8 +157,8 @@ local plugins = function(use)
   use "junegunn/gv.vim"
 
   -- Database
-  use "tpope/vim-dadbod"                            -- Modern database interface for Vim
-  use "kristijanhusak/vim-dadbod-ui"                -- Database UI interface in nvim
+  use "tpope/vim-dadbod" -- Modern database interface for Vim
+  use "kristijanhusak/vim-dadbod-ui" -- Database UI interface in nvim
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
@@ -173,4 +175,4 @@ local config = {
   }
 }
 
-packer.startup({plugins, config = config})
+packer.startup({ plugins, config = config })
