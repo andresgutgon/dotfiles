@@ -57,7 +57,7 @@ local servers = {
   "sorbet",
   "sumneko_lua",
   "null-ls",
-  "rust"
+  "rust_analyzer"
 }
 
 for _, server in pairs(servers) do

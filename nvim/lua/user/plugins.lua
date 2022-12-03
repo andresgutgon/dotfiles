@@ -89,7 +89,6 @@ local plugins = function(use)
   -- LSP
   use({ "williamboman/mason.nvim" }) -- An LSP installer
   use({ "williamboman/mason-lspconfig.nvim" }) -- Bridge between lspconfig and mason
-  use "simrat39/rust-tools.nvim" -- Tools for rust-analyser
 
   -- A collection of common configurations for Neovim's built-in language server client.
   use({
