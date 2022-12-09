@@ -48,6 +48,7 @@ local plugins = function(use)
   use "tpope/vim-endwise" -- Wisely add "end" in ruby, endfunction/endif/more in vim script, etc
   use "tpope/vim-unimpaired" -- Pairs of handy mappings
   use "Yggdroot/indentLine" -- Vertical indentation lines. Visual indicator
+  use "szw/vim-maximizer" -- Vim split maximizer
 
   -- Colorscheme
   use "lunarvim/darkplus.nvim"

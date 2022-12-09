@@ -21,8 +21,15 @@ keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
 
 -- Split windows
+-- <C-w>= all splits equal
+-- <C-w>_ Full screen for current split verticaly
+-- <C-w>| Full screen for current split horizontaly
 keymap("n", "<leader>ws", "<C-w>s<CR>", opts)
 keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
+-- A better way to toggle a split full screen is to use:
+-- https://github.com/szw/vim-maximizer
+-- Using it with this keymap
+keymap("n", "<C-o>", ":MaximizerToggle<CR>", opts)
 
 -- Split resise
 keymap("n", "m", ":resize +5<CR>", opts)
@@ -43,9 +50,8 @@ keymap('n', "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
 keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
 -- Quickfix list panel
-keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix
-
 -- Conflicts with page movement
+--[[ keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix ]]
 --[[ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix ]]
 
 keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
