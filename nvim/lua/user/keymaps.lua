@@ -12,6 +12,10 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Move page
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
 -- Edit vim config
 keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
@@ -23,8 +27,8 @@ keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
 -- Split resise
 keymap("n", "m", ":resize +5<CR>", opts)
 keymap("n", "q", ":resize -5<CR>", opts)
-keymap("n", "g", ":vertical resize +5<CR>", opts)
-keymap("n", "f", ":vertical resize -5<CR>", opts)
+keymap("n", "mm", ":vertical resize +10<CR>", opts)
+keymap("n", "qq", ":vertical resize -10<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -40,7 +44,10 @@ keymap('n', "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
 -- Quickfix list panel
 keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix
-keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix
+
+-- Conflicts with page movement
+--[[ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix ]]
+
 keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
