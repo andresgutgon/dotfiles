@@ -23,8 +23,8 @@ keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
 -- Split resise
 keymap("n", "m", ":resize +5<CR>", opts)
 keymap("n", "q", ":resize -5<CR>", opts)
-keymap("n", "<C-S-Up>", ":vertical resize +5<CR>", opts)
-keymap("n", "<C-S-Down>", ":vertical resize -5<CR>", opts)
+keymap("n", "g", ":vertical resize +5<CR>", opts)
+keymap("n", "f", ":vertical resize -5<CR>", opts)
 
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
