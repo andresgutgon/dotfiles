@@ -14,7 +14,7 @@
 -- and press <C-j> default keybinding
 
 -- Syntax hightlighting for JSON responses
-vim.g.vrc_output_buffer_name = '__VRC_OUTPUT.<filetype>'
+vim.g.vrc_output_buffer_name = '__VRC_OUTPUT.json'
 vim.g.vrc_split_request_body = 1
 vim.g.vrc_elasticsearch_support = 1
 
@@ -22,7 +22,7 @@ M = {}
 
 -- This method is used in a keymap "<leader>rc"
 -- it opens a new buffer with the "rest" filetype.
-function M.console ()
+function M.console()
   vim.cmd('vsplit')
   local win = vim.api.nvim_get_current_win()
   local buf = vim.api.nvim_create_buf(true, true)
