@@ -55,6 +55,7 @@ local servers = {
   "tsserver",
   "eslint",
   "sorbet",
+  "terraform",
   "sumneko_lua",
   "null-ls",
   "rust_analyzer",

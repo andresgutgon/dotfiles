@@ -140,6 +140,8 @@ local plugins = function(use)
     "nvim-treesitter/nvim-treesitter",
     run = ":TSUpdate"
   }
+  -- Syntax hightlighting detection for terraform (*.tf) files
+  use "hashivim/vim-terraform"
 
   -- Git related:
   use "lewis6991/gitsigns.nvim"
