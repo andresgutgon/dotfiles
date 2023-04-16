@@ -56,7 +56,7 @@ local servers = {
   "eslint",
   "sorbet",
   "terraform",
-  "sumneko_lua",
+  "lua_ls",
   "null-ls",
   "rust_analyzer",
   "tailwindcss"

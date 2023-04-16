@@ -109,19 +109,7 @@ local plugins = function(use)
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 
   -- A Vim plugin for Prettier
-  use {
-    "prettier/vim-prettier",
-    run = "npm install",
-    ft = {
-      "javascript",
-      "typescript",
-      "css",
-      "scss",
-      "graphql",
-      "markdown",
-      "html"
-    }
-  }
+  use('MunifTanjim/prettier.nvim')
 
   -- Telescope
   use "nvim-telescope/telescope.nvim"

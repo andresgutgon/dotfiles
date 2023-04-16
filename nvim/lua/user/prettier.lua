@@ -1,4 +1,19 @@
-vim.cmd([[
-  let g:prettier#autoformat_config_present = 1
-  let g:prettier#autoformat_require_pragma = 0
-]])
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettier', -- or `'prettierd'` (v0.23.3+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})
