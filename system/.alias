@@ -22,16 +22,15 @@ alias gd="git diff"
 alias gw="git wip"
 
 # Docker compose
-alias doc="docker-compose exec backend"
-alias dot="docker-compose exec backend -f ./docker-compose.test.yml bundle exec rspec"
-alias dor="docker-compose run backend"
-alias dspec="doc bundle exec rspec"
-alias dof="docker-compose exec frontend"
+alias doe="docker-compose exec"
+alias dor="docker-compose run"
+
+# Docker kill
+alias dockerKillAll='docker kill $(docker ps -q)'
 
 # Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
-
 
 fixssh() {
   for key in SSH_AUTH_SOCK SSH_CONNECTION SSH_CLIENT; do

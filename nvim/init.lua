@@ -1,4 +1,5 @@
 require "user.options"
+require "user.copilot"
 require "user.keymaps"
 require "user.plugins"
 require "user.colorscheme"

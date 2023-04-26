@@ -150,6 +150,9 @@ local plugins = function(use)
   use "tpope/vim-dadbod" -- Modern database interface for Vim
   use "kristijanhusak/vim-dadbod-ui" -- Database UI interface in nvim
 
+  -- Copilot
+  use "github/copilot.vim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
