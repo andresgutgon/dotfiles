@@ -23,6 +23,7 @@ alias gw="git wip"
 
 # Docker compose
 alias doc="docker-compose exec backend"
+alias guard="docker compose exec backend bin/guard"
 alias dot="docker-compose exec backend -f ./docker-compose.test.yml bundle exec rspec"
 alias dor="docker-compose run backend"
 alias dspec="doc bundle exec rspec"
