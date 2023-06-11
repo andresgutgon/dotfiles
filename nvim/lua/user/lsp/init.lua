@@ -55,7 +55,10 @@ local servers = {
   "tsserver",
   "eslint",
   "sorbet",
-  "terraform",
+  -- Apple complains about terraform-ls being dangerous.
+  -- Related with terraform binary not signed correctly or some shit
+  -- like that.
+  --[[ "terraform", ]]
   "lua_ls",
   "null-ls",
   "rust_analyzer",
