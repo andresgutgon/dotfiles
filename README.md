@@ -2,6 +2,10 @@
 ========
 This are the docfiles I use to set up my Terminal (iTerm).
 
+## Copy & paste from Nvim to Mac OSX
+Put in visual mode and select what you want. Then `+y` (Thanks ChatGPT 🤯, I've
+being living without this for years)
+
 ## iTerm
 Go to Preferences (⌘ + ,) > preferences and click the checkbox that says `Load preferences from a custom URL folder` then sync with a folder in your dotfiles. In my case it's called `iterm` how original.
 
