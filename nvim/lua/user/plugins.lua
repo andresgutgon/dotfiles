@@ -105,6 +105,22 @@ local plugins = function(use)
   use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
   use "folke/lsp-colors.nvim" -- Dependency of trouble, Automatically creates missing LSP diagnostics highlight groups for color schemes
 
+  -- Debugger
+  use "mfussenegger/nvim-dap"
+  use "ravenxrz/DAPInstall.nvim"
+  use "rcarriga/nvim-dap-ui"
+  use "theHamsta/nvim-dap-virtual-text"
+  use "nvim-telescope/telescope-dap.nvim"
+  use {
+    "mxsdev/nvim-dap-vscode-js",
+    requires = { "mfussenegger/nvim-dap" }
+  }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+  }
+
   -- Error, diagnostics display
   use { "folke/trouble.nvim", requires = "kyazdani42/nvim-web-devicons" }
 
