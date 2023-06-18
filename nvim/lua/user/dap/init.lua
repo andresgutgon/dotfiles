@@ -120,6 +120,7 @@ dap_ext_vscode.load_launchjs(nil, {
   ["node"] = {
     "javascript",
     "typescript",
+    "typescriptreact",
   },
 })
 
