@@ -115,6 +115,7 @@ dap_ext_vscode.load_launchjs(nil, {
   ["pwa-node"] = {
     "javascript",
     "typescript",
+    "typescriptreact",
   },
   ["node"] = {
     "javascript",

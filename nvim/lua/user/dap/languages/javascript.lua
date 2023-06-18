@@ -20,49 +20,52 @@ dap_vscode_js.setup({
   adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" },
 })
 
-local js_based_languages = { "typescript", "javascript", "typescriptreact" }
-for i, ext in ipairs(js_based_languages) do
-  dap.configurations[ext] = {
-    {
-      type = "pwa-node",
-      request = "attach",
-      name = "Attach Node server application (pwa-node, select pid)",
-      cwd = vim.fn.getcwd(),
-      processId = dap_utils.pick_process,
-      skipFiles = { "<node_internals>/**" },
-    },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch Current File (pwa-node)",
-      cwd = vim.fn.getcwd(),
-      args = { "${file}" },
-      sourceMaps = true,
-      protocol = "inspector",
-    },
-    {
-      type = "pwa-node",
-      request = "launch",
-      name = "Launch Test Current File (pwa-node with vitest)",
-      cwd = vim.fn.getcwd(),
-      program = "${workspaceFolder}/node_modules/vitest/vitest.mjs",
-      args = { "--inspect-brk", "--threads", "false", "run", "${file}" },
-      autoAttachChildProcesses = true,
-      smartStep = true,
-      console = "integratedTerminal",
-      skipFiles = { "<node_internals>/**", "node_modules/**" },
-    },
-    {
-      type = "pwa-chrome",
-      request = "attach",
-      name = "Attach Program (pwa-chrome, select port)",
-      program = "${file}",
-      cwd = vim.fn.getcwd(),
-      sourceMaps = true,
-      port = function()
-        return vim.fn.input("Select port: ", 9222)
-      end,
-      webRoot = "${workspaceFolder}",
-    },
-  }
-end
+-- NO configurations by default
+-- For now I prefer to setup by project a `.vscode/launch.json`
+
+--[[ local js_based_languages = { "typescript", "javascript", "typescriptreact" } ]]
+--[[ for i, ext in ipairs(js_based_languages) do ]]
+--[[   dap.configurations[ext] = { ]]
+--[[     { ]]
+--[[       type = "pwa-node", ]]
+--[[       request = "attach", ]]
+--[[       name = "node_server_app", ]]
+--[[       cwd = vim.fn.getcwd(), ]]
+--[[       processId = dap_utils.pick_process, ]]
+--[[       skipFiles = { "<node_internals>/**" }, ]]
+--[[     }, ]]
+--[[     { ]]
+--[[       type = "pwa-node", ]]
+--[[       request = "launch", ]]
+--[[       name = "Launch Current File (pwa-node)", ]]
+--[[       cwd = vim.fn.getcwd(), ]]
+--[[       args = { "${file}" }, ]]
+--[[       sourceMaps = true, ]]
+--[[       protocol = "inspector", ]]
+--[[     }, ]]
+--[[     { ]]
+--[[       type = "pwa-node", ]]
+--[[       request = "launch", ]]
+--[[       name = "Launch Test Current File (pwa-node with vitest)", ]]
+--[[       cwd = vim.fn.getcwd(), ]]
+--[[       program = "${workspaceFolder}/node_modules/vitest/vitest.mjs", ]]
+--[[       args = { "--inspect-brk", "--threads", "false", "run", "${file}" }, ]]
+--[[       autoAttachChildProcesses = true, ]]
+--[[       smartStep = true, ]]
+--[[       console = "integratedTerminal", ]]
+--[[       skipFiles = { "<node_internals>/**", "node_modules/**" }, ]]
+--[[     }, ]]
+--[[     { ]]
+--[[       type = "pwa-chrome", ]]
+--[[       request = "attach", ]]
+--[[       name = "Attach Program (pwa-chrome, select port)", ]]
+--[[       program = "${file}", ]]
+--[[       cwd = vim.fn.getcwd(), ]]
+--[[       sourceMaps = true, ]]
+--[[       port = function() ]]
+--[[         return vim.fn.input("Select port: ", 9222) ]]
+--[[       end, ]]
+--[[       webRoot = "${workspaceFolder}", ]]
+--[[     }, ]]
+--[[   } ]]
+--[[ end ]]
