@@ -1,11 +1,8 @@
 local ok_dap, dap = pcall(require, "dap")
-local ok_dap_utils, dap_utils = pcall(require, "dap.utils")
 local ok_dap_vscode_js, dap_vscode_js = pcall(require, "dap-vscode-js")
 
-local ok_all = ok_dap and ok_dap_utils and ok_dap_vscode_js
 
-
-if not (ok_dap and ok_dap_utils and ok_dap_vscode_js) then
+if not (ok_dap and ok_dap_vscode_js) then
   return
 end
 
