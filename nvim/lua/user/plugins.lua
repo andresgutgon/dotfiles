@@ -82,6 +82,7 @@ local plugins = function(use)
   use "hrsh7th/cmp-nvim-lua"
   use "kristijanhusak/vim-dadbod-completion" -- Completion for vim-dadbod
   use "onsails/lspkind-nvim" -- Autocomple icons
+  use "rcarriga/cmp-dap" -- DAP completion
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
@@ -90,6 +91,24 @@ local plugins = function(use)
   -- LSP
   use({ "williamboman/mason.nvim" }) -- An LSP installer
   use({ "williamboman/mason-lspconfig.nvim" }) -- Bridge between lspconfig and mason
+
+  -- Debug DAP
+  use "mfussenegger/nvim-dap"
+  use {
+    "rcarriga/nvim-dap-ui",
+    requires = { "mfussenegger/nvim-dap" }
+  }
+  use "nvim-telescope/telescope-dap.nvim"
+  use "theHamsta/nvim-dap-virtual-text"
+  use {
+    "mxsdev/nvim-dap-vscode-js",
+    requires = { "mfussenegger/nvim-dap" }
+  }
+  use {
+    "microsoft/vscode-js-debug",
+    opt = true,
+    run = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out"
+  }
 
   -- A collection of common configurations for Neovim's built-in language server client.
   use({
