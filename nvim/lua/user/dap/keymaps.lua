@@ -76,6 +76,10 @@ M.setup = function()
     ":lua require(\"dapui\").toggle(2)<CR>",
     opts
   )
+  keymap("n", "<leader>dl", "<CMD>Telescope dap configurations<CR>", opts)
+
+  -- LOGS here: tail -f ~/.cache/nvim/dap.log
+  keymap("n", "<leader>dlo", ":lua require('dap').set_log_level('ERROR')<CR>", opts)
 end
 
 return M

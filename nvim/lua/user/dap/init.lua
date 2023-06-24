@@ -94,7 +94,7 @@ dapui.setup({
 })
 
 -- DAP ui listeners. When debugging open dap-ui
-dap.listeners.after.event_initialized["dapui_config"] = function()
+dap.listeners.after.event_initialized["dapui_config"] = function(session, body)
   dapui.open()
 end
 dap.listeners.before.event_terminated["dapui_config"] = function()

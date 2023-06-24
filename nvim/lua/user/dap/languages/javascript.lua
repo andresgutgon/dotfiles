@@ -30,11 +30,10 @@ local js_based_languages = { "typescript", "javascript", "typescriptreact" }
 for i, ext in ipairs(js_based_languages) do
   dap.configurations[ext] = {
     {
-      type = "pwa-node",
+      name = "PNPM_DOTFILES_NEXTJS",
+      type = "node-terminal",
       request = "launch",
-      name = "node-server",
-      cwd = vim.fn.getcwd(),
-      processId = dap_utils.pick_process,
+      command = "pnpm dev",
       skipFiles = { "<node_internals>/**" },
     },
   }
