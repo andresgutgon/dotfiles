@@ -156,6 +156,11 @@ cmp.setup({
     -- Disable native menu
     native_menu = false,
   },
+  enabled = function()
+    -- Enable pligin for nvim-dap completions on REPL panel
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt"
+        or require("cmp_dap").is_dap_buffer()
+  end
 })
 
 -- Add vim-dadbod-completion in sql files

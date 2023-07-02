@@ -19,14 +19,10 @@ These packages need to be installed in Mac OS X
 2. For `nvim-spectre`: `brew install gnu-sed` & `brew install ripgrep`
 
 ## Nerd fonts
-[This video explains how to install it and what are nerd fonts](https://www.youtube.com/watch?v=fR4ThXzhQYI&list=PLhoH5vyxr6Qq41NFL4GvhFp-WLd5xzIzZ&index=7)
-[Look for icons here](https://www.nerdfonts.com/cheat-sheet)
-In your machince there is this directory: `~/.local/share/fonts`. You have to put there the fonts you want.
-In my case I want `Hack` font so I do this once when I setup a new machine:
-``` bash
-brew tap homebrew/cask-fonts
-brew install --cask font-hack-nerd-font
-```
+To setup a custom font (in this case Nerd Font) go to:
+https://www.nerdfonts.com/font-downloads
+and download it. Install it with Mac OS X fonts and you're good to go.
+
 Then if you're using iTerm go to Preferences (⌘ + ,) > Profiles > Text > Font and select `Hack` as your terminal fornt.
 Already done in my case because I store iTerm preferences in my dotfiles
 
