@@ -29,15 +29,7 @@ dap_vscode.setup({
 
 local languages = { "typescript", "javascript", "typescriptreact" }
 for _, language in ipairs(languages) do
-  dap.configurations[language] = {
-    {
-      name = "Attach to process",
-      type = "pwa-node",
-      request = "attach",
-      processId = dap_utils.pick_process,
-      cwd = "${workspaceFolder}",
-    }
-  }
+  dap.configurations[language] = { {} }
 end
 
 -- ## DAP `launch.json`
