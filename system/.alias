@@ -30,6 +30,9 @@ alias dspec="doc bundle exec rspec"
 alias dof="docker-compose exec frontend"
 alias dkillAll='docker kill $(docker ps -q)'
 
+# Laravel
+alias sail='[ -f sail ] && sh sail || sh vendor/bin/sail'
+
 # Network
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
 alias ipl="ifconfig | grep -Eo 'inet (addr:)?([0-9]*\.){3}[0-9]*' | grep -Eo '([0-9]*\.){3}[0-9]*' | grep -v '127.0.0.1'"
