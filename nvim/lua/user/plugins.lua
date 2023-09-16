@@ -57,6 +57,7 @@ local plugins = function(use)
 
   -- Syntax highlight
   use 'pantharshit00/vim-prisma' -- Prisma2 syntax
+  use 'jwalton512/vim-blade' -- Blade PHP template comments
 
   -- TMUX navigator
   use {

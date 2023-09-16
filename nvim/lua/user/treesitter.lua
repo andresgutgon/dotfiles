@@ -1,3 +1,5 @@
+require("user.treesitter.blade")
+
 local status_ok, configs = pcall(require, "nvim-treesitter.configs")
 if not status_ok then
   return
@@ -22,6 +24,7 @@ configs.setup {
     "astro",
     "typescript",
     "yaml",
+    "blade"
   },
   sync_install = false, -- install languages synchronously (only applied to `ensure_installed`)
   ignore_install = { "" }, -- List of parsers to ignore installing
