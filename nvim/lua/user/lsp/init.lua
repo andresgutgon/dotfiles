@@ -62,7 +62,8 @@ local servers = {
   "lua_ls",
   "null-ls",
   "rust_analyzer",
-  "tailwindcss"
+  "tailwindcss",
+  "phpactor"
 }
 
 for _, server in pairs(servers) do
