@@ -8,3 +8,7 @@ require("user.dap.dap_ui")
 
 -- DAP language debuggers
 require("user.dap.languages.javascript")
+require("user.dap.languages.php")
+
+-- DAP take into account `./.vscode/launch.json` files
+require("user.dap.launch_vscode")
