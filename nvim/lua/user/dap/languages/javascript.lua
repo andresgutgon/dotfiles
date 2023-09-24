@@ -1,9 +1,7 @@
 local ok_dap, dap = pcall(require, "dap")
-local ok_dap_utils, dap_utils = pcall(require, "dap.utils")
 local ok_dap_vscode, dap_vscode = pcall(require, "dap-vscode-js")
-local ok_dap_launch_vscode, dap_launch_vscode = pcall(require, "dap.ext.vscode")
 
-if not (ok_dap and ok_dap_vscode and ok_dap_launch_vscode and ok_dap_utils) then
+if not (ok_dap and ok_dap_vscode) then
   return
 end
 
@@ -26,14 +24,7 @@ dap_vscode.setup({
   }
 })
 
-
 local languages = { "typescript", "javascript", "typescriptreact" }
 for _, language in ipairs(languages) do
   dap.configurations[language] = { {} }
 end
-
--- ## DAP `launch.json`
-dap_launch_vscode.load_launchjs(nil, {
-  ["pwa-node"] = languages,
-  ["node-terminal"] = languages
-})
