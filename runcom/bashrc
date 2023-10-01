@@ -59,4 +59,7 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# PHP composer
+export PATH=~/.composer/vendor/bin:$PATH
+
 eval "$(rbenv init -)"
