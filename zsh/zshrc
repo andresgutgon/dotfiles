@@ -15,7 +15,6 @@ plugins=(
   ag
   git
   zsh-syntax-highlighting
-  zsh-autosuggestions
 )
 
 # Includes
