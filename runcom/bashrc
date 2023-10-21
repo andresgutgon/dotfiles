@@ -12,7 +12,7 @@ if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
 fi
 
 ## enable color support of ls and also add handy aliases
-test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
+# test -r ~/.dir_colors && eval "$(dircolors -b ~/.dir_colors)" || eval "$(dircolors -b)"
 
 ## Disable flow control. Ctrl-s + Ctrl-q
 stty stop ''
