@@ -16,9 +16,9 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
 # ZSH
-ln -sfv "$DOTFILES_DIR/zsh/oh-my-zsh.sh" ~/.oh-my-zsh/oh-my-zsh.sh
 ln -sfv "$DOTFILES_DIR/zsh/alias.zsh" ~/.oh-my-zsh/custom/alias.zsh
 ln -sfv "$DOTFILES_DIR/zsh/fzf.zsh" ~/.oh-my-zsh/custom/fzf.zsh
+ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
 ln -sfv "$DOTFILES_DIR/zsh/zshrc" ~/.zshrc
 
 # Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile
