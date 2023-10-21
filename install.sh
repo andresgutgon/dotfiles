@@ -15,8 +15,11 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
 
-# Bunch of symlinks
-ln -sfv "$DOTFILES_DIR/runcom/dir_colors" ~/.dir_colors
+# ZSH
+ln -sfv "$DOTFILES_DIR/zsh/alias.zsh" ~/.oh-my-zsh/custom/alias.zsh
+ln -sfv "$DOTFILES_DIR/zsh/fzf.zsh" ~/.oh-my-zsh/custom/fzf.zsh
+ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
+ln -sfv "$DOTFILES_DIR/zsh/zshrc" ~/.zshrc
 
 # Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile
 ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
@@ -31,13 +34,5 @@ ln -sfv "$DOTFILES_DIR/git/gitconfig" ~/.gitconfig
 ln -sfv "$DOTFILES_DIR/git/gitattributes" ~/.gitattributes
 ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 
-# VIM
-message "Vim"
-ln -snf "${DOTFILES_DIR}/vimrc" ~/.vimrc
-ln -snf "${DOTFILES_DIR}/vim" ~/.vim
-
 message "NeoVim"
 ln -snf "${DOTFILES_DIR}/nvim" ~/.config/nvim
-
-mkdir -p ~/.vim/{tmpdir,undodir}
-chmod 700 ~/.vim/{tmpdir,undodir}
