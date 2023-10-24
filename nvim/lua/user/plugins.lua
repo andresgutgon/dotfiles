@@ -54,6 +54,7 @@ local plugins = function(use)
   use "lunarvim/darkplus.nvim"
   use "Mofiqul/vscode.nvim"
   use "rose-pine/neovim"
+  use 'shaunsingh/nord.nvim'
 
   -- Syntax highlight
   use 'pantharshit00/vim-prisma' -- Prisma2 syntax
