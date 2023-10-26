@@ -13,12 +13,15 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update dotfiles itself first
 
-[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin master
+[ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin main
 
-# ZSH
+# ZSH includes
 ln -sfv "$DOTFILES_DIR/zsh/alias.zsh" ~/.oh-my-zsh/custom/alias.zsh
+ln -sfv "$DOTFILES_DIR/zsh/virtualenvwrapper.zsh" ~/.oh-my-zsh/custom/virtualenvwrapper.zsh
 ln -sfv "$DOTFILES_DIR/zsh/fzf.zsh" ~/.oh-my-zsh/custom/fzf.zsh
 ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
+
+# ZSH file
 ln -sfv "$DOTFILES_DIR/zsh/zshrc" ~/.zshrc
 
 # Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile

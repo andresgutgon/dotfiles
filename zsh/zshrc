@@ -19,12 +19,15 @@ plugins=(
   bundler
   rbenv
   ruby
+  virtualenv
+  virtualenvwrapper
   zsh-syntax-highlighting
 )
 
 # Includes
 source "$ZSH/custom/alias.zsh"
 source "$ZSH/custom/fzf.zsh"
+source "$ZSH/custom/virtualenvwrapper.zsh"
 
 source $ZSH/oh-my-zsh.sh
 
