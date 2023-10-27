@@ -163,6 +163,15 @@ local plugins = function(use)
   use "tpope/vim-fugitive"
   -- :GBrowse commits in GitHub
   use "tpope/vim-rhubarb"
+  use({
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  })
   -- A git commit browser in Vim. If more is needed check:
   -- https://github.com/cohama/agit.vim
   use "junegunn/gv.vim"

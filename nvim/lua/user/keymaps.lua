@@ -33,7 +33,6 @@ keymap("n", "<C-o>", ":MaximizerToggle<CR>", opts)
 
 -- Split resise
 keymap("n", "m", ":resize +5<CR>", opts)
-keymap("n", "q", ":resize -5<CR>", opts)
 keymap("n", "mm", ":vertical resize +10<CR>", opts)
 keymap("n", "qq", ":vertical resize -10<CR>", opts)
 
