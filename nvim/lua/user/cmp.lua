@@ -88,18 +88,6 @@ cmp.setup({
       "i",
       "s",
     }),
-    ["<S-Tab>"] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, {
-      "i",
-      "s",
-    }),
     ["<c-q>"] = cmp.mapping.confirm {
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
@@ -152,7 +140,7 @@ cmp.setup({
     end,
   },
   experimental = {
-    ghost_text = true,
+    ghost_text = false, -- this feature conflict with copilot.vim's preview.
     -- Disable native menu
     native_menu = false,
   },

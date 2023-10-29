@@ -89,6 +89,7 @@ local plugins = function(use)
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
   use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
+  use 'github/copilot.vim'
 
   -- LSP
   use({ "williamboman/mason.nvim" }) -- An LSP installer
