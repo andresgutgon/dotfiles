@@ -2,6 +2,10 @@
 -- 'gcc' - Comment a line
 -- 'gc'  - Comment a block in visual mode
 
+-- Doc link:
+-- https://github.com/JoosepAlviste/nvim-ts-context-commentstring?tab=readme-ov-file#getting-started
+vim.g.skip_ts_context_commentstring_module = true
+
 local status_ok, comment = pcall(require, "Comment")
 if not status_ok then
   return
