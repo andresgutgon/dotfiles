@@ -83,7 +83,6 @@ M.setup = function()
 
   -- LSP language servers
   local servers = {
-    "tsserver",
     "eslint",
     "sorbet",
     "lua_ls",

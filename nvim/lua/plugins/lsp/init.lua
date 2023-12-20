@@ -14,7 +14,6 @@ return {
         "shfmt",
         "css-lsp",
         "tailwindcss-language-server",
-        "typescript-language-server",
         "selene", -- Lua formatter written in Rust
         "json-lsp",
         "yamlfmt",
@@ -61,7 +60,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer", "eslint" },
+        ensure_installed = { "lua_ls", "rust_analyzer", "eslint", "tsserver" },
       }
     end
   },
@@ -79,6 +78,23 @@ return {
       require("copilot").setup({
         suggestion = { enabled = false },
         panel = { enabled = false },
+      })
+    end
+  },
+  {
+    "pmizio/typescript-tools.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig"
+    },
+    opts = {},
+    config = function()
+      require("typescript-tools").setup({
+        settings = {
+          tsserver_file_preferences = {
+            importModuleSpecifierPreference = "non-relative"
+          },
+        }
       })
     end
   },
