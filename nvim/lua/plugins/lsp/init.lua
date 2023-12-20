@@ -20,6 +20,7 @@ return {
         "flake8",
         "sorbet",
         "rubocop",
+        -- "ruby-lsp", Installed manually because current Ruby version is 2.7 and this requires > 3.0
         "sqlls",
         "phpactor"
       },

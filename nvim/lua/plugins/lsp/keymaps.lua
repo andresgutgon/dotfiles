@@ -17,7 +17,7 @@ function M.on_attach(_, buffer)
   vim.keymap.set(
     "n",
     "gI",
-    function() Telescope.lsp_implementations({ reuse_win = true }) end,
+    vim.lsp.buf.implementation,
     Utils.merge(base, { desc = "Goto Implementation" })
   )
   vim.keymap.set("n", "K", vim.lsp.buf.hover, Utils.merge(base, { desc = "Hover" }))

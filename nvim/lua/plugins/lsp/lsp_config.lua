@@ -75,7 +75,7 @@ M.setup = function()
     border_opts
   )
 
-
+  -- CMP setup
   cmp.setup()
   local capabilities = require("cmp_nvim_lsp").default_capabilities(
     vim.lsp.protocol.make_client_capabilities()
@@ -85,6 +85,7 @@ M.setup = function()
   local servers = {
     "eslint",
     "sorbet",
+    "ruby_lsp", -- Shopify lang server for Ruby
     "lua_ls",
     "null-ls",
     "tailwindcss",
