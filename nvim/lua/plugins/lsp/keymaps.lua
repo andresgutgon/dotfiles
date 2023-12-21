@@ -1,5 +1,4 @@
 local Utils = require("utils")
-local Telescope = require("telescope.builtin")
 local M = {}
 
 function M.on_attach(_, buffer)
