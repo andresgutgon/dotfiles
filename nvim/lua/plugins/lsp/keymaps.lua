@@ -9,7 +9,8 @@ function M.on_attach(_, buffer)
   vim.keymap.set(
     "n",
     "gd",
-    function() Telescope.lsp_definitions({ reuse_win = true }) end,
+    --[[ function() Telescope.lsp_definitions({ reuse_win = true }) end, ]]
+    vim.lsp.buf.definition,
     Utils.merge(base, { desc = "Goto Definition", has = "definition" })
   )
   vim.keymap.set("n", "gr", "<CMD>Telescope lsp_references<CR>", Utils.merge(base, { desc = "References" }))

@@ -9,9 +9,10 @@ end
 
 local M = {}
 
-M.setup = function(on_attach)
+M.setup = function(on_attach, capabilities)
   null_ls.setup({
     debug = true,
+    capabilities = capabilities,
     on_attach = on_attach,
     sources = {
       null_ls.builtins.diagnostics.rubocop.with({

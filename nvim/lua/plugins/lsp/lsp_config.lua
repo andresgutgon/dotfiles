@@ -41,23 +41,13 @@ M.setup = function()
     end,
   })
 
-  -- Keymaps on handlers
-  local register_capability = vim.lsp.handlers["client/registerCapability"]
-  vim.lsp.handlers["client/registerCapability"] = function(err, res, ctx)
-    local ret = register_capability(err, res, ctx)
-    local client_id = ctx.client_id
-    local client = vim.lsp.get_client_by_id(client_id)
-    local buffer = vim.api.nvim_get_current_buf()
-    require("plugins.lsp.keymaps").on_attach(client, buffer)
-    return ret
-  end
-
   -- Diagnostics
   for _, sign in ipairs(signs) do
     vim.fn.sign_define(
       sign.name, { texthl = sign.name, text = sign.text, numhl = "" }
     )
   end
+
   vim.diagnostic.config({
     virtual_text = true,
     signs = { active = signs },
@@ -77,9 +67,6 @@ M.setup = function()
 
   -- CMP setup
   cmp.setup()
-  local capabilities = require("cmp_nvim_lsp").default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
 
   -- LSP language servers
   local servers = {
@@ -92,6 +79,10 @@ M.setup = function()
     "rust_analyzer",
     "phpactor"
   }
+
+  local capabilities = require("cmp_nvim_lsp").default_capabilities(
+    vim.lsp.protocol.make_client_capabilities()
+  )
   for _, server in pairs(servers) do
     require("plugins.lsp.clients." .. server).setup(
       on_attach,

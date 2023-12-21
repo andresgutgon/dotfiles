@@ -48,8 +48,9 @@ end
 local rbenv_ruby = "/.rbenv/versions/3.1.1/bin"
 local ruby_lsp_exec = os.getenv("HOME") .. rbenv_ruby .. "/ruby-lsp"
 
-M.setup = function(_, _)
+M.setup = function(_, capabilities)
   lspconfig.ruby_ls.setup({
+    capabilities = capabilities,
     cmd = { ruby_lsp_exec },
     filetypes = { 'ruby' },
     on_attach = function(client, buffer)

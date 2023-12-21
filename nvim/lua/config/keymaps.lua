@@ -29,7 +29,7 @@ keymap("n", "<leader>wv", "<C-w>v<CR>", opts)
 -- A better way to toggle a split full screen is to use:
 -- https://github.com/szw/vim-maximizer
 -- Using it with this keymap
-keymap("n", "<C-o>", ":MaximizerToggle<CR>", opts)
+keymap("n", "<C-m>", ":MaximizerToggle<CR>", opts)
 
 -- Split resise
 keymap("n", "m", ":resize +5<CR>", opts)
