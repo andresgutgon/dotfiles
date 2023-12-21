@@ -16,7 +16,6 @@ end
 
 M.setup = function()
   local lspkind = require("lspkind")
-  lspkind.init({ symbol_map = { Copilot = "", } })
 
   local luasnip = require("luasnip")
   local cmp = require("cmp")
@@ -95,7 +94,6 @@ M.setup = function()
     },
     sources = {
       { name = "nvim_lua" },
-      { name = "copilot",  group_index = 1,   priority = 100 },
       { name = "nvim_lsp", keyword_length = 3 },
       { name = "luasnip",  keyword_length = 3 },
       { name = "buffer",   keyword_length = 5 },
@@ -115,7 +113,6 @@ M.setup = function()
     },
     sorting = {
       comparators = {
-        require("copilot_cmp.comparators").prioritize,
         cmp.config.compare.offset,
         cmp.config.compare.exact,
         cmp.config.compare.score,

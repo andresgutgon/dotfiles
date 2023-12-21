@@ -66,23 +66,6 @@ return {
     end
   },
   {
-    "zbirenbaum/copilot.lua",
-    cmd = "Copilot",
-    build = ":Copilot auth",
-    opts = {
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
-    },
-    config = function()
-      require("copilot").setup({
-        suggestion = { enabled = false },
-        panel = { enabled = false },
-      })
-    end
-  },
-  {
     "pmizio/typescript-tools.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -106,25 +89,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "jose-elias-alvarez/null-ls.nvim",
       "onsails/lspkind.nvim",
-      {
-        "hrsh7th/nvim-cmp",
-        dependencies = {
-          {
-            "zbirenbaum/copilot-cmp",
-            dependencies = "copilot.lua",
-            opts = {},
-            config = function(_, opts)
-              local copilot_cmp = require("copilot_cmp")
-              copilot_cmp.setup(opts)
-              LspUtils.on_attach(function(client)
-                if client.name == "copilot" then
-                  copilot_cmp._on_insert_enter({})
-                end
-              end)
-            end,
-          },
-        },
-      },
+      "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
