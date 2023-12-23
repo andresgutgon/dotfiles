@@ -4,7 +4,9 @@ return {
   { "Mofiqul/vscode.nvim" },
   { "lunarvim/darkplus.nvim" },
   { "morhetz/gruvbox" },
-  { "Mofiqul/dracula.nvim" },
+  {
+    "dracula/vim",
+  },
   {
     "catppuccin/nvim",
     lazy = false,

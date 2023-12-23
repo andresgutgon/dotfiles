@@ -18,7 +18,7 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Edit vim config
 keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
-keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
+keymap("n", "<leader>vr", ":vource $MYVIMRC<CR>", opts)
 
 -- Split windows
 -- <C-w>= all splits equal

@@ -46,10 +46,10 @@ M.table = {
   end,
 }
 
-M.merge = function (original, new)
+M.merge = function(original, new)
   for key, value in pairs(new) do
     if type(value) == "table" and type(original[key]) == "table" then
-      deepMerge(original[key], value)
+      M.merge(original[key], value)
     else
       original[key] = value
     end
