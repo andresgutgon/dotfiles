@@ -22,7 +22,7 @@ return {
         "rubocop",
         -- "ruby-lsp", Installed manually because current Ruby version is 2.7 and this requires > 3.0
         "sqlls",
-        "phpactor"
+        "phpactor",
       },
     },
     config = function(_, opts)

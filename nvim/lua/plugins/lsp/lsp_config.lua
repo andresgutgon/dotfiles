@@ -74,10 +74,10 @@ M.setup = function()
     "sorbet",
     "ruby_lsp", -- Shopify lang server for Ruby
     "lua_ls",
-    "null-ls",
+    "null_ls",
     "tailwindcss",
     "rust_analyzer",
-    "phpactor"
+    "phpactor",
   }
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities(
