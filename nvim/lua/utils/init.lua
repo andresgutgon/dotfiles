@@ -23,6 +23,16 @@ M.define_augroups = function(definitions)
   end
 end
 
+M.file_exists = function(path)
+  local file = io.open(path, "r")
+  if file then
+    file:close()
+    return true
+  else
+    return false
+  end
+end
+
 M.command = function(name, fn)
   vim.cmd(string.format("command! %s %s", name, fn))
 end

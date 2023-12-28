@@ -1,5 +1,5 @@
 local LspUtils = require("utils.lsp")
-local Lsp = require('plugins.lsp.lsp_config')
+local Lsp = require("plugins.lsp.lsp_config")
 local trouble_config = require("plugins.lsp.trouble_config")
 
 return {
@@ -13,8 +13,9 @@ return {
         "stylua",
         "shfmt",
         "css-lsp",
+        "eslint_d",
+        "prettierd",
         "tailwindcss-language-server",
-        "selene", -- Lua formatter written in Rust
         "json-lsp",
         "yamlfmt",
         "flake8",
@@ -55,39 +56,40 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function() require("trouble").setup(trouble_config) end
+    config = function()
+      require("trouble").setup(trouble_config)
+    end,
   },
   {
     "williamboman/mason-lspconfig.nvim",
     config = function()
-      require("mason-lspconfig").setup {
-        ensure_installed = { "lua_ls", "rust_analyzer", "eslint", "tsserver" },
-      }
-    end
+      require("mason-lspconfig").setup({
+        ensure_installed = { "lua_ls", "rust_analyzer", "tsserver" },
+      })
+    end,
   },
   {
     "pmizio/typescript-tools.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig"
+      "neovim/nvim-lspconfig",
     },
     opts = {},
     config = function()
       require("typescript-tools").setup({
         settings = {
           tsserver_file_preferences = {
-            importModuleSpecifierPreference = "non-relative"
+            importModuleSpecifierPreference = "non-relative",
           },
-        }
+        },
       })
-    end
+    end,
   },
   {
     "neovim/nvim-lspconfig",
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "jose-elias-alvarez/null-ls.nvim",
       "onsails/lspkind.nvim",
       "hrsh7th/nvim-cmp",
       "hrsh7th/cmp-buffer",
@@ -96,8 +98,10 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "kristijanhusak/vim-dadbod-ui",
       "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip"
+      "saadparwaiz1/cmp_luasnip",
     },
-    config = function() Lsp.setup() end
+    config = function()
+      Lsp.setup()
+    end,
   },
 }

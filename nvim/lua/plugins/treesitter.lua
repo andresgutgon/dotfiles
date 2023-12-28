@@ -3,6 +3,9 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     opts = {
+      autoinstall = true,
+      highlight = { enable = true },
+      indent = { enable = true },
       ensure_installed = {
         "astro",
         "lua",
@@ -18,8 +21,12 @@ return {
         "python",
       },
     },
+    build = ":TSUpdate",
     config = function(_, opts)
+      -- Default options
       require("nvim-treesitter.configs").setup(opts)
+
+      -- Blade config
       local parsers = require("nvim-treesitter.parsers")
       local parser_config = parsers.get_parser_configs()
       parser_config.blade = {
@@ -28,14 +35,15 @@ return {
           files = { "src/parser.c" },
           branch = "main",
         },
-        filetype = "blade"
+        filetype = "blade",
       }
       vim.filetype.add({
         pattern = {
-          ['.*%.blade%.php'] = 'blade',
+          [".*%.blade%.php"] = "blade",
         },
       })
-      -- MDX
+
+      -- MDX config
       vim.filetype.add({ extension = { mdx = "mdx" } })
       vim.treesitter.language.register("markdown", "mdx")
     end,

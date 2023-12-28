@@ -12,13 +12,9 @@ local signs = {
 
 local on_attach = function(client, bufnr)
   if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_buf_create_user_command(
-      bufnr,
-      "LspFormatting",
-      function() vim.lsp.buf.format({ bufnr = bufnr }) end,
-      {}
-    )
-
+    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end, {})
 
     vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -43,9 +39,7 @@ M.setup = function()
 
   -- Diagnostics
   for _, sign in ipairs(signs) do
-    vim.fn.sign_define(
-      sign.name, { texthl = sign.name, text = sign.text, numhl = "" }
-    )
+    vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
   end
 
   vim.diagnostic.config({
@@ -54,40 +48,26 @@ M.setup = function()
     underline = true,
     update_in_insert = true,
     severity_sort = true,
-    float = border_opts
+    float = border_opts,
   })
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(
-    vim.lsp.handlers.signature_help,
-    border_opts
-  )
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-    vim.lsp.handlers.hover,
-    border_opts
-  )
+  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, border_opts)
+  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, border_opts)
 
   -- CMP setup
   cmp.setup()
 
   -- LSP language servers
   local servers = {
-    "eslint",
     "sorbet",
     "ruby_lsp", -- Shopify lang server for Ruby
-    "lua_ls",
-    "null_ls",
     "tailwindcss",
     "rust_analyzer",
     "phpactor",
   }
 
-  local capabilities = require("cmp_nvim_lsp").default_capabilities(
-    vim.lsp.protocol.make_client_capabilities()
-  )
+  local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
   for _, server in pairs(servers) do
-    require("plugins.lsp.clients." .. server).setup(
-      on_attach,
-      capabilities
-    )
+    require("plugins.lsp.clients." .. server).setup(on_attach, capabilities)
   end
 end
 
