@@ -2,8 +2,8 @@ local M = {}
 local lspconfig = require("lspconfig")
 
 M.setup = function(capabilities)
-  lspconfig.phpactor.setup({
-    capabilities = capabilities,
+  lspconfig.html.setup({
+    capabilites = capabilities,
   })
 end
 

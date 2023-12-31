@@ -1,7 +1,7 @@
 local nvim_lsp = require "lspconfig"
 
 local M = {}
-M.setup = function(_, capabilities)
+M.setup = function(capabilities)
   nvim_lsp.tailwindcss.setup({
     capabilities = capabilities
   })
