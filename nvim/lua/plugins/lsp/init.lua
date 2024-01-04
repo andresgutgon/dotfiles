@@ -1,7 +1,3 @@
-local LspUtils = require("utils.lsp")
-local Lsp = require("plugins.lsp.lsp_config")
-local trouble_config = require("plugins.lsp.trouble_config")
-
 return {
   {
     "williamboman/mason.nvim",
@@ -54,13 +50,6 @@ return {
     end,
   },
   {
-    "folke/trouble.nvim",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("trouble").setup(trouble_config)
-    end,
-  },
-  {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
@@ -90,18 +79,29 @@ return {
     dependencies = {
       "mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "onsails/lspkind.nvim",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
       "kristijanhusak/vim-dadbod-ui",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
     },
     config = function()
-      Lsp.setup()
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
+      local servers = {
+        "lua_ls",
+        "sorbet",
+        "tsserver",
+        "html",
+        "ruby_lsp", -- Shopify lang server for Ruby
+        "tailwindcss",
+        "rust_analyzer",
+        "phpactor",
+      }
+
+      for _, server in pairs(servers) do
+        require("plugins.lsp.clients." .. server).setup(capabilities)
+      end
+
+      vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
+      vim.keymap.set("n", "<leader>gd", vim.lsp.buf.definition, {})
+      vim.keymap.set("n", "<leader>gr", vim.lsp.buf.references, {})
+      vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, {})
     end,
   },
 }
