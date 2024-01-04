@@ -1,10 +1,9 @@
 local Utils = require("utils")
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 -- Get root folder for the ruby project.
 -- in a mono repo, the backend folder is the root folder
-local function find_cwd(cwd)
-  local backend_cwd = cwd .. "/" .. "backend"
+function find_cwd(cwd)
+  backend_cwd = cwd .. "/" .. "backend"
 
   if Utils.file_exists(backend_cwd .. "/Gemfile") then
     return backend_cwd
@@ -21,7 +20,7 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.rubocop.with({
-          cwd = function()
+          cwd = function(params)
             return find_cwd(vim.fn.getcwd())
           end,
           command = "bundle",
@@ -29,7 +28,7 @@ return {
           timeout = 5000,
         }),
         null_ls.builtins.formatting.rubocop.with({
-          cwd = function()
+          cwd = function(params)
             return find_cwd(vim.fn.getcwd())
           end,
           command = "bundle",
@@ -38,20 +37,8 @@ return {
         }),
         null_ls.builtins.formatting.prettierd,
         null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.completion.luasnip,
       },
-      -- Autoformat on save
-      on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format({ async = false })
-            end,
-          })
-        end
-      end,
     })
 
     vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})
