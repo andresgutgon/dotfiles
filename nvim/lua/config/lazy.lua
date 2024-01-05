@@ -15,11 +15,15 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
+  change_detection = { notify = false },
+  checker = {
+    enabled = true,
+    notify = false,
+  }, -- automatically check for plugin updates
   defaults = {
     lazy = false,
     version = false,
   },
-  checker = { enabled = true }, -- automatically check for plugin updates
   ui = {
     border = "solid",
   },

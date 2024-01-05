@@ -12,16 +12,16 @@ local signs = {
 
 local on_attach = function(client, bufnr)
   if client.supports_method("textDocument/formatting") then
-    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
-      vim.lsp.buf.format({ bufnr = bufnr })
-    end, {})
-
-    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-    vim.api.nvim_create_autocmd("BufWritePre", {
-      group = augroup,
-      buffer = bufnr,
-      command = "LspFormatting",
-    })
+    --[[ vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function() ]]
+    --[[   vim.lsp.buf.format({ bufnr = bufnr }) ]]
+    --[[ end, {}) ]]
+    --[[]]
+    --[[ vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }) ]]
+    --[[ vim.api.nvim_create_autocmd("BufWritePre", { ]]
+    --[[   group = augroup, ]]
+    --[[   buffer = bufnr, ]]
+    --[[   command = "LspFormatting", ]]
+    --[[ }) ]]
     require("plugins.lsp.keymaps").on_attach(client, bufnr)
   end
 end
