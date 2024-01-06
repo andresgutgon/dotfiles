@@ -108,9 +108,9 @@ keymap("n", "<leader>t", "<CMD>lua require 'config.colorscheme'.colorscheme_pick
 -- VRC (Vim Rest Console)
 keymap("n", "<leader>rc", "<CMD>lua require 'rest-console'.console()<CR>", opts)
 
--- Neo tree
-keymap("n", "<leader>n", "<Cmd>Neotree toggle<CR>", opts)
-keymap("n", "<leader>m", "<Cmd>Neotree reveal<CR>", opts)
+-- Nerd tree
+keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
+keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
