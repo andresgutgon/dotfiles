@@ -2,8 +2,8 @@ local Utils = require("utils")
 
 -- Get root folder for the ruby project.
 -- in a mono repo, the backend folder is the root folder
-function find_cwd(cwd)
-  backend_cwd = cwd .. "/" .. "backend"
+local function find_cwd(cwd)
+  local backend_cwd = cwd .. "/" .. "backend"
 
   if Utils.file_exists(backend_cwd .. "/Gemfile") then
     return backend_cwd
@@ -20,7 +20,7 @@ return {
       sources = {
         null_ls.builtins.formatting.stylua,
         null_ls.builtins.diagnostics.rubocop.with({
-          cwd = function(params)
+          cwd = function()
             return find_cwd(vim.fn.getcwd())
           end,
           command = "bundle",
@@ -28,7 +28,7 @@ return {
           timeout = 5000,
         }),
         null_ls.builtins.formatting.rubocop.with({
-          cwd = function(params)
+          cwd = function()
             return find_cwd(vim.fn.getcwd())
           end,
           command = "bundle",
@@ -36,7 +36,7 @@ return {
           timeout = 5000,
         }),
         null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.diagnostics.eslint_d,
+        null_ls.builtins.diagnostics.eslint,
         null_ls.builtins.completion.luasnip,
       },
     })

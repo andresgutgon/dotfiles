@@ -11,17 +11,25 @@ local signs = {
 }
 
 local on_attach = function(client, bufnr)
+  local filename = vim.api.nvim_buf_get_name(bufnr)
+
+  -- If are Rspec files ignore formatting on save because it fucks
+  -- the `focus: true` and is a pain
+  if string.match(filename, "_spec.rb$") then
+    return
+  end
+
   if client.supports_method("textDocument/formatting") then
-    --[[ vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function() ]]
-    --[[   vim.lsp.buf.format({ bufnr = bufnr }) ]]
-    --[[ end, {}) ]]
-    --[[]]
-    --[[ vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr }) ]]
-    --[[ vim.api.nvim_create_autocmd("BufWritePre", { ]]
-    --[[   group = augroup, ]]
-    --[[   buffer = bufnr, ]]
-    --[[   command = "LspFormatting", ]]
-    --[[ }) ]]
+    vim.api.nvim_buf_create_user_command(bufnr, "LspFormatting", function()
+      vim.lsp.buf.format({ bufnr = bufnr })
+    end, {})
+
+    vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      command = "LspFormatting",
+    })
     require("plugins.lsp.keymaps").on_attach(client, bufnr)
   end
 end
@@ -58,11 +66,12 @@ M.setup = function()
 
   -- LSP language servers
   local servers = {
-    "sorbet",
-    "ruby_lsp", -- Shopify lang server for Ruby
-    "tailwindcss",
-    "rust_analyzer",
+    "lua_ls",
     "phpactor",
+    "ruby_lsp", -- Shopify lang server for Ruby
+    "rust_analyzer",
+    "sorbet",
+    "tailwindcss",
   }
 
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())

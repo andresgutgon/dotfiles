@@ -13,7 +13,7 @@ return {
         "stylua",
         "shfmt",
         "css-lsp",
-        "eslint_d",
+        "eslint-lsp",
         "prettierd",
         "tailwindcss-language-server",
         "json-lsp",
@@ -21,9 +21,9 @@ return {
         "flake8",
         "sorbet",
         "rubocop",
-        -- "ruby-lsp", Installed manually because current Ruby version is 2.7 and this requires > 3.0
         "sqlls",
         "phpactor",
+        "typescript-language-server",
       },
     },
     config = function(_, opts)
@@ -64,7 +64,7 @@ return {
     "williamboman/mason-lspconfig.nvim",
     config = function()
       require("mason-lspconfig").setup({
-        ensure_installed = { "lua_ls", "rust_analyzer", "tsserver" },
+        ensure_installed = { "lua_ls", "rust_analyzer" },
       })
     end,
   },
