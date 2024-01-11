@@ -36,7 +36,7 @@ return {
           timeout = 5000,
         }),
         null_ls.builtins.formatting.prettierd,
-        null_ls.builtins.diagnostics.eslint,
+        null_ls.builtins.diagnostics.eslint_d,
         null_ls.builtins.completion.luasnip,
       },
     })

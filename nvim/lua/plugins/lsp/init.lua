@@ -13,7 +13,7 @@ return {
         "stylua",
         "shfmt",
         "css-lsp",
-        "eslint-lsp",
+        "eslint_d",
         "prettierd",
         "tailwindcss-language-server",
         "json-lsp",
