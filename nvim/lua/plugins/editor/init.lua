@@ -7,21 +7,22 @@
 
 return {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
+  { "evanleck/vim-svelte" },
   {
     "steelsojka/pears.nvim",
     config = function()
       local R = require("pears.rule")
-      require "pears".setup(function(conf)
-        conf.preset "tag_matching"
+      require("pears").setup(function(conf)
+        conf.preset("tag_matching")
 
         conf.pair("'", {
           close = "'",
           should_expand = R.all_of(
           -- Don't expand a quote if it comes after an alpha character
-            R.not_(R.start_of_context "[a-zA-Z]"),
+            R.not_(R.start_of_context("[a-zA-Z]")),
             -- Only expand when in a treesitter "string" node
-            R.child_of_node "string"
-          )
+            R.child_of_node("string")
+          ),
         })
 
         conf.on_enter(function(pears_handle)
@@ -32,14 +33,14 @@ return {
           end
         end)
       end)
-    end
+    end,
   },
   {
     "numToStr/Comment.nvim",
     config = function()
       require("Comment").setup({
         pre_hook = function(ctx)
-          local U = require "Comment.utils"
+          local U = require("Comment.utils")
 
           local location = nil
           if ctx.ctype == U.ctype.block then
@@ -48,33 +49,33 @@ return {
             location = require("ts_context_commentstring.utils").get_visual_start_location()
           end
 
-          return require("ts_context_commentstring.internal").calculate_commentstring {
+          return require("ts_context_commentstring.internal").calculate_commentstring({
             key = ctx.ctype == U.ctype.line and "__default" or "__multiline",
             location = location,
-          }
+          })
         end,
       })
-    end
+    end,
   },
   -- Vertical indentation lines. Visual indicator
   { "Yggdroot/indentLine" },
   {
-    'nvim-telescope/telescope.nvim',
-    tag = '0.1.5',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    "nvim-telescope/telescope.nvim",
+    tag = "0.1.5",
+    dependencies = { "nvim-lua/plenary.nvim" },
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
     config = function()
-      require("telescope").setup {
+      require("telescope").setup({
         extensions = {
           ["ui-select"] = {
-            require("telescope.themes").get_dropdown({})
-          }
-        }
-      }
+            require("telescope.themes").get_dropdown({}),
+          },
+        },
+      })
       require("telescope").load_extension("ui-select")
-    end
+    end,
   },
   {
     "numToStr/Navigator.nvim",
@@ -83,14 +84,14 @@ return {
         auto_save = nil,
         disable_on_zoom = false,
       })
-    end
+    end,
   },
   { "szw/vim-maximizer" },
   {
     "nvim-lualine/lualine.nvim",
     config = function()
       require("plugins.editor.lualine").setup()
-    end
+    end,
   },
   {
     "nvim-pack/nvim-spectre",
@@ -104,21 +105,20 @@ return {
       require("nvim-surround").setup({
         -- Configuration here, or leave empty to use defaults
       })
-    end
+    end,
   },
   {
     "AckslD/nvim-neoclip.lua",
     requires = {
-      { 'nvim-telescope/telescope.nvim' },
+      { "nvim-telescope/telescope.nvim" },
       {
-        'kkharji/sqlite.lua',
-        module = 'sqlite'
+        "kkharji/sqlite.lua",
+        module = "sqlite",
       },
     },
     config = function()
-      require('neoclip').setup()
+      require("neoclip").setup()
     end,
   },
-  { "preservim/nerdtree" }
+  { "preservim/nerdtree" },
 }
-

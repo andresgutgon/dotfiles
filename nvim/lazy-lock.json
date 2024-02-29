@@ -51,6 +51,7 @@
   "vim-maximizer": { "branch": "master", "commit": "2e54952fe91e140a2e69f35f22131219fcd9c5f1" },
   "vim-rest-console": { "branch": "master", "commit": "7b407f47185468d1b57a8bd71cdd66c9a99359b2" },
   "vim-rhubarb": { "branch": "master", "commit": "ee69335de176d9325267b0fd2597a22901d927b1" },
+  "vim-svelte": { "branch": "main", "commit": "0e93ec53c3667753237282926fec626785622c1c" },
   "vim-unimpaired": { "branch": "master", "commit": "6d44a6dc2ec34607c41ec78acf81657248580bf1" },
   "vscode-js-debug": { "branch": "main", "commit": "0bd4854f61dc8c9c65808ac57ff0979522344ea3" },
   "vscode.nvim": { "branch": "main", "commit": "39841d05ab4a5c03ea0985196b9f3dfa48d83411" }
