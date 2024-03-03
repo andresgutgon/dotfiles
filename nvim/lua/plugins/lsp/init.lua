@@ -1,10 +1,17 @@
-local LspUtils = require("utils.lsp")
 local Lsp = require("plugins.lsp.lsp_config")
+local Formatting = require("plugins.lsp.formatting")
+local Autocompletion = require("plugins.lsp.autocompletion")
 local trouble_config = require("plugins.lsp.trouble_config")
 
 return {
   {
     "williamboman/mason.nvim",
+    dependencies = {
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "nvim-lua/plenary.nvim",
+      "nvimtools/none-ls.nvim",
+    },
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
     build = ":MasonUpdate",
@@ -28,6 +35,7 @@ return {
     },
     config = function(_, opts)
       require("mason").setup(opts)
+
       local mr = require("mason-registry")
       mr:on("package:install:success", function()
         vim.defer_fn(function()
@@ -38,6 +46,7 @@ return {
           })
         end, 100)
       end)
+
       local function ensure_installed()
         for _, tool in ipairs(opts.ensure_installed) do
           local p = mr.get_package(tool)
@@ -51,25 +60,36 @@ return {
       else
         ensure_installed()
       end
+
+      Formatting.setup()
     end,
   },
   {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "hrsh7th/cmp-buffer",
+      {
+        "onsails/lspkind.nvim",
+        "L3MON4D3/LuaSnip",
+        build = (function()
+          return "make install_jsregexp"
+        end)(),
+      },
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-path",
+    },
+    config = function()
+      Autocompletion.setup()
+    end,
+  },
+  {
+    -- TODO remove this once
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
       require("trouble").setup(trouble_config)
-    end,
-  },
-  {
-    "williamboman/mason-lspconfig.nvim",
-    config = function()
-      require("mason-lspconfig").setup({
-        ensure_installed = {
-          "lua_ls",
-          "rust_analyzer",
-          "svelte",
-        },
-      })
     end,
   },
   {
@@ -92,17 +112,17 @@ return {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "mason.nvim",
+      "williamboman/mason.nvim",
       "williamboman/mason-lspconfig.nvim",
-      "onsails/lspkind.nvim",
-      "hrsh7th/nvim-cmp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
       "kristijanhusak/vim-dadbod-ui",
       "L3MON4D3/LuaSnip",
+      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
+
+      -- Useful status updates for LSP.
+      { "j-hui/fidget.nvim", opts = {} },
     },
     config = function()
       Lsp.setup()

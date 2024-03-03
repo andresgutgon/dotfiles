@@ -8,3 +8,4 @@ nvim/plugin/packer_compiled.lua
 tmux-client-*.log
 .env
 .pnpm-debug.log
+node_modules
