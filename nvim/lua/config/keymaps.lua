@@ -58,12 +58,12 @@ keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 --[[ keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix ]]
 --[[ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix ]]
 
-keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
+keymap("n", "<C-n>", ":cnext<CR>", opts)     -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
 -- Spectre: Find & replace
-keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts) -- Search all files
-keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts) -- Find current file
+keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts)                   -- Search all files
+keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts)              -- Find current file
 keymap("n", "<leader>sw", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
 
 -- Indent multiple lines in visual mode
@@ -77,7 +77,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Telescope Git + Fuggitive
 keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
-keymap("n", "<leader>bc", ":GV<CR>", opts) -- Commits for all files
+keymap("n", "<leader>bc", ":GV<CR>", opts)  -- Commits for all files
 keymap("n", "<leader>gc", ":GV!<CR>", opts) -- commits for current file
 keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
 keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
@@ -115,3 +115,8 @@ keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
 
 -- Copilot
 keymap("i", "<S-Tab>", "copilot#Accept()", { expr = true, silent = true })
+
+-- NeoAI --
+vim.keymap.set("v", "<leader>ai", ":NeoAIInjectContext ")
+vim.keymap.set("n", "<leader>ai", ":NeoAIContext<CR>")
+vim.keymap.set("n", "<leader>ai", ":NeoAIToggle<CR>")

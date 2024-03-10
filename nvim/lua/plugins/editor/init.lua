@@ -22,7 +22,7 @@ return {
     opts = { signs = false },
   },
   { -- Collection of various small independent plugins/modules
-    'echasnovski/mini.nvim',
+    "echasnovski/mini.nvim",
     config = function()
       -- Better Around/Inside textobjects
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
@@ -30,7 +30,7 @@ return {
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
-      require('mini.surround').setup()
+      require("mini.surround").setup()
     end,
   },
   {
@@ -43,7 +43,7 @@ return {
         conf.pair("'", {
           close = "'",
           should_expand = R.all_of(
-            -- Don't expand a quote if it comes after an alpha character
+          -- Don't expand a quote if it comes after an alpha character
             R.not_(R.start_of_context("[a-zA-Z]")),
             -- Only expand when in a treesitter "string" node
             R.child_of_node("string")
@@ -118,7 +118,7 @@ return {
     end,
   },
   { "preservim/nerdtree" },
-  { -- Useful plugin to show you pending keybinds.
+  {                     -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
