@@ -115,8 +115,3 @@ keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
 
 -- Copilot
 keymap("i", "<S-Tab>", "copilot#Accept()", { expr = true, silent = true })
-
--- NeoAI --
-vim.keymap.set("v", "<leader>ai", ":NeoAIInjectContext ")
-vim.keymap.set("n", "<leader>ai", ":NeoAIContext<CR>")
-vim.keymap.set("n", "<leader>ai", ":NeoAIToggle<CR>")
