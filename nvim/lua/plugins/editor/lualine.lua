@@ -29,7 +29,7 @@ local diff = {
   "diff",
   colored = false,
   symbols = { added = " ", modified = " ", removed = " " }, -- changes diff symbols
-  cond = hide_in_width
+  cond = hide_in_width,
 }
 
 local mode = {
@@ -56,9 +56,9 @@ local location = {
   padding = 0,
 }
 
-local LualineModule = {}
+local M = {}
 
-function LualineModule.setup()
+function M.setup()
   -- stylua: ignore
   require("lualine").setup({
     options = {
@@ -91,4 +91,4 @@ function LualineModule.setup()
   })
 end
 
-return LualineModule
+return M

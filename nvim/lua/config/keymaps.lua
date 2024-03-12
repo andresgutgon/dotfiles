@@ -8,9 +8,14 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local keymap_set = vim.keymap.set
 
+-- Disable arrow keys movement
+keymap_set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
+keymap_set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
+keymap_set("n", "<up>", '<cmd>echo "Use k to move!!"<CR>')
+keymap_set("n", "<down>", '<cmd>echo "Use j to move!!"<CR>')
+
 -- Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
-vim.g.maplocalleader = " "
 
 -- Move page
 keymap("n", "<C-d>", "<C-d>zz", opts)
@@ -18,7 +23,7 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Edit vim config
 keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
-keymap("n", "<leader>vr", ":vource $MYVIMRC<CR>", opts)
+keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
 
 -- Split windows
 -- <C-w>= all splits equal
@@ -57,7 +62,7 @@ keymap("n", "<C-n>", ":cnext<CR>", opts)     -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
 -- Spectre: Find & replace
-keymap("n", "<leader>s", "<CMD>lua require 'spectre'.open_visual()<CR>", opts)                    -- Search all files
+keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts)                   -- Search all files
 keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts)              -- Find current file
 keymap("n", "<leader>sw", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
 
@@ -69,15 +74,6 @@ keymap("v", ">", ">gv", opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-
--- Telescope
-local builtin = require("telescope.builtin")
-keymap_set("n", "<leader><space>", builtin.find_files, opts)
-keymap_set("n", "<leader>a", builtin.live_grep, opts)
-keymap("n", "<leader>w", "<cmd>Telescope grep_string<cr>", opts)
-keymap("n", "<leader>c", "<cmd>Telescope commands<cr>", opts) -- Telescope omni command
-keymap("n", "<leader>k", "<CMD>Telescope keymaps<CR>", opts)
-keymap("n", "<leader>n", "<CMD>Telescope neoclip<CR>", opts)  -- Open neoclip
 
 -- Telescope Git + Fuggitive
 keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
@@ -100,6 +96,8 @@ keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
 keymap("n", "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", opts)
 keymap("n", "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", opts)
 keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
+keymap_set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
+keymap_set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
 
 -- Theme dark/light toggle
 -- keymap("n", "<leader>t", "<CMD>lua require 'colorscheme'.toggleThemeMode()<CR>", opts)
@@ -116,4 +114,4 @@ keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
 
 -- Copilot
-keymap('i', '<S-Tab>', 'copilot#Accept()', { expr = true, silent = true })
+keymap("i", "<S-Tab>", "copilot#Accept()", { expr = true, silent = true })

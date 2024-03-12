@@ -1,6 +1,32 @@
 local api = vim.api
 local M = {}
 
+local env_vars = {}
+
+local function get_script_dir()
+  local str = debug.getinfo(2, "S").source:sub(2)
+  return str:match("(.*/)") or "./"
+end
+
+local function parse_env_file(path)
+  local file = io.open(path, "r")
+
+  if not file then
+    print("No .env file found. Put one in nvim/lua/utils/.env")
+    return env_vars
+  end
+
+  for line in file:lines() do
+    if line:match("%S") and not line:match("^#") then
+      local key, value = line:match("([^=]+)=(.*)")
+      env_vars[key] = value
+    end
+  end
+
+  file:close()
+  return env_vars
+end
+
 local get_map_options = function(custom_options)
   local options = { noremap = true, silent = true }
   if custom_options then
@@ -63,6 +89,16 @@ M.merge = function(original, new)
     else
       original[key] = value
     end
+  end
+end
+
+M.load_env_file = function()
+  if next(env_vars) ~= nil then -- Checks if env_vars is not empty
+    return env_vars
+  else
+    local current_dir = get_script_dir()
+    local path = current_dir .. ".env"
+    return parse_env_file(path)
   end
 end
 

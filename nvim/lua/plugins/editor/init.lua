@@ -9,6 +9,31 @@ return {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "evanleck/vim-svelte" },
   {
+    -- Add indentation guides even on blank lines
+    "lukas-reineke/indent-blankline.nvim",
+    main = "ibl",
+    opts = {},
+  },
+  {
+    -- Highlight todo, notes, etc in comments
+    "folke/todo-comments.nvim",
+    event = "VimEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    opts = { signs = false },
+  },
+  { -- Collection of various small independent plugins/modules
+    "echasnovski/mini.nvim",
+    config = function()
+      -- Better Around/Inside textobjects
+      -- Add/delete/replace surroundings (brackets, quotes, etc.)
+      --
+      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
+      -- - sd'   - [S]urround [D]elete [']quotes
+      -- - sr)'  - [S]urround [R]eplace [)] [']
+      require("mini.surround").setup()
+    end,
+  },
+  {
     "steelsojka/pears.nvim",
     config = function()
       local R = require("pears.rule")
@@ -57,26 +82,6 @@ return {
       })
     end,
   },
-  -- Vertical indentation lines. Visual indicator
-  { "Yggdroot/indentLine" },
-  {
-    "nvim-telescope/telescope.nvim",
-    tag = "0.1.5",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  },
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      require("telescope").setup({
-        extensions = {
-          ["ui-select"] = {
-            require("telescope.themes").get_dropdown({}),
-          },
-        },
-      })
-      require("telescope").load_extension("ui-select")
-    end,
-  },
   {
     "numToStr/Navigator.nvim",
     config = function()
@@ -100,14 +105,6 @@ return {
     opts = { open_cmd = "noswapfile vnew" },
   },
   {
-    "kylechui/nvim-surround",
-    config = function()
-      require("nvim-surround").setup({
-        -- Configuration here, or leave empty to use defaults
-      })
-    end,
-  },
-  {
     "AckslD/nvim-neoclip.lua",
     requires = {
       { "nvim-telescope/telescope.nvim" },
@@ -121,4 +118,22 @@ return {
     end,
   },
   { "preservim/nerdtree" },
+  {                     -- Useful plugin to show you pending keybinds.
+    "folke/which-key.nvim",
+    event = "VimEnter", -- Sets the loading event to 'VimEnter'
+    config = function() -- This is the function that runs, AFTER loading
+      require("which-key").setup({
+        window = { border = "single" },
+      })
+
+      -- Document existing key chains
+      require("which-key").register({
+        ["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
+        ["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
+        ["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
+        ["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
+        ["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
+      })
+    end,
+  },
 }
