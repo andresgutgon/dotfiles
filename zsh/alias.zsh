@@ -1,6 +1,5 @@
 # Global aliases
 
-alias -g ls="ls --color=always"
 alias -g ll="ls -lA --color=always"
 alias -g grep="grep --color=always"
 alias -g egrep="egrep --color=always"

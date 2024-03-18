@@ -21,6 +21,7 @@ return {
         "typescript",
         "python",
         "svelte",
+        "markdown",
       },
     },
     build = ":TSUpdate",

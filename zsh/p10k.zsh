@@ -1015,8 +1015,6 @@
   # Custom icon.
   # typeset -g POWERLEVEL9K_NODENV_VISUAL_IDENTIFIER_EXPANSION='⭐'
 
-  ##############[ nvm: node.js version from nvm (https://github.com/nvm-sh/nvm) ]###############
-  # Nvm color.
   typeset -g POWERLEVEL9K_NVM_FOREGROUND=70
   # If set to false, hide node version if it's the same as default:
   # $(nvm version current) == $(nvm version default).
@@ -1024,10 +1022,7 @@
   # If set to false, hide node version if it's equal to "system".
   typeset -g POWERLEVEL9K_NVM_SHOW_SYSTEM=true
   # Custom icon.
-  # typeset -g POWERLEVEL9K_NVM_VISUAL_IDENTIFIER_EXPANSION='⭐'
-
-  ############[ nodeenv: node.js environment (https://github.com/ekalinin/nodeenv) ]############
-  # Nodeenv color.
+  #
   typeset -g POWERLEVEL9K_NODEENV_FOREGROUND=70
   # Don't show Node version next to the environment name.
   typeset -g POWERLEVEL9K_NODEENV_SHOW_NODE_VERSION=false
