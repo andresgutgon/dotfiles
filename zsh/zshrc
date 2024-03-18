@@ -22,6 +22,7 @@ plugins=(
   virtualenv
   virtualenvwrapper
   zsh-syntax-highlighting
+  zsh-nvm
 )
 
 # Includes
@@ -35,7 +36,7 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 source ~/.fzf.zsh
-source ~/.nvm/nvm.sh
 export PNPM_HOME="/Users/andres/Library/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 export PATH="$PATH:/Users/andres/Library/pnpm/global/5/node_modules"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
