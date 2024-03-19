@@ -12,7 +12,6 @@ export DOTFILES_DIR
 DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # Update dotfiles itself first
-
 [ -d "$DOTFILES_DIR/.git" ] && git --work-tree="$DOTFILES_DIR" --git-dir="$DOTFILES_DIR/.git" pull origin main
 
 # ZSH includes
@@ -23,9 +22,6 @@ ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
 
 # ZSH file
 ln -sfv "$DOTFILES_DIR/zsh/zshrc" ~/.zshrc
-
-# Sometimes I want to symlink ~/.bashrc instead of ~/.bash_profile
-ln -sfv "$DOTFILES_DIR/runcom/bashrc" ~/.bash_profile
 
 ln -sfv "$DOTFILES_DIR/runcom/inputrc" ~/.inputrc
 ln -sfv "$DOTFILES_DIR/runcom/byebugrc" ~/.byebugrc
