@@ -21,18 +21,6 @@ return {
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = { signs = false },
   },
-  { -- Collection of various small independent plugins/modules
-    "echasnovski/mini.nvim",
-    config = function()
-      -- Better Around/Inside textobjects
-      -- Add/delete/replace surroundings (brackets, quotes, etc.)
-      --
-      -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
-      -- - sd'   - [S]urround [D]elete [']quotes
-      -- - sr)'  - [S]urround [R]eplace [)] [']
-      require("mini.surround").setup()
-    end,
-  },
   {
     "steelsojka/pears.nvim",
     config = function()

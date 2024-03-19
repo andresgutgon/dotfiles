@@ -26,6 +26,6 @@ and download it. Install it with Mac OS X fonts and you're good to go.
 Then if you're using iTerm go to Preferences (⌘ + ,) > Profiles > Text > Font and select `Hack` as your terminal fornt.
 Already done in my case because I store iTerm preferences in my dotfiles
 
-## Credits
-Copied from (webpro)[https://github.com/webpro/dotfiles]. He mada a (blog post)[https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789#.b6ww51gk3]
+## Vim registers
+Nice post about [using vim registers](https://www.brianstorti.com/vim-registers/)
 
