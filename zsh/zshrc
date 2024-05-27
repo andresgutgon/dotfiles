@@ -46,3 +46,10 @@ export PATH="$NVM_DIR/versions/node/$NVM_VERSION/bin:$PATH"
 # Use homebrew curl
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
+
+# bun completions
+[ -s "/Users/andres/.bun/_bun" ] && source "/Users/andres/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
