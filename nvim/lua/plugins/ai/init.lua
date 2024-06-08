@@ -20,6 +20,13 @@ local function opts(mode)
 end
 
 return {
+  -- Check how to do TAB completion
+  --[[ { ]]
+  --[[   "supermaven-inc/supermaven-nvim", ]]
+  --[[   config = function() ]]
+  --[[     require("supermaven-nvim").setup({}) ]]
+  --[[   end, ]]
+  --[[ }, ]]
   {
     "github/copilot.vim",
     config = function()

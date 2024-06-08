@@ -11,6 +11,7 @@ return {
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "nvim-lua/plenary.nvim",
       "nvimtools/none-ls.nvim",
+      "jay-babu/mason-nvim-dap.nvim",
     },
     cmd = "Mason",
     keys = { { "<leader>cm", "<cmd>Mason<cr>", desc = "Mason" } },
@@ -35,6 +36,9 @@ return {
     },
     config = function(_, opts)
       require("mason").setup(opts)
+      require("mason-nvim-dap").setup({
+        ensure_installed = { "js" },
+      })
 
       local mr = require("mason-registry")
       mr:on("package:install:success", function()

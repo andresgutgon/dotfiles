@@ -5,10 +5,11 @@ if not (ok_dap and ok_dap_vscode) then
   return
 end
 
-local home = os.getenv('HOME')
-local node_path = home .. '/.nvm/versions/node/v19.7.0/bin/node'
-local debugger_path = home .. "/.local/share/nvim/site/pack/packer/opt/vscode-js-debug"
-
+local home = os.getenv("HOME")
+local node_path = home .. "/.nvm/versions/node/v19.7.0/bin/node"
+-- Installed with Mason (check LSP):
+-- https://github.com/jay-babu/mason-nvim-dap.nvim
+local debugger_path = home .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug-adapter"
 dap_vscode.setup({
   node_path = node_path,
   debugger_path = debugger_path,
@@ -20,8 +21,8 @@ dap_vscode.setup({
     "pwa-chrome",
     "pwa-msedge",
     "node-terminal",
-    "pwa-extensionHost"
-  }
+    "pwa-extensionHost",
+  },
 })
 
 local languages = { "typescript", "javascript", "typescriptreact" }
