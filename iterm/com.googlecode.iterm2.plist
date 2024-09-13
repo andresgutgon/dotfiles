@@ -4,6 +4,10 @@
 <dict>
 	<key>AllowClipboardAccess</key>
 	<true/>
+	<key>BracketedPasteMode</key>
+	<true/>
+	<key>ConvertDosNewlines</key>
+	<true/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Dracula</key>
@@ -1465,6 +1469,8 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>9D444988-47D0-4EBE-94A5-E4186CEDFCFE</string>
+	<key>EscapeShellCharsWithBackslash</key>
+	<false/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HotkeyMigratedFromSingleToMulti</key>
@@ -2394,6 +2400,12 @@
 	</array>
 	<key>OpenBookmark</key>
 	<true/>
+	<key>PasteSpecialRegex</key>
+	<string></string>
+	<key>PasteSpecialSubstitution</key>
+	<string></string>
+	<key>PasteSpecialUseRegexSubstitution</key>
+	<false/>
 	<key>PasteTabToStringTabStopSize</key>
 	<integer>4</integer>
 	<key>PointerActions</key>
@@ -2432,7 +2444,7 @@
 	<key>Print In Black And White</key>
 	<true/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>StatusBarPosition</key>

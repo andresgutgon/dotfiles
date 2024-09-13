@@ -13,7 +13,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 # Plugins
 plugins=(
   macos
-  ag
+  # ag
   git
   tmux
   bundler
