@@ -48,8 +48,13 @@ return {
         agents = {
           {
             name = "gpt-4",
+            default = false,
+            model = { model = "gpt-4o", temperature = 0.4, top_p = 1 },
+          },
+          {
+            name = "o1",
             default = true,
-            model = { model = "gpt-4-0125-preview", temperature = 1.1, top_p = 1 },
+            model = { model = "o1-preview", temperature = 0.4, top_p = 1 },
           },
         },
       })
