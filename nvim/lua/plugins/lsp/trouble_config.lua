@@ -1,12 +1,11 @@
 return {
   position = "bottom", -- position of the list can be: bottom, top, left, right
-  height = 10,         -- height of the trouble list when position is top or bottom
-  width = 50,          -- width of the list when position is left or right
-  icons = true,        -- use devicons for filenames
-  -- "workspace_diagnostics", "document_diagnostics", "quickfix", "lsp_references", "loclist"
-  mode = "workspace_diagnostics",
+  height = 10, -- height of the trouble list when position is top or bottom
+  width = 50, -- width of the list when position is left or right
   fold_open = "", -- icon used for open folds
   fold_closed = "", -- icon used for closed folds
+  warn_no_results = false, -- show a warning when there are no results
+  open_no_results = true, -- open the trouble window when there are no results
   group = true, -- group results by file
   padding = true, -- add an extra new line on top of the list
   action_keys = { -- key mappings for actions in the trouble list
@@ -45,4 +44,9 @@ return {
     other = "﫠",
   },
   use_diagnostic_signs = false,
+  modes = {
+    diagnostics = {
+      auto_open = true,
+    },
+  },
 }

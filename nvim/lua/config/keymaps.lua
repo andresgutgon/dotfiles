@@ -88,14 +88,9 @@ keymap("n", "<leader>bl", "<CMD>Git blame<CR>", opts)
 keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
 
 -- Trouble
-keymap("n", "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", opts)
-keymap("n", "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", opts)
-keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
-keymap_set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-keymap_set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
+keymap("n", "<leader>xd", ":Trouble diagnostics toggle<CR>", opts)
 
 -- Theme dark/light toggle
--- keymap("n", "<leader>t", "<CMD>lua require 'colorscheme'.toggleThemeMode()<CR>", opts)
 keymap("n", "<leader>t", "<CMD>lua require 'config.colorscheme'.colorscheme_picker()<CR>", opts)
 
 -- VRC (Vim Rest Console)
