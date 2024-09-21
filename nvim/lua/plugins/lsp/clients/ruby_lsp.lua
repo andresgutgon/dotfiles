@@ -1,6 +1,6 @@
 local M = {}
 local lspconfig = require("lspconfig")
-local util = require('lspconfig.util')
+local util = require("lspconfig.util")
 
 -- textDocument/diagnostic support until 0.10.0 is released
 local _timers = {}
@@ -49,14 +49,14 @@ local rbenv_ruby = "/.rbenv/versions/3.1.1/bin"
 local ruby_lsp_exec = os.getenv("HOME") .. rbenv_ruby .. "/ruby-lsp"
 
 M.setup = function(_, capabilities)
-  lspconfig.ruby_ls.setup({
+  lspconfig.ruby_lsp.setup({
     capabilities = capabilities,
     cmd = { ruby_lsp_exec },
-    filetypes = { 'ruby' },
+    filetypes = { "ruby" },
     on_attach = function(client, buffer)
       setup_diagnostics(client, buffer)
     end,
-    root_dir = util.root_pattern('Gemfile', '.git'),
+    root_dir = util.root_pattern("Gemfile", ".git"),
   })
 end
 

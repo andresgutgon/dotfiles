@@ -20,13 +20,6 @@ local function opts(mode)
 end
 
 return {
-  -- Check how to do TAB completion
-  --[[ { ]]
-  --[[   "supermaven-inc/supermaven-nvim", ]]
-  --[[   config = function() ]]
-  --[[     require("supermaven-nvim").setup({}) ]]
-  --[[   end, ]]
-  --[[ }, ]]
   {
     "github/copilot.vim",
     config = function()
@@ -41,27 +34,22 @@ return {
       "folke/which-key.nvim",
     },
     config = function()
-      local which_key = require("which-key")
+      local wk = require("which-key")
       require("gp").setup({
         openai_api_key = env_vars.OPENAI_API_KEY,
         chat_user_prefix = "💬:",
         agents = {
           {
-            name = "gpt-4",
-            default = false,
-            model = { model = "gpt-4o", temperature = 0.4, top_p = 1 },
-          },
-          {
-            name = "o1",
-            default = true,
-            model = { model = "o1-preview", temperature = 0.4, top_p = 1 },
+            name = "ChatGPT4o",
+            model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
+            system_prompt = "You are a helpful assistant.",
           },
         },
       })
 
-      which_key.register({ [WHICH_TRIGGER] = Keymaps.normal }, opts("normal"))
-      which_key.register({ [WHICH_TRIGGER] = Keymaps.insert }, opts("insert"))
-      which_key.register({ [WHICH_TRIGGER] = Keymaps.visual }, opts("visual"))
+      wk.add(Keymaps.normal)
+      wk.add(Keymaps.insert)
+      wk.add(Keymaps.visual)
 
       vim.api.nvim_create_autocmd("BufEnter", {
         pattern = CHATS_PATTERN,

@@ -32,6 +32,7 @@ return {
         "sqlls",
         "phpactor",
         "typescript-language-server",
+        "elixir-ls",
       },
     },
     config = function(_, opts)
@@ -89,7 +90,6 @@ return {
     end,
   },
   {
-    -- TODO remove this once
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()

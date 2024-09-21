@@ -42,21 +42,16 @@ keymap("n", "mm", ":vertical resize +10<CR>", opts)
 keymap("n", "qq", ":vertical resize -10<CR>", opts)
 
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
+--[[ keymap("n", "<C-h>", "<C-w>h", opts) ]]
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Tmux Navigator
-keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts)
-keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
-keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
-keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
-
--- Quickfix list panel
--- Conflicts with page movement
---[[ keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix ]]
---[[ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix ]]
+--[[ keymap("n", "<C-h>", "<CMD>lua require('Navigator').left()<CR>", opts) ]]
+--[[ keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts) ]]
+--[[ keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts) ]]
+--[[ keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts) ]]
 
 keymap("n", "<C-n>", ":cnext<CR>", opts)     -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
