@@ -46,7 +46,7 @@ return {
   use_diagnostic_signs = false,
   modes = {
     diagnostics = {
-      auto_open = true,
+      auto_open = false, -- Too much noise
     },
   },
 }

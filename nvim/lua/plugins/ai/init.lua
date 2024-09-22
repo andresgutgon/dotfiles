@@ -3,21 +3,7 @@ Keymaps = require("plugins.ai.keymaps")
 ToggleCopilot = require("plugins.ai.toggle_copilot")
 
 local env_vars = Utils.load_env_file()
-local WHICH_OPTS = {
-  prefix = "",
-  buffer = nil,
-  silent = true,
-  noremap = true,
-  nowait = true,
-}
-
-local WHICH_TRIGGER = "<C-i>"
-local WHICH_MODES = { normal = "n", insert = "i", visual = "v" }
 local CHATS_PATTERN = "*/gp/chats/*.md"
-
-local function opts(mode)
-  return vim.tbl_extend("force", WHICH_OPTS, { mode = WHICH_MODES[mode] })
-end
 
 return {
   {
