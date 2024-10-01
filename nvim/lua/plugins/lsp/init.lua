@@ -1,7 +1,6 @@
 local Lsp = require("plugins.lsp.lsp_config")
 local Formatting = require("plugins.lsp.formatting")
 local Autocompletion = require("plugins.lsp.autocompletion")
-local trouble_config = require("plugins.lsp.trouble_config")
 
 return {
   {
@@ -92,9 +91,26 @@ return {
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    config = function()
-      require("trouble").setup(trouble_config)
-    end,
+    opts = {
+      win = {
+        wo = {
+          wrap = true,
+        },
+      },
+    },
+    cmd = "Trouble",
+    keys = {
+      {
+        "<leader>xx",
+        "<cmd>Trouble diagnostics toggle<cr>",
+        desc = "Project errors",
+      },
+      {
+        "<leader>xd",
+        "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+        desc = "Document errors",
+      },
+    },
   },
   {
     "pmizio/typescript-tools.nvim",

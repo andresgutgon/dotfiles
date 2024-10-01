@@ -87,9 +87,6 @@ keymap("n", "<leader>ci", "<CMD>Git commit<CR>", opts)
 keymap("n", "<leader>bl", "<CMD>Git blame<CR>", opts)
 keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
 
--- Trouble
-keymap("n", "<leader>xd", ":Trouble diagnostics toggle<CR>", opts)
-
 -- Theme dark/light toggle
 keymap("n", "<leader>t", "<CMD>lua require 'config.colorscheme'.colorscheme_picker()<CR>", opts)
 
