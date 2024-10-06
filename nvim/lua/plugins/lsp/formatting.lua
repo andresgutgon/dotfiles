@@ -36,6 +36,7 @@ M.setup = function()
       }),
       null_ls.builtins.formatting.prettier,
       null_ls.builtins.completion.luasnip,
+      null_ls.builtins.formatting.mix,
     },
   })
 

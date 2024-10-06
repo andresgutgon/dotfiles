@@ -29,7 +29,6 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       command = "LspFormatting",
     })
-    require("plugins.lsp.keymaps").on_attach(client, bufnr)
   end
 end
 
@@ -121,6 +120,7 @@ M.setup = function()
     "tailwindcss",
     "svelte",
     "eslint",
+    "elixir",
   }
 
   for _, server in pairs(servers) do

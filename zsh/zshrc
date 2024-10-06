@@ -54,5 +54,11 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# Nvim pre-release (TOOD: remove and install with homebrew)
+# Installed pre-release from here:
+# https://github.com/neovim/neovim/releases/nightly (ARM64)
+# I had to do this because stable version 0.10.1 was failing when formatting ls+none-ls
+export PATH="/usr/local/nvim/bin:$PATH"
+
 # Fix git co [path with () or []]
 unsetopt nomatch

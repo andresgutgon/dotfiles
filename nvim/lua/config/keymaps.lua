@@ -53,11 +53,6 @@ keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
 keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
 keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
--- Quickfix list panel
--- Conflicts with page movement
---[[ keymap("n", "<C-o>", ":copen<CR>", opts) -- Open Quickfix ]]
---[[ keymap("n", "<C-d>", ":cclose<CR>", opts) -- Close Quickfix ]]
-
 keymap("n", "<C-n>", ":cnext<CR>", opts)     -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
@@ -92,15 +87,7 @@ keymap("n", "<leader>ci", "<CMD>Git commit<CR>", opts)
 keymap("n", "<leader>bl", "<CMD>Git blame<CR>", opts)
 keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
 
--- Trouble
-keymap("n", "<leader>xw", "<CMD>Trouble workspace_diagnostics<CR>", opts)
-keymap("n", "<leader>xd", "<CMD>Trouble document_diagnostics<CR>", opts)
-keymap("n", "gR", "<CMD>Trouble lsp_references<CR>", opts)
-keymap_set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next [D]iagnostic message" })
-keymap_set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
-
 -- Theme dark/light toggle
--- keymap("n", "<leader>t", "<CMD>lua require 'colorscheme'.toggleThemeMode()<CR>", opts)
 keymap("n", "<leader>t", "<CMD>lua require 'config.colorscheme'.colorscheme_picker()<CR>", opts)
 
 -- VRC (Vim Rest Console)
