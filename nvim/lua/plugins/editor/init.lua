@@ -108,7 +108,7 @@ return {
   {
     "preservim/nerdtree",
     config = function()
-      vim.g.NERDTreeIgnore = { "\\.ex-E$" }
+      vim.g.NERDTreeIgnore = { "\\.ex-E$", "\\.heex-E$", "\\.exs-E$" }
     end,
   },
   {                     -- Useful plugin to show you pending keybinds.
