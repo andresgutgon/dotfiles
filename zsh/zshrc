@@ -62,3 +62,5 @@ export PATH="/usr/local/nvim/bin:$PATH"
 
 # Fix git co [path with () or []]
 unsetopt nomatch
+
+export PATH="$HOME/.local/bin:$PATH"
