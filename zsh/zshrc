@@ -40,8 +40,10 @@ source ~/.fzf.zsh
 export PATH="$PATH:/Users/andres/Library/pnpm/global/5/node_modules"
 
 # Put NVM path over pnpm path
-NVM_VERSION=$(<"$NVM_DIR/alias/default")
-export PATH="$NVM_DIR/versions/node/$NVM_VERSION/bin:$PATH"
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh"
+
+nvm use default &> /dev/null
 
 # Use homebrew curl
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
