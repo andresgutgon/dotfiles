@@ -6,7 +6,7 @@ if not (ok_dap and ok_dap_vscode) then
 end
 
 local home = os.getenv("HOME")
-local node_path = home .. "/.nvm/versions/node/v19.7.0/bin/node"
+local node_path = home .. "/.nvm/versions/node/v22.14.0/bin/node"
 -- Installed with Mason (check LSP):
 -- https://github.com/jay-babu/mason-nvim-dap.nvim
 local debugger_path = home .. "/.local/share/nvim/mason/packages/js-debug-adapter/js-debug-adapter"
