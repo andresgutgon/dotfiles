@@ -115,6 +115,7 @@ M.setup = function()
     "lua_ls",
     "phpactor",
     "ruby_lsp", -- Shopify lang server for Ruby
+    "python",
     "rust_analyzer",
     "sorbet",
     "tailwindcss",
