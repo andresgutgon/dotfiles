@@ -32,6 +32,7 @@ return {
         "phpactor",
         "typescript-language-server",
         "elixir-ls",
+        "pyright",
         "ruff",
       },
     },
