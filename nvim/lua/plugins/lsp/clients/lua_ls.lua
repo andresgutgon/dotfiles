@@ -12,11 +12,16 @@ M.setup = function(on_attach, capabilities)
     capabilities = capabilities,
     settings = {
       Lua = {
+        runtime = {
+          version = "LuaJIT", -- Neovim runtime is LuaJIT
+        },
         workspace = {
+          -- Make LSP aware of Neovim runtime and your config
           library = {
             [vim.fn.expand("$VIMRUNTIME/lua")] = true,
             [vim.fn.stdpath("config") .. "/lua"] = true,
           },
+          checkThirdParty = false, -- prevents spurious "luv" / "jit" warnings
         },
         diagnostics = {
           globals = {
@@ -29,6 +34,11 @@ M.setup = function(on_attach, capabilities)
             "before_each",
             "after_each",
           },
+          -- Suppress "undefined-field" only for Neovim's dynamic APIs
+          disable = { "undefined-field" },
+        },
+        telemetry = {
+          enable = false,
         },
       },
     },
