@@ -1,0 +1,22 @@
+{
+  "runtime": {
+    "version": "LuaJIT"
+  },
+  "diagnostics": {
+    "globals": ["vim"]
+  },
+  "workspace": {
+    "library": [
+      "${3rd}/luv/library",
+      "${3rd}/busted/library",
+      "/usr/share/nvim/runtime/lua",
+      "/usr/share/nvim/runtime/lua/vim/lsp",
+      "/usr/share/nvim/runtime/lua/vim"
+    ],
+    "checkThirdParty": false
+  },
+  "telemetry": {
+    "enable": false
+  }
+}
+

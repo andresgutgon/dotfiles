@@ -8,7 +8,7 @@ local CHATS_PATTERN = "*/gp/chats/*.md"
 return {
   {
     "github/copilot.vim",
-    commit = "3b39e786d865df9ba77fe61624d6ee646528a809",
+    enabled = false,
     config = function()
       vim.g["copilot_assume_mapped "] = true
       vim.g["copilot_no_tab_map"] = true

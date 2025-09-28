@@ -83,3 +83,5 @@ vim.cmd([[set formatoptions-=cro]]) -- TODO: this doesn't seem to work
 vim.cmd([[au BufRead,BufNewFile *.md setlocal textwidth=80]])
 
 vim.cmd([[au! BufRead,BufNewFile *.astro set filetype=astro]])
+
+vim.lsp.set_log_level("debug")

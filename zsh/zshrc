@@ -58,13 +58,6 @@ export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
 
-# Neovim (nightly build)
-# # Nvim pre-release (TOOD: remove and install with homebrew)
-# Installed pre-release from here:
-# https://github.com/neovim/neovim/releases/nightly (ARM64)
-# I had to do this because stable version 0.10.1 was failing when formatting ls+none-ls
-export PATH="/usr/local/nvim/bin:$PATH"
-
 # Local bin
 export PATH="$HOME/.local/bin:$PATH"
 

@@ -17,7 +17,7 @@ M.setup = function(_, capabilities)
       local git_root = util.root_pattern(".git")(fname)
       if git_root then
         local package_mix = util.path.join(git_root, "packages", "*", "mix.exs")
-        local matches = vim.fn.glob(package_mix, 0, 1)
+        local matches = vim.fn.glob(package_mix, false, true)
         if #matches > 0 then
           return util.path.dirname(matches[1]) -- pick the first package
         end

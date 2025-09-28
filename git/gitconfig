@@ -85,9 +85,7 @@
 
 [core]
   autocrlf = false
-  # Homebrew stable not working
-  # editor = /opt/homebrew/bin/nvim
-  editor = /usr/local/nvim/bin/nvim
+  editor = /opt/homebrew/bin/nvim
   excludesfile = /Users/[Your Home Directory]/.gitignore_global
 
 [advice]
