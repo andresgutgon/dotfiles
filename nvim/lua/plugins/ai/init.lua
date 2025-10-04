@@ -10,7 +10,7 @@ return {
           auto_trigger = true, -- show automatically as you type
           debounce = 75,       -- lower debounce = faster suggestions
           keymap = {
-            accept = "<C-l>",  -- accept suggestion (Alt-l)
+            accept = "<Tab>",  -- accept suggestion (Alt-l)
             accept_word = "<C-w>",
             accept_line = "<C-e>",
             --[[ next = "<C-]>",    -- cycle forward ]]
@@ -18,7 +18,6 @@ return {
             dismiss = "<C-]>", -- dismiss suggestion
           },
         },
-        panel = { enabled = true }, -- optional: floating panel for multiple suggestions
       })
     end,
   },
