@@ -127,6 +127,20 @@ return {
           tsserver_file_preferences = {
             importModuleSpecifierPreference = "non-relative",
           },
+          tsserver = {
+            watchOptions = {
+              watchFile = "useFsEvents", -- or "usePolling" if issues persist
+              watchDirectory = "useFsEvents",
+              excludeDirectories = {
+                "node_modules", -- standard node_modules
+                ".pnpm",        -- pnpm’s massive internal folder
+                ".next",        -- Next.js build cache
+                "dist",         -- common output dir
+                "build",        -- some libs use this
+                "coverage",     -- test coverage output
+              },
+            },
+          },
         },
       })
     end,

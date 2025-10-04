@@ -99,6 +99,3 @@ keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
-
--- Copilot
-keymap("i", "<S-Tab>", "copilot#Accept()", { expr = true, silent = true })

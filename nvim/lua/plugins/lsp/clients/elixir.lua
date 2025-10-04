@@ -29,6 +29,14 @@ M.setup = function(_, capabilities)
     flags = {
       debounce_text_changes = 150,
     },
+
+    settings = {
+      elixirLS = {
+        dialyzerEnabled = false, -- optional
+        fetchDeps = false,       -- optional
+        excludeDirs = { "_build", "deps", "assets/node_modules" },
+      },
+    },
   })
 end
 

@@ -1,55 +1,43 @@
-Utils = require("utils")
-Keymaps = require("plugins.ai.keymaps")
-ToggleCopilot = require("plugins.ai.toggle_copilot")
-
-local env_vars = Utils.load_env_file()
-local CHATS_PATTERN = "*/gp/chats/*.md"
-
 return {
   {
-    "github/copilot.vim",
-    config = function()
-      vim.g["copilot_assume_mapped "] = true
-      vim.g["copilot_no_tab_map"] = true
-      vim.g["copilot_tab_fallback "] = ""
-    end,
-  },
-  {
-    "robitx/gp.nvim",
-    dependencies = {
-      "folke/which-key.nvim",
+    "zbirenbaum/copilot.lua",
+    requires = {
+      "copilotlsp-nvim/copilot-lsp",
+      init = function()
+        vim.g.copilot_nes_debounce = 500
+        vim.lsp.enable("copilot_ls")
+        vim.keymap.set("n", "<tab>", function()
+          local bufnr = vim.api.nvim_get_current_buf()
+          local state = vim.b[bufnr].nes_state
+          if state then
+            local _ = require("copilot-lsp.nes").walk_cursor_start_edit()
+                or (require("copilot-lsp.nes").apply_pending_nes() and require("copilot-lsp.nes").walk_cursor_end_edit())
+            return nil
+          else
+            -- Resolving the terminal's inability to distinguish between `TAB` and `<C-i>` in normal mode
+            return "<C-i>"
+          end
+        end, { desc = "Accept Copilot NES suggestion", expr = true })
+      end,
     },
+    cmd = "Copilot",
+    event = "InsertEnter",
     config = function()
-      local wk = require("which-key")
-      require("gp").setup({
-        openai_api_key = env_vars.OPENAI_API_KEY,
-        chat_user_prefix = "💬:",
-        agents = {
-          {
-            name = "ChatGPT4o",
-            model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
-            system_prompt = "You are a helpful assistant.",
+      require("copilot").setup({
+        suggestion = {
+          enabled = true,      -- enable inline ghost text
+          auto_trigger = true, -- show automatically as you type
+          debounce = 75,       -- lower debounce = faster suggestions
+          keymap = {
+            accept = "<C-l>",  -- accept suggestion (Alt-l)
+            accept_word = "<C-w>",
+            accept_line = "<C-e>",
+            next = "<C-]>",    -- cycle forward
+            prev = "<C-[>",    -- cycle backward
+            dismiss = "<C-]>", -- dismiss suggestion
           },
         },
-      })
-
-      wk.add(Keymaps.normal)
-      wk.add(Keymaps.insert)
-      wk.add(Keymaps.visual)
-
-      vim.api.nvim_create_autocmd("BufEnter", {
-        pattern = CHATS_PATTERN,
-        callback = function()
-          vim.notify("Copilot disabled")
-          ToggleCopilot.toggle()
-        end,
-      })
-      vim.api.nvim_create_autocmd("BufLeave", {
-        pattern = CHATS_PATTERN,
-        callback = function()
-          vim.notify("Copilot enabled")
-          ToggleCopilot.toggle()
-        end,
+        panel = { enabled = true }, -- optional: floating panel for multiple suggestions
       })
     end,
   },

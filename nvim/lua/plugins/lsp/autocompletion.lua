@@ -10,6 +10,7 @@ M.setup = function()
   require("luasnip/loaders/from_vscode").lazy_load()
 
   -- Don't show the dumb matching stuff.
+  -- Get rid of extra messages when using completion.
   vim.opt.shortmess:append("c")
   vim.opt.completeopt = { "menu", "menuone", "noselect" }
   cmp.setup({
@@ -85,6 +86,14 @@ M.setup = function()
       return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
     end,
   })
+
+  cmp.event:on("menu_opened", function()
+    vim.b.copilot_suggestion_hidden = true
+  end)
+
+  cmp.event:on("menu_closed", function()
+    vim.b.copilot_suggestion_hidden = false
+  end)
 
   -- Add vim-dadbod-completion in sql files
   vim.cmd([[

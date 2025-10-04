@@ -9,7 +9,7 @@ M.setup = function(_, capabilities)
       packageManager = "pnpm",
     },
     capabilities = capabilities,
-    on_attach = function(client, bufnr)
+    on_attach = function(_client, bufnr)
       vim.api.nvim_create_autocmd("BufWritePre", {
         buffer = bufnr,
         command = "EslintFixAll",
