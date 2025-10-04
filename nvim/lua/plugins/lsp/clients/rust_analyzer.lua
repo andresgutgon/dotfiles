@@ -1,8 +1,7 @@
-local lspconfig = require("lspconfig")
 local M = {}
 
 M.setup = function(on_attach, capabilities)
-  lspconfig.rust_analyzer.setup({
+  vim.lsp.config("rust_analyzer", {
     capabilities = capabilities,
     on_attach = on_attach,
     settings = {
@@ -19,10 +18,10 @@ M.setup = function(on_attach, capabilities)
           },
         },
         procMacro = {
-          enable = true
+          enable = true,
         },
-      }
-    }
+      },
+    },
   })
 end
 

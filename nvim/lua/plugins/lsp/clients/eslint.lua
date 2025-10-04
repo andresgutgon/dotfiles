@@ -1,10 +1,7 @@
 local M = {}
-local lspconfig = require("lspconfig")
-
--- Install the Langugage Server: `pnpm add -g vscode-langservers-extracted `
 
 M.setup = function(_, capabilities)
-  lspconfig.eslint.setup({
+  vim.lsp.config("eslint", {
     settings = {
       packageManager = "pnpm",
     },
@@ -16,6 +13,7 @@ M.setup = function(_, capabilities)
       })
     end,
   })
+  vim.lsp.enable("eslint")
 end
 
 return M

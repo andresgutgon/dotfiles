@@ -31,7 +31,6 @@ return {
         "sqlls",
         "phpactor",
         "typescript-language-server",
-        "elixir-ls",
         "pyright",
         "ruff",
       },
@@ -123,9 +122,16 @@ return {
     opts = {},
     config = function()
       require("typescript-tools").setup({
+        root_dir = function(fname)
+          local util = require("lspconfig.util")
+          return util.root_pattern("pnpm-workspace.yaml", "tsconfig.base.json", "tsconfig.json", ".git")(fname)
+        end,
         settings = {
+          separate_diagnostic_server = false,
           tsserver_file_preferences = {
-            importModuleSpecifierPreference = "non-relative",
+            includeCompletionsForModuleExports = true,
+            allowRenameOfImportPath = true,
+            includeInlayParameterNameHints = "all",
           },
           tsserver = {
             watchOptions = {

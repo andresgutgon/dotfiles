@@ -1,13 +1,13 @@
+local util = require("lspconfig.util")
 local M = {}
-local lspconfig = require("lspconfig")
 
 M.setup = function(on_attach, capabilities)
-  lspconfig.sorbet.setup({
+  vim.lsp.config("sorbet", {
     on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "ruby" },
-    root_dir = lspconfig.util.root_pattern("Gemfile"),
-    cmd = { "bundle", "exec", "srb", "tc", "--lsp" }
+    root_dir = util.root_pattern("Gemfile"),
+    cmd = { "bundle", "exec", "srb", "tc", "--lsp" },
   })
 end
 

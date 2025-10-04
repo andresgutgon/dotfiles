@@ -1,9 +1,11 @@
 local M = {}
-local lspconfig = require("lspconfig")
 
 M.setup = function(on_attach, capabilities)
-  lspconfig.ruff.setup({})
-  lspconfig.pyright.setup({})
+  vim.lsp.config("ruff", {})
+  vim.lsp.enable("ruff")
+
+  vim.lsp.config("pyright", {})
+  vim.lsp.enable("pyright")
 end
 
 return M

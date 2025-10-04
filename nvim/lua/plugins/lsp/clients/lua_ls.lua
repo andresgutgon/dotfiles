@@ -1,8 +1,7 @@
 local M = {}
-local lspconfig = require("lspconfig")
 
 M.setup = function(on_attach, capabilities)
-  lspconfig.lua_ls.setup({
+  vim.lsp.config("lua_ls", {
     on_attach = function(client, bufnr)
       if client.supports_method("textDocument/inlayHint") then
         vim.lsp.inlay_hint.enable(true, { bufnr })

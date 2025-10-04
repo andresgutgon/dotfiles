@@ -1,5 +1,4 @@
 local M = {}
-local lspconfig = require("lspconfig")
 local util = require("lspconfig.util")
 
 -- textDocument/diagnostic support until 0.10.0 is released
@@ -49,7 +48,7 @@ local rbenv_ruby = "/.rbenv/versions/3.1.1/bin"
 local ruby_lsp_exec = os.getenv("HOME") .. rbenv_ruby .. "/ruby-lsp"
 
 M.setup = function(_, capabilities)
-  lspconfig.ruby_lsp.setup({
+  vim.lsp.config("ruby_lsp", {
     capabilities = capabilities,
     cmd = { ruby_lsp_exec },
     filetypes = { "ruby" },

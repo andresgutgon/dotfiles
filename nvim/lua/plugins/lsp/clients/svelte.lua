@@ -1,11 +1,10 @@
 local M = {}
-local lspconfig = require("lspconfig")
 
 -- Svelte config for LSP and Treesitter:
 -- LSP: `pnpm add -g svelte-language-server
 -- Treesitter: `pnpm add -g tree-sitter-svelte tree-sitter`
 M.setup = function(on_attach, capabilities)
-  lspconfig.svelte.setup({
+  vim.lsp.config("svelte", {
     settings = {
       packageManager = "pnpm",
     },

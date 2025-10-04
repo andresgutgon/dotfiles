@@ -1,8 +1,7 @@
 local M = {}
-local lspconfig = require("lspconfig")
 
 M.setup = function(_, capabilities)
-  lspconfig.phpactor.setup({
+  vim.lsp.config("phpactor", {
     capabilities = capabilities,
   })
 end

@@ -99,3 +99,6 @@ keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
+
+-- Typescript tools
+keymap("n", "<leader>mi", "<cmd>TSToolsAddMissingImports<CR>", { desc = "TS Add missing imports" })
