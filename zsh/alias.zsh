@@ -14,6 +14,7 @@ alias gs="git status"
 alias ga="git add"
 alias gd="git diff"
 alias gw="git wip"
+alias lg="lazygit"
 
 # Latitude compose
 alias doc="docker-compose exec backend"
