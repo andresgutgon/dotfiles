@@ -30,7 +30,6 @@ return {
         "rubocop",
         "sqlls",
         "phpactor",
-        "typescript-language-server",
         "pyright",
         "ruff",
       },
