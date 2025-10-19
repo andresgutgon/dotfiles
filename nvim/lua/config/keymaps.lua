@@ -75,8 +75,6 @@ keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
 keymap("n", "<leader>bc", ":GV<CR>", opts)  -- Commits for all files
 keymap("n", "<leader>gc", ":GV!<CR>", opts) -- commits for current file
 keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
-keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
-keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
 
 -- Once Git is open you can do
 -- 1. `=` - Put over a file and view what's changed
