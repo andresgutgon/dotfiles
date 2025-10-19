@@ -24,6 +24,18 @@ M.setup = function()
       -- Accept completion
       ["<C-y>"] = cmp.mapping.confirm({ select = true }),
 
+      -- TAB: Prioritize Copilot over LSP completion
+      ["<Tab>"] = cmp.mapping(function(fallback)
+        local copilot_suggestion = require("copilot.suggestion")
+        if copilot_suggestion.is_visible() then
+          copilot_suggestion.accept()
+        elseif cmp.visible() then
+          cmp.confirm({ select = true })
+        else
+          fallback()
+        end
+      end, { "i", "s" }),
+
       -- Docs
       ["<C-f>"] = cmp.mapping.scroll_docs(4),
       ["<C-b>"] = cmp.mapping.scroll_docs(-4),
@@ -86,14 +98,6 @@ M.setup = function()
       return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
     end,
   })
-
-  cmp.event:on("menu_opened", function()
-    vim.b.copilot_suggestion_hidden = true
-  end)
-
-  cmp.event:on("menu_closed", function()
-    vim.b.copilot_suggestion_hidden = false
-  end)
 
   -- Add vim-dadbod-completion in sql files
   vim.cmd([[
