@@ -40,7 +40,9 @@ M.setup = function()
     },
   })
 
-  vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})
+  vim.keymap.set("n", "<leader>fm", function()
+    vim.lsp.buf.format({ async = false })
+  end, { desc = "Format buffer" })
 end
 
 return M

@@ -14,10 +14,12 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      picker = { enabled = false }, -- Using Telescope instead
+      indent = { enabled = false }, -- Disabled: using indent-blankline.nvim instead
+      picker = {
+        enabled = true,
+      },
       bigfile = { enabled = true },
       explorer = { enabled = true },
-      indent = { enabled = true },
       input = { enabled = true },
       notifier = { enabled = true },
       quickfile = { enabled = true },
@@ -37,10 +39,9 @@ return {
           { section = "header" },
           function()
             local v = vim.version()
-            local icon = "  " -- Larger Neovim icon
             return {
-              text = { { icon .. " Neovim " .. v.major .. "." .. v.minor .. "." .. v.patch, hl = "Title" } },
-              padding = 1,
+              text = { { "Version " .. v.major .. "." .. v.minor .. "." .. v.patch, hl = "Title" } },
+              padding = 0,
               align = "center",
             }
           end,
@@ -49,25 +50,19 @@ return {
         },
         preset = {
           keys = {
-            { icon = " ", key = "f", desc = "Find File", action = ":Telescope find_files" },
-            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-            { icon = " ", key = "g", desc = "Find Text", action = ":Telescope live_grep" },
-            { icon = " ", key = "r", desc = "Recent Files", action = ":Telescope oldfiles" },
-            {
-              icon = " ",
-              key = "c",
-              desc = "Config",
-              action = ":lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })",
-            },
-            {
-              icon = " ",
-              key = "R",
-              desc = "Reload Config",
-              action = ":source $MYVIMRC | lua vim.notify('Config Reloaded!', vim.log.levels.INFO)",
-            },
+            { icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.picker.files()" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":lua Snacks.picker.recent()" },
             { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy" },
             { icon = " ", key = "q", desc = "Quit", action = ":qa" },
           },
+          header = [[
+██╗   ██╗██╗███╗   ███╗
+██║   ██║██║████╗ ████║
+██║   ██║██║██╔████╔██║
+╚██╗ ██╔╝██║██║╚██╔╝██║
+ ╚████╔╝ ██║██║ ╚═╝ ██║
+  ╚═══╝  ╚═╝╚═╝     ╚═╝
+        ]],
         },
       },
     },
