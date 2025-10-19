@@ -14,16 +14,11 @@ return {
     lazy = false,
     ---@type snacks.Config
     opts = {
-      indent = { enabled = false }, -- Disabled: using indent-blankline.nvim instead
       picker = {
-        enabled = true,
+        ui_select = true,
       },
-      bigfile = { enabled = true },
       explorer = { enabled = true },
-      input = { enabled = true },
       notifier = { enabled = true },
-      quickfile = { enabled = true },
-      scope = { enabled = true },
       scroll = { enabled = true },
       statuscolumn = {
         left = { "mark", "sign" },
@@ -32,7 +27,6 @@ return {
         git = { patterns = { "GitSign", "MiniDiffSign" } },
         refresh = 50,
       },
-      words = { enabled = true },
       dashboard = {
         enabled = true,
         sections = {
