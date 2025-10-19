@@ -8,3 +8,6 @@ collapse_simple_statement = "Never"
 
 [sort_requires]
 enabled = false
+
+[format]
+table_style = "preserve"

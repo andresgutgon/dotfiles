@@ -95,28 +95,6 @@ local function setup_keymaps()
         vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
       end
 
-      map("gd", function()
-        telescope().lsp_definitions()
-      end, "[G]oto [D]efinition")
-      map("gr", function()
-        telescope().lsp_references({
-          layout_strategy = "vertical",
-          layout_config = {
-            width = 0.9,
-            height = 0.9,
-            preview_cutoff = 20,
-            preview_height = 0.6,
-          },
-          path_display = { "smart" }, -- or "absolute", "truncate"
-          fname_width = 60,
-        })
-      end, "[G]oto [R]eferences")
-      map("gI", function()
-        telescope().lsp_implementations()
-      end, "[G]oto [I]mplementation")
-      map("<leader>D", function()
-        telescope().lsp_type_definitions()
-      end, "Type [D]efinition")
       map("<leader>ds", function()
         telescope().lsp_document_symbols()
       end, "[D]ocument [S]ymbols")
@@ -127,7 +105,6 @@ local function setup_keymaps()
       map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
       map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
       map("K", vim.lsp.buf.hover, "Hover Documentation")
-      map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
       -- Highlight symbol under cursor
       local client = vim.lsp.get_client_by_id(event.data.client_id)
