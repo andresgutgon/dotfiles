@@ -22,7 +22,6 @@ keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Edit vim config
-keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
 
 -- Split windows
@@ -72,10 +71,6 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- VRC (Vim Rest Console)
 keymap("n", "<leader>rc", "<CMD>lua require 'rest-console'.console()<CR>", opts)
-
--- Nerd tree
-keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
-keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
