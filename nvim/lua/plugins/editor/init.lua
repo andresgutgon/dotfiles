@@ -52,9 +52,7 @@ return {
       picker = {
         ui_select = true,
       },
-      explorer = {
-        replace_netrw = true,   -- Replace netrw with the snacks explorer
-      },
+      explorer = { enabled = true },
       notifier = { enabled = true },
       scroll = { enabled = true },
       statuscolumn = {
@@ -166,6 +164,12 @@ return {
     },
     config = function()
       require("neoclip").setup()
+    end,
+  },
+  {
+    "preservim/nerdtree",
+    config = function()
+      vim.g.NERDTreeIgnore = { "\\.ex-E$", "\\.heex-E$", "\\.exs-E$" }
     end,
   },
   {                     -- Useful plugin to show you pending keybinds.

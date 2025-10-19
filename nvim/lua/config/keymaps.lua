@@ -72,6 +72,10 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- VRC (Vim Rest Console)
 keymap("n", "<leader>rc", "<CMD>lua require 'rest-console'.console()<CR>", opts)
 
+-- Nerd tree
+keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
+keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
+
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
 
