@@ -15,12 +15,7 @@ M.setup = function(on_attach, capabilities)
           version = "LuaJIT", -- Neovim runtime is LuaJIT
         },
         workspace = {
-          -- Make LSP aware of Neovim runtime and your config
-          library = {
-            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-            [vim.fn.stdpath("config") .. "/lua"] = true,
-          },
-          checkThirdParty = false, -- prevents spurious "luv" / "jit" warnings
+          checkThirdParty = false,
         },
         diagnostics = {
           globals = {

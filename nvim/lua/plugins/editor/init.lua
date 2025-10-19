@@ -7,7 +7,71 @@
 
 return {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
-  { "evanleck/vim-svelte" },
+  { "nvim-mini/mini.icons", version = false },
+  {
+    "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
+    opts = {
+      picker = { enabled = false }, -- Using Telescope instead
+      bigfile = { enabled = true },
+      explorer = { enabled = true },
+      indent = { enabled = true },
+      input = { enabled = true },
+      notifier = { enabled = true },
+      quickfile = { enabled = true },
+      scope = { enabled = true },
+      scroll = { enabled = true },
+      statuscolumn = {
+        left = { "mark", "sign" },
+        right = { "fold", "git" },
+        folds = { open = false, git_hl = false },
+        git = { patterns = { "GitSign", "MiniDiffSign" } },
+        refresh = 50,
+      },
+      words = { enabled = true },
+      dashboard = {
+        enabled = true,
+        sections = {
+          { section = "header" },
+          function()
+            local v = vim.version()
+            local icon = "  " -- Larger Neovim icon
+            return {
+              text = { { icon .. " Neovim " .. v.major .. "." .. v.minor .. "." .. v.patch, hl = "Title" } },
+              padding = 1,
+              align = "center",
+            }
+          end,
+          { section = "keys", gap = 1, padding = 1 },
+          { section = "startup" },
+        },
+        preset = {
+          keys = {
+            { icon = " ", key = "f", desc = "Find File", action = ":Telescope find_files" },
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = " ", key = "g", desc = "Find Text", action = ":Telescope live_grep" },
+            { icon = " ", key = "r", desc = "Recent Files", action = ":Telescope oldfiles" },
+            {
+              icon = " ",
+              key = "c",
+              desc = "Config",
+              action = ":lua require('telescope.builtin').find_files({ cwd = vim.fn.stdpath('config') })",
+            },
+            {
+              icon = " ",
+              key = "R",
+              desc = "Reload Config",
+              action = ":source $MYVIMRC | lua vim.notify('Config Reloaded!', vim.log.levels.INFO)",
+            },
+            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy" },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
+        },
+      },
+    },
+  },
   {
     -- Add indentation guides even on blank lines
     "lukas-reineke/indent-blankline.nvim",
@@ -31,7 +95,7 @@ return {
         conf.pair("'", {
           close = "'",
           should_expand = R.all_of(
-          -- Don't expand a quote if it comes after an alpha character
+            -- Don't expand a quote if it comes after an alpha character
             R.not_(R.start_of_context("[a-zA-Z]")),
             -- Only expand when in a treesitter "string" node
             R.child_of_node("string")
@@ -111,7 +175,7 @@ return {
       vim.g.NERDTreeIgnore = { "\\.ex-E$", "\\.heex-E$", "\\.exs-E$" }
     end,
   },
-  {                     -- Useful plugin to show you pending keybinds.
+  { -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
     config = function() -- This is the function that runs, AFTER loading
