@@ -1,8 +1,6 @@
 local Utils = require("utils")
 local M = {}
 
--- Get root folder for the ruby project.
--- in a mono repo, the backend folder is the root folder
 local function find_cwd(cwd)
   local backend_cwd = cwd .. "/" .. "backend"
 
@@ -15,10 +13,17 @@ end
 
 M.setup = function()
   local null_ls = require("null-ls")
+
   null_ls.setup({
     sources = {
-      null_ls.builtins.formatting.stylua,
+      -- Lua only
+      null_ls.builtins.formatting.stylua.with({
+        filetypes = { "lua" },
+      }),
+
+      -- Ruby only
       null_ls.builtins.diagnostics.rubocop.with({
+        filetypes = { "ruby" },
         cwd = function()
           return find_cwd(vim.fn.getcwd())
         end,
@@ -27,6 +32,7 @@ M.setup = function()
         timeout = 5000,
       }),
       null_ls.builtins.formatting.rubocop.with({
+        filetypes = { "ruby" },
         cwd = function()
           return find_cwd(vim.fn.getcwd())
         end,
@@ -34,13 +40,22 @@ M.setup = function()
         args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.formatting.rubocop._opts.args),
         timeout = 5000,
       }),
-      null_ls.builtins.formatting.prettier,
+
+      -- JS / TS / JSON / etc.
+      null_ls.builtins.formatting.prettier.with({
+        filetypes = { "javascript", "typescript", "typescriptreact", "json", "yaml", "markdown" },
+      }),
+
+      -- Elixir only
+      null_ls.builtins.formatting.mix.with({
+        filetypes = { "elixir" },
+      }),
+
       null_ls.builtins.completion.luasnip,
-      null_ls.builtins.formatting.mix,
     },
   })
 
-  vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, {})
+  vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format buffer" })
 end
 
 return M

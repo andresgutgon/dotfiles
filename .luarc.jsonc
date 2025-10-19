@@ -3,7 +3,7 @@
     "version": "LuaJIT"
   },
   "diagnostics": {
-    "globals": ["vim"]
+    "globals": ["vim", "Snacks", "oil"]
   },
   "workspace": {
     "library": [
@@ -11,7 +11,9 @@
       "${3rd}/busted/library",
       "/usr/share/nvim/runtime/lua",
       "/usr/share/nvim/runtime/lua/vim/lsp",
-      "/usr/share/nvim/runtime/lua/vim"
+      "/usr/share/nvim/runtime/lua/vim",
+      "~/.local/share/nvim/lazy/snacks.nvim",
+      "~/.local/share/nvim/lazy/oil.nvim"
     ],
     "checkThirdParty": false
   },
@@ -19,4 +21,3 @@
     "enable": false
   }
 }
-
