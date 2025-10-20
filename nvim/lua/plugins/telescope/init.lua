@@ -77,7 +77,6 @@ return {
     local builtin = require("telescope.builtin")
 
     -- Ultra usefull. Find files and find text in files
-    vim.keymap.set("n", "<leader><leader>", builtin.find_files, { desc = "[S]earch [F]iles" })
     vim.keymap.set("n", "<leader>a", builtin.live_grep, { desc = "[S]earch by [G]rep" })
     vim.keymap.set("n", "<leader>s.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
 
