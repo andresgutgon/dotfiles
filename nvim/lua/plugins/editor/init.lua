@@ -5,6 +5,7 @@
 -- Doc link:
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring?tab=readme-ov-file#getting-started
 
+-- stylua: ignore start
 return {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "nvim-mini/mini.icons",                       version = false },
@@ -52,6 +53,11 @@ return {
       picker = {
         ui_select = true,
       },
+      indent = {
+        enabled = true,
+        only_scope= false,
+        only_current = false,
+      },
       explorer = { enabled = true },
       notifier = { enabled = true },
       scroll = { enabled = true },
@@ -95,12 +101,6 @@ return {
         },
       },
     },
-  },
-  {
-    -- Add indentation guides even on blank lines
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    opts = {},
   },
   {
     -- Highlight todo, notes, etc in comments
