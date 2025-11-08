@@ -40,6 +40,7 @@ local options = {
   foldenable = false,                      -- When off, all folds are open.
   foldlevel = 2,                           -- Folding level
   inccommand = "split",                    -- Preview substitutions live, as you type!
+  autoread = true,                         -- automatically reload files changed outside of nvim
 }
 
 -- Leader key
