@@ -56,6 +56,30 @@ local location = {
   padding = 0,
 }
 
+-- Sidekick/Copilot status
+local sidekick_status = {
+  function()
+    return " Copilot"
+  end,
+  color = function()
+    local ok, sidekick = pcall(require, "sidekick.status")
+    if not ok then
+      return { fg = "#89b4fa", bg = "#313244", gui = "bold" }
+    end
+    local status = sidekick.get()
+    if status then
+      if status.kind == "Error" then
+        return { fg = "#f38ba8", bg = "#313244", gui = "bold" }
+      elseif status.busy then
+        return { fg = "#f9e2af", bg = "#313244", gui = "bold" }
+      else
+        return { fg = "#a6e3a1", bg = "#313244", gui = "bold" }
+      end
+    end
+    return { fg = "#89b4fa", bg = "#313244", gui = "bold" }
+  end,
+}
+
 local M = {}
 
 function M.setup()
@@ -72,7 +96,7 @@ function M.setup()
     sections = {
       lualine_a = { branch, diagnostics },
       lualine_b = { mode },
-      lualine_c = {},
+      lualine_c = { sidekick_status },
       -- lualine_x = { "encoding", "fileformat", "filetype" },
       lualine_x = { diff, spaces, "encoding", filetype },
       lualine_y = { location },
