@@ -125,6 +125,15 @@ return {
         end,
         desc = "Sidekick Toggle Claude",
       },
+      {
+        "<leader>ai",
+        function()
+          require("sidekick.cli").send({
+            msg = "Read the image: $(source ~/dotfiles/zsh/lastscreenshot.zsh && lastshot) and ",
+          })
+        end,
+        desc = "Send Last Screenshot",
+      },
     },
   },
 }

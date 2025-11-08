@@ -33,6 +33,7 @@ source $ZSH/oh-my-zsh.sh
 # ------------------------------
 source "$ZSH/custom/alias.zsh"
 source "$ZSH/custom/fzf.zsh"
+source "$ZSH/custom/lastscreenshot.zsh"
 source "$ZSH/custom/virtualenvwrapper.zsh"
 source ~/.fzf.zsh
 
