@@ -10,6 +10,12 @@ return {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "nvim-mini/mini.icons",                       version = false },
   {
+    "Juksuu/worktrees.nvim",
+    config = function()
+      require("worktrees").setup()
+    end,
+  },
+  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -24,6 +30,9 @@ return {
       { "<leader>gl",      function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
       { "<leader>gf",      function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
       { "<leader>lg",      function() Snacks.lazygit.open() end,                 desc = "Open Lazygit" },
+      { "<leader>gws",     function() Snacks.picker.worktrees() end,             desc = "Switch worktrees" },
+      { "<leader>gwn",     function() Snacks.picker.worktrees_new() end,         desc = "New worktree" },
+      { "<leader>gwr",     function() Snacks.picker.worktrees_remove() end,      desc = "Remove worktree" },
       -- Grep
       { "<leader>sb",      function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
       { "<leader>sB",      function() Snacks.picker.grep_buffers() end,          desc = "Grep Open Buffers" },
@@ -80,7 +89,7 @@ return {
           style = "lazygit",
         },
       },
-      explorer = { enabled = true },
+      explorer = { enabled = false },
       notifier = { enabled = true },
       scroll = { enabled = true },
       input = {
