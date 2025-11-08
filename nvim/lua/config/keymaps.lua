@@ -22,7 +22,6 @@ keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Edit vim config
-keymap("n", "<leader>ec", ":e $MYVIMRC<cr>", opts)
 keymap("n", "<leader>vr", ":source $MYVIMRC<CR>", opts)
 
 -- Split windows
@@ -59,7 +58,7 @@ keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 -- Spectre: Find & replace
 keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts)                   -- Search all files
 keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts)              -- Find current file
-keymap("n", "<leader>sw", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
+keymap("n", "<leader>wr", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
 
 -- Indent multiple lines in visual mode
 keymap("v", "<", "<gv", opts)
@@ -70,31 +69,12 @@ keymap("v", ">", ">gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
--- Telescope Git + Fuggitive
-keymap("n", "<leader>gb", "<CMD>Telescope git_branches<CR>", opts)
-keymap("n", "<leader>bc", ":GV<CR>", opts)  -- Commits for all files
-keymap("n", "<leader>gc", ":GV!<CR>", opts) -- commits for current file
-keymap("n", "<leader>gs", "<CMD>Telescope git_stash<CR>", opts)
-keymap("n", "<leader>st", "<CMD>Git<CR>", opts)
-keymap("n", "<leader>gp", "<CMD>Git push<CR>", opts)
-
--- Once Git is open you can do
--- 1. `=` - Put over a file and view what's changed
--- 2. `-` - Add to stash all changes on a file or you can select visualy lines.
--- 3. `-` - Discard all changes on a file or you can select visualy lines.
-keymap("n", "<leader>ga", "<CMD>Git add .<CR>", opts) -- Git add all .
-keymap("n", "<leader>ci", "<CMD>Git commit<CR>", opts)
-keymap("n", "<leader>bl", "<CMD>Git blame<CR>", opts)
-keymap("v", "<C-h>", ":'<,'>GBrowse<CR>", opts)
-
--- Theme dark/light toggle
-keymap("n", "<leader>t", "<CMD>lua require 'config.colorscheme'.colorscheme_picker()<CR>", opts)
-
 -- VRC (Vim Rest Console)
 keymap("n", "<leader>rc", "<CMD>lua require 'rest-console'.console()<CR>", opts)
 
 -- Nerd tree
 keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
+keymap("n", "<leader>-", "<CMD>lua require('oil').toggle_float()<CR>", opts)
 keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
 
 -- Neoclip
