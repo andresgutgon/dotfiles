@@ -76,6 +76,9 @@ esac
 # ------------------------------
 unsetopt nomatch
 
+# Erlang shell history
+export ERL_AFLAGS="-kernel shell_history enabled"
+
 # ------------------------------
 # (Optional) Deduplicate PATH entries
 # ------------------------------
