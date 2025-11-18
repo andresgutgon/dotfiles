@@ -82,3 +82,7 @@ keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
 
 -- Typescript tools
 keymap("n", "<leader>mi", "<cmd>TSToolsAddMissingImports<CR>", { desc = "TS Add missing imports" })
+
+-- Diff
+keymap("n", "<leader>dd", ":windo diffthis<CR>", opts)
+keymap("n", "<leader>do", ":diffoff!<CR>", opts)
