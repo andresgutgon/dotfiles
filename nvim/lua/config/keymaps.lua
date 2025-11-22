@@ -8,6 +8,16 @@ local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
 local keymap_set = vim.keymap.set
 
+-- Toggle git diff function
+local function toggle_git_diff()
+  if vim.wo.diff then
+    vim.cmd('windo diffoff')
+    vim.cmd('only')
+  else
+    vim.cmd('Gitsigns diffthis')
+  end
+end
+
 -- Disable arrow keys movement
 keymap_set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')
 keymap_set("n", "<right>", '<cmd>echo "Use l to move!!"<CR>')
@@ -52,12 +62,12 @@ keymap("n", "<C-k>", "<CMD>lua require('Navigator').up()<CR>", opts)
 keymap("n", "<C-l>", "<CMD>lua require('Navigator').right()<CR>", opts)
 keymap("n", "<C-j>", "<CMD>lua require('Navigator').down()<CR>", opts)
 
-keymap("n", "<C-n>", ":cnext<CR>", opts)     -- Next item
+keymap("n", "<C-n>", ":cnext<CR>", opts) -- Next item
 keymap("n", "<C-p>", ":cprevious<CR>", opts) -- Prev item
 
 -- Spectre: Find & replace
-keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts)                   -- Search all files
-keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts)              -- Find current file
+keymap("n", "<leader>rs", "<CMD>lua require 'spectre'.open_visual()<CR>", opts) -- Search all files
+keymap("n", "<leader>sp", "<CMD>lua require 'spectre'.open_file_search()<CR>", opts) -- Find current file
 keymap("n", "<leader>wr", "<CMD>lua require 'spectre'.open_visual({select_word=true})<CR>", opts) -- Current word
 
 -- Indent multiple lines in visual mode
@@ -86,3 +96,7 @@ keymap("n", "<leader>mi", "<cmd>TSToolsAddMissingImports<CR>", { desc = "TS Add 
 -- Diff
 keymap("n", "<leader>dd", ":windo diffthis<CR>", opts)
 keymap("n", "<leader>do", ":diffoff!<CR>", opts)
+keymap_set("n", "<leader>dt", toggle_git_diff, vim.tbl_extend("force", opts, { desc = "Toggle diff current file against changes in git" }))
+keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
+keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
+keymap("n", "<leader>gl", ":Gitsigns blame_line<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame line" }))

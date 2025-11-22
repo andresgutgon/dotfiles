@@ -27,8 +27,6 @@ return {
       { "<leader>n",       function() Snacks.picker.notifications() end,         desc = "Notification History" },
       { "<leader>e",       function() Snacks.explorer() end,                     desc = "File Explorer" },
       -- git
-      { "<leader>gl",      function() Snacks.picker.git_log_line() end,          desc = "Git Log Line" },
-      { "<leader>gf",      function() Snacks.picker.git_log_file() end,          desc = "Git Log File" },
       { "<leader>lg",      function() Snacks.lazygit.open() end,                 desc = "Open Lazygit" },
       { "<leader>gws",     function() Snacks.picker.worktrees() end,             desc = "Switch worktrees" },
       { "<leader>gwn",     function() Snacks.picker.worktrees_new() end,         desc = "New worktree" },
