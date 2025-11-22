@@ -82,10 +82,9 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- VRC (Vim Rest Console)
 keymap("n", "<leader>rc", "<CMD>lua require 'rest-console'.console()<CR>", opts)
 
--- Nerd tree
-keymap("n", "<leader>n", "<cmd>NERDTreeToggle<cr>", opts)
-keymap("n", "<leader>-", "<CMD>lua require('oil').toggle_float()<CR>", opts)
-keymap("n", "<leader>m", "<cmd>NERDTreeFind<cr>", opts)
+-- File Explorer
+keymap("n", "<leader>n", "<cmd>Neotree toggle<cr>", opts)
+keymap("n", "<leader>m", "<cmd>Neotree reveal<cr>", opts)
 
 -- Neoclip
 keymap("n", "<leader>p", "<Cmd>Telescope neoclip<CR>", opts)
