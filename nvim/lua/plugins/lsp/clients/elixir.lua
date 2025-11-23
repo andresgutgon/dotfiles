@@ -8,6 +8,11 @@ return {
       root_markers = { "mix.exs", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        expert = {
+          excludePatterns = { "deps/**", "_build/**", "node_modules/**", "assets/node_modules/**", "inspiration/**" },
+        },
+      },
     })
 
     -- enable explicitly
