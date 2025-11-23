@@ -1,5 +1,3 @@
-local util = require("lspconfig.util")
-
 return {
   setup = function(on_attach, capabilities)
     vim.lsp.config("expert", {
@@ -15,7 +13,6 @@ return {
       },
     })
 
-    -- enable explicitly
     vim.lsp.enable("expert")
   end,
 }
