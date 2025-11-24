@@ -114,6 +114,9 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
+    -- Remove when this is fixed:
+    -- https://github.com/pmizio/typescript-tools.nvim/issues/379
+    commit = "675fe41a3d0d0b4482a4a783a7a92fbae2acbd61",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",

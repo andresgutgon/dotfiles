@@ -37,6 +37,13 @@ return {
       {
         "<tab>",
         function()
+          -- Skip for Neo-tree and other special buffers
+          local buf_name = vim.api.nvim_buf_get_name(0)
+          local filetype = vim.bo.filetype
+          if filetype == "neo-tree" or filetype == "neo-tree-popup" or buf_name:match("neo%-tree") then
+            return "<tab>"
+          end
+
           -- if there is a next edit, jump to it, otherwise apply it if any
           if require("sidekick").nes_jump_or_apply() then
             return -- jumped or applied

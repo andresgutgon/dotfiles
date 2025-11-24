@@ -6,7 +6,9 @@
 -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring?tab=readme-ov-file#getting-started
 
 -- stylua: ignore start
-return {
+local file_manager = require("plugins.editor.file_manager")
+
+local plugins = {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "nvim-mini/mini.icons",                       version = false },
   {
@@ -211,54 +213,6 @@ return {
       vim.g.NERDTreeIgnore = { "\\.ex-E$", "\\.heex-E$", "\\.exs-E$" }
     end,
   },
-  {
-    'stevearc/oil.nvim',
-    ---@module 'oil'
-    ---@type oil.SetupOpts
-    dependencies = { { "nvim-mini/mini.icons", opts = {} } },
-    lazy = false,
-    config = function()
-      local detail = false
-      require("oil").setup({
-        default_file_explorer = false,
-        delete_to_trash = true,
-        keymaps = {
-          ["<C-h>"] = false, -- Disable because is used by Navigator.nvim
-          ["gd"] = {
-            desc = "Toggle file detail view",
-            callback = function()
-              detail = not detail
-              if detail then
-                require("oil").set_columns({ "icon", "permissions", "size", "mtime" })
-              else
-                require("oil").set_columns({ "icon" })
-              end
-            end,
-          },
-          ["<leader>ff"] = {
-            function()
-              require("telescope.builtin").find_files({
-                cwd = require("oil").get_current_dir()
-              })
-            end,
-            mode = "n",
-            nowait = true,
-            desc = "Find files in the current directory"
-          },
-        },
-        view_options = { show_hidden = true, },
-        float = {
-          padding = 4,
-          -- max_width and max_height can be integers
-          -- or a float between 0 and 1 (e.g. 0.4 for 40%)
-          max_width = 0.6,
-          max_height = 0.8,
-          border = "rounded",
-          preview_split = "below",
-        },
-      })
-    end,
-  },
   {                     -- Useful plugin to show you pending keybinds.
     "folke/which-key.nvim",
     event = "VimEnter", -- Sets the loading event to 'VimEnter'
@@ -270,3 +224,9 @@ return {
     end,
   },
 }
+
+for _, plugin in ipairs(file_manager) do
+  table.insert(plugins, plugin)
+end
+
+return plugins

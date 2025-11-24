@@ -1,5 +1,3 @@
-local util = require("lspconfig.util")
-
 return {
   setup = function(on_attach, capabilities)
     vim.lsp.config("expert", {
@@ -8,9 +6,13 @@ return {
       root_markers = { "mix.exs", ".git" },
       capabilities = capabilities,
       on_attach = on_attach,
+      settings = {
+        expert = {
+          excludePatterns = { "deps/**", "_build/**", "node_modules/**", "assets/node_modules/**", "inspiration/**" },
+        },
+      },
     })
 
-    -- enable explicitly
     vim.lsp.enable("expert")
   end,
 }
