@@ -143,7 +143,9 @@ M.setup = function()
     },
   })
 
-  local manual_servers = { "elixir" }
+  -- Manually setup LSP servers that
+  -- are not installed via mason-lspconfig
+  local manual_servers = {}
 
   for _, server in ipairs(manual_servers) do
     local ok, client = pcall(require, "plugins.lsp.clients." .. server)

@@ -1,18 +1,35 @@
+local util = require("lspconfig.util")
+
 return {
   setup = function(on_attach, capabilities)
-    vim.lsp.config("expert", {
-      cmd = { vim.fn.expand("~/.local/bin/expert") },
-      filetypes = { "elixir", "eelixir", "heex" },
-      root_markers = { "mix.exs", ".git" },
+    local lspconfig = require("lspconfig")
+
+    -- Register expert as a custom server configuration
+    local configs = require("lspconfig.configs")
+    if not configs.expert then
+      configs.expert = {
+        default_config = {
+          filetypes = { "elixir", "eelixir", "heex" },
+          root_dir = util.root_pattern("mix.exs", ".git"),
+          settings = {
+            expert = {
+              excludePatterns = {
+                "deps/**",
+                "_build/**",
+                "node_modules/**",
+                "assets/node_modules/**",
+                "inspiration/**",
+              },
+            },
+          },
+        },
+      }
+    end
+
+    -- Setup the server using lspconfig
+    lspconfig.expert.setup({
       capabilities = capabilities,
       on_attach = on_attach,
-      settings = {
-        expert = {
-          excludePatterns = { "deps/**", "_build/**", "node_modules/**", "assets/node_modules/**", "inspiration/**" },
-        },
-      },
     })
-
-    vim.lsp.enable("expert")
   end,
 }

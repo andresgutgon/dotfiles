@@ -46,9 +46,10 @@ M.setup = function()
         filetypes = { "javascript", "typescript", "typescriptreact", "json", "yaml", "markdown" },
       }),
 
-      -- Elixir only
-      null_ls.builtins.formatting.mix.with({
+      -- Elixir
+      null_ls.builtins.diagnostics.credo.with({
         filetypes = { "elixir" },
+        extra_args = { "--strict" },
       }),
 
       null_ls.builtins.completion.luasnip,
@@ -56,6 +57,20 @@ M.setup = function()
   })
 
   vim.keymap.set("n", "<leader>fm", vim.lsp.buf.format, { desc = "Format buffer" })
+
+  -- Format with oxfmt CLI (for Tailwind class sorting)
+  -- After a while all my projects should use oxfmt instead of prettier
+  -- Review this after that if ever happens.
+  vim.keymap.set("n", "<leader>fo", function()
+    local filepath = vim.fn.expand("%:p")
+    local bufdir = vim.fn.expand("%:p:h")
+    -- Find directory containing .oxfmtrc.json
+    local config = vim.fs.find(".oxfmtrc.json", { path = bufdir, upward = true })[1]
+    local workdir = config and vim.fn.fnamemodify(config, ":h") or bufdir
+    local cmd = "cd " .. vim.fn.shellescape(workdir) .. " && oxfmt " .. vim.fn.shellescape(filepath)
+    vim.fn.system(cmd)
+    vim.cmd("e!")
+  end, { desc = "Format with oxfmt CLI" })
 end
 
 return M

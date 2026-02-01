@@ -32,6 +32,9 @@ return {
         "phpactor",
         "pyright",
         "ruff",
+        "oxlint",
+        "oxfmt",
+        "expert",
       },
     },
     config = function(_, opts)
