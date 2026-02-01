@@ -121,3 +121,7 @@
     end\n\
     File.open(%(%A), %(w)) {|f| f.write(b)}\n\
     exit 1 if b.include?(%(<)*%L)'"
+# Trust directories owned by other users (e.g., Docker volumes)
+# Needed since Git 2.35.2 security fix for "dubious ownership" errors
+[safe]
+	directory = /Users/andres/OrbStack/docker/volumes/ash_learning_ash_learning_src
