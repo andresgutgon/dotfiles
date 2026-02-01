@@ -117,9 +117,6 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
-    -- Remove when this is fixed:
-    -- https://github.com/pmizio/typescript-tools.nvim/issues/379
-    commit = "675fe41a3d0d0b4482a4a783a7a92fbae2acbd61",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
@@ -127,9 +124,9 @@ return {
     opts = {},
     config = function()
       require("typescript-tools").setup({
-        root_dir = function(fname)
+        root_dir = function(bufnr, onDir)
           local util = require("lspconfig.util")
-          return util.root_pattern("pnpm-workspace.yaml", "tsconfig.base.json", "tsconfig.json", ".git")(fname)
+          return onDir(util.root_pattern(".git")(bufnr))
         end,
         settings = {
           separate_diagnostic_server = false,
