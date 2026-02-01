@@ -32,6 +32,9 @@ return {
         "phpactor",
         "pyright",
         "ruff",
+        "oxlint",
+        "oxfmt",
+        "expert",
       },
     },
     config = function(_, opts)
@@ -121,9 +124,9 @@ return {
     opts = {},
     config = function()
       require("typescript-tools").setup({
-        root_dir = function(fname)
+        root_dir = function(bufnr, onDir)
           local util = require("lspconfig.util")
-          return util.root_pattern("pnpm-workspace.yaml", "tsconfig.base.json", "tsconfig.json", ".git")(fname)
+          return onDir(util.root_pattern(".git")(bufnr))
         end,
         settings = {
           separate_diagnostic_server = false,

@@ -79,6 +79,9 @@ unsetopt nomatch
 # Erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
+# asdf version manager
+. "$(brew --prefix asdf)/libexec/asdf.sh"
+
 # ------------------------------
 # (Optional) Deduplicate PATH entries
 # ------------------------------
