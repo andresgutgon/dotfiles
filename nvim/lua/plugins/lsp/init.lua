@@ -32,7 +32,9 @@ return {
         "phpactor",
         "pyright",
         "ruff",
-        "oxlint",
+        -- Waiting for: https://github.com/mason-org/mason-registry/pull/13037
+        -- jsPlugins do not work in LSP 1.36
+        -- "oxlint",
         "oxfmt",
         "expert",
       },

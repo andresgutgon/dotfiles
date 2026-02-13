@@ -145,7 +145,7 @@ M.setup = function()
 
   -- Manually setup LSP servers that
   -- are not installed via mason-lspconfig
-  local manual_servers = {}
+  local manual_servers = { "oxlint" }
 
   for _, server in ipairs(manual_servers) do
     local ok, client = pcall(require, "plugins.lsp.clients." .. server)
