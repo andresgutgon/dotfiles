@@ -9,7 +9,13 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "nvim-lua/plenary.nvim",
-      "nvimtools/none-ls.nvim",
+      {
+        "nvimtools/none-ls.nvim",
+        dependencies = {
+          "nvim-lua/plenary.nvim",
+          "nvimtools/none-ls-extras.nvim",
+        },
+      },
       "jay-babu/mason-nvim-dap.nvim",
     },
     cmd = "Mason",
@@ -32,9 +38,7 @@ return {
         "phpactor",
         "pyright",
         "ruff",
-        -- Waiting for: https://github.com/mason-org/mason-registry/pull/13037
-        -- jsPlugins do not work in LSP 1.36
-        -- "oxlint",
+        "oxlint",
         "oxfmt",
         "expert",
       },
