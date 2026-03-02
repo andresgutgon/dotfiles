@@ -76,6 +76,9 @@ esac
 # ------------------------------
 unsetopt nomatch
 
+export EDITOR="nvim"
+export VISUAL="$EDITOR"
+
 # Erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
@@ -86,3 +89,4 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 # (Optional) Deduplicate PATH entries
 # ------------------------------
 typeset -U path PATH
+eval "$(mise activate zsh)"

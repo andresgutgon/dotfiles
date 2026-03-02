@@ -40,6 +40,7 @@ return {
         "ruff",
         "oxlint",
         "oxfmt",
+        "biome",
         "expert",
       },
     },

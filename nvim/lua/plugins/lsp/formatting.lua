@@ -43,6 +43,9 @@ M.setup = function()
 
       require("none-ls.formatting.oxfmt"),
 
+      null_ls.builtins.formatting.biome.with({
+        filetypes = { "javascript", "typescript", "typescriptreact", "json", "yaml", "markdown" },
+      }),
       null_ls.builtins.formatting.prettier.with({
         filetypes = { "javascript", "typescript", "typescriptreact", "json", "yaml", "markdown" },
       }),
