@@ -1,7 +1,9 @@
--- Turn off paste mode when leaving insert
-vim.api.nvim_create_autocmd("InsertLeave", {
+-- Disable auto-commenting on new lines
+vim.api.nvim_create_autocmd("BufEnter", {
   pattern = "*",
-  command = "set nopaste",
+  callback = function()
+    vim.opt.formatoptions:remove({ "c", "r", "o" })
+  end,
 })
 
 -- Disable the concealing in some file formats

@@ -99,3 +99,7 @@ keymap_set("n", "<leader>dt", toggle_git_diff, vim.tbl_extend("force", opts, { d
 keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
 keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
 keymap("n", "<leader>gl", ":Gitsigns blame_line<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame line" }))
+
+-- Better paste behavior - paste without auto-indent
+keymap("n", "<leader>v", '"+p', vim.tbl_extend("force", opts, { desc = "Paste from clipboard without auto-indent" }))
+keymap("n", "<leader>V", '"+P', vim.tbl_extend("force", opts, { desc = "Paste before cursor without auto-indent" }))
