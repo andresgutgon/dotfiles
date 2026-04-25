@@ -16,7 +16,6 @@ DOTFILES_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 # ZSH includes
 ln -sfv "$DOTFILES_DIR/zsh/alias.zsh" ~/.oh-my-zsh/custom/alias.zsh
-ln -sfv "$DOTFILES_DIR/zsh/virtualenvwrapper.zsh" ~/.oh-my-zsh/custom/virtualenvwrapper.zsh
 ln -sfv "$DOTFILES_DIR/zsh/fzf.zsh" ~/.oh-my-zsh/custom/fzf.zsh
 ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
 ln -sfv "$DOTFILES_DIR/zsh/lastscreenshot.zsh" ~/.oh-my-zsh/custom/lastscreenshot.zsh

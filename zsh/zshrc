@@ -16,11 +16,6 @@ plugins=(
   macos
   git
   tmux
-  bundler
-  rbenv
-  ruby
-  virtualenv
-  virtualenvwrapper
   zsh-syntax-highlighting
   zsh-nvm
 )
@@ -34,7 +29,6 @@ source $ZSH/oh-my-zsh.sh
 source "$ZSH/custom/alias.zsh"
 source "$ZSH/custom/fzf.zsh"
 source "$ZSH/custom/lastscreenshot.zsh"
-source "$ZSH/custom/virtualenvwrapper.zsh"
 source ~/.fzf.zsh
 
 # ------------------------------
@@ -82,13 +76,17 @@ export VISUAL="$EDITOR"
 # Erlang shell history
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-# asdf version manager
-. "$(brew --prefix asdf)/libexec/asdf.sh"
-
 # ------------------------------
-# (Optional) Deduplicate PATH entries
+# mise (Python, Ruby, Erlang, Elixir, etc.)
 # ------------------------------
-typeset -U path PATH
 eval "$(mise activate zsh)"
 
+# ------------------------------
+# Deduplicate PATH entries
+# ------------------------------
+typeset -U path PATH
+
+# ------------------------------
+# Warp terminal integration (if installed)
+# ------------------------------
 if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
