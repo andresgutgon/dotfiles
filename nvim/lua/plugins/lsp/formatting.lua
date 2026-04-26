@@ -31,6 +31,11 @@ M.setup = function()
         filetypes = { "sql" },
       }),
 
+      -- Gleam only
+      null_ls.builtins.formatting.gleam_format.with({
+        filetypes = { "gleam" },
+      }),
+
       -- Ruby only
       null_ls.builtins.diagnostics.rubocop.with({
         filetypes = { "ruby" },

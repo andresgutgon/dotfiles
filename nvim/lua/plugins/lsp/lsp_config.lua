@@ -130,7 +130,7 @@ M.setup = function()
   local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 
   require("mason-lspconfig").setup({
-    ensure_installed = { "lua_ls", "rust_analyzer" },
+    ensure_installed = { "lua_ls", "rust_analyzer", "gleam" },
     handlers = {
       function(server_name)
         local ok, client = pcall(require, "plugins.lsp.clients." .. server_name)
@@ -145,7 +145,7 @@ M.setup = function()
 
   -- Manually setup LSP servers that
   -- are not installed via mason-lspconfig
-  local manual_servers = { "gleam" }
+  local manual_servers = { }
 
   for _, server in ipairs(manual_servers) do
     local ok, client = pcall(require, "plugins.lsp.clients." .. server)
