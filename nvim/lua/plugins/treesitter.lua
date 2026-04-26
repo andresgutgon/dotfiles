@@ -19,6 +19,7 @@ return {
         "php",
         "css",
         "gitignore",
+        "gleam",
         "http",
         "rust",
         "vimdoc",

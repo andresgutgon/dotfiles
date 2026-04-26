@@ -21,6 +21,16 @@ M.setup = function()
         filetypes = { "lua" },
       }),
 
+      -- CSS only
+      null_ls.builtins.formatting.stylelint.with({
+        filetypes = { "css", "scss", "less" },
+      }),
+
+      -- SQL only
+      null_ls.builtins.formatting.sql_formatter.with({
+        filetypes = { "sql" },
+      }),
+
       -- Ruby only
       null_ls.builtins.diagnostics.rubocop.with({
         filetypes = { "ruby" },

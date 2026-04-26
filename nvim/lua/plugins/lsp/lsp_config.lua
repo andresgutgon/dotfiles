@@ -145,14 +145,14 @@ M.setup = function()
 
   -- Manually setup LSP servers that
   -- are not installed via mason-lspconfig
-  local manual_servers = {}
+  local manual_servers = { "gleam" }
 
   for _, server in ipairs(manual_servers) do
     local ok, client = pcall(require, "plugins.lsp.clients." .. server)
     if ok and client.setup then
       client.setup(on_attach, capabilities)
     else
-      vim.notify("[LSP] Manual LSP '" .. server .. "' not found", vim.log.levels.WARN)
+      vim.lsp.enable(server)
     end
   end
 end

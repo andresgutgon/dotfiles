@@ -34,7 +34,7 @@ return {
         "copilot-language-server",
         "flake8",
         "rubocop",
-        "sqlls",
+        "sqls",
         "phpactor",
         "pyright",
         "ruff",
@@ -42,6 +42,8 @@ return {
         "oxfmt",
         "biome",
         "expert",
+        "sql-formatter",
+        "stylelint",
       },
     },
     config = function(_, opts)
