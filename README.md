@@ -1,24 +1,30 @@
 ## dotfiles
+
 ========
 This are the docfiles I use to set up my Terminal (iTerm).
 
 ## Copy & paste from Nvim to Mac OSX
+
 Put in visual mode and select what you want. Then `+y` (Thanks ChatGPT 🤯, I've
 being living without this for years)
 
 ## iTerm
+
 Go to Preferences (⌘ + ,) > preferences and click the checkbox that says `Load preferences from a custom URL folder` then sync with a folder in your dotfiles. In my case it's called `iterm` how original.
 
 ## Terminal theme
+
 https://github.com/mdo/ocean-terminal
 
 ## Dependencies
+
 These packages need to be installed in Mac OS X
 
 1. For Telescope: `brew install ripgrep`
 2. For `nvim-spectre`: `brew install gnu-sed` & `brew install ripgrep`
 
 ## Nerd fonts
+
 To setup a custom font (in this case Nerd Font) go to:
 https://www.nerdfonts.com/font-downloads
 and download it. Install it with Mac OS X fonts and you're good to go.
@@ -26,6 +32,15 @@ and download it. Install it with Mac OS X fonts and you're good to go.
 Then if you're using iTerm go to Preferences (⌘ + ,) > Profiles > Text > Font and select `Hack` as your terminal fornt.
 Already done in my case because I store iTerm preferences in my dotfiles
 
-## Vim registers
-Nice post about [using vim registers](https://www.brianstorti.com/vim-registers/)
+## How to convert a video to a gif
 
+1. Install `ffmpeg` with `brew install ffmpeg`
+2. Instal `gifski` with `brew install gifski`
+
+```bash
+ffmpeg -i ~/Desktop/my-video.mov -f yuv4mpegpipe - | gifski -o ~/Desktop/my-gif-from-my-video.gif -
+```
+
+## Vim registers
+
+Nice post about [using vim registers](https://www.brianstorti.com/vim-registers/)
