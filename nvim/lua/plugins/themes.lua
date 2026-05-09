@@ -7,6 +7,12 @@ local DEFAULT_THEME_DARK = "catppuccin"
 local DEFAULT_THEME_LIGHT = "flexoki"
 local DEFAULT_THEME_MODE = "dark"
 
+local CODE_HOME = vim.fn.expand("~/code/")
+
+local FUN_DIRS = {
+  "opensource/gleam-learning",
+}
+
 local THEMES = {
   { name = "catppuccin", background = "dark" },
   {
@@ -43,12 +49,30 @@ local function cycle_theme()
   Snacks.notify(entry.name, { title = "Theme" })
 end
 
+local function is_fun_dir()
+  local cwd = vim.fn.getcwd()
+  for _, dir in ipairs(FUN_DIRS) do
+    if cwd:find(CODE_HOME .. dir, 1, true) == 1 then return true end
+  end
+end
+
+local function apply_dir_theme()
+  local entry = vim.iter(THEMES):find(function(t)
+    return t.name == (is_fun_dir() and "evergarden" or DEFAULT_THEME_DARK)
+  end)
+  if entry then apply_theme(entry) end
+end
+
 local function init_theme()
   vim.o.background = DEFAULT_THEME_MODE
   local theme = DEFAULT_THEME_MODE == "dark" and DEFAULT_THEME_DARK or DEFAULT_THEME_LIGHT
   vim.cmd("colorscheme " .. theme)
   vim.keymap.set("n", "<leader>tl", toggle_light, { desc = "Toggle light/dark mode" })
   vim.keymap.set("n", "<leader>tt", cycle_theme, { desc = "Cycle themes" })
+
+  vim.api.nvim_create_autocmd({ "VimEnter", "DirChanged" }, {
+    callback = apply_dir_theme,
+  })
 end
 
 return {
