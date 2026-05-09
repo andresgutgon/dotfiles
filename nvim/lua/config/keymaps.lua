@@ -97,7 +97,6 @@ keymap("n", "<leader>dd", ":windo diffthis<CR>", opts)
 keymap("n", "<leader>do", ":diffoff!<CR>", opts)
 keymap_set("n", "<leader>dt", toggle_git_diff, vim.tbl_extend("force", opts, { desc = "Toggle diff current file against changes in git" }))
 keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
-keymap("n", "<leader>gf", ":Gitsigns blame<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame file" }))
 keymap("n", "<leader>gl", ":Gitsigns blame_line<CR>", vim.tbl_extend("force", opts, { desc = "Git Blame line" }))
 
 -- Better paste behavior - paste without auto-indent
