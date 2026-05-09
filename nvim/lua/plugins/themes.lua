@@ -10,7 +10,8 @@ local DEFAULT_THEME_MODE = "dark"
 local CODE_HOME = vim.fn.expand("~/code/")
 
 local FUN_DIRS = {
-  "opensource/gleam-learning",
+  CODE_HOME .. "opensource/gleam-learning",
+  vim.fn.expand("~/dotfiles"),
 }
 
 local THEMES = {
@@ -52,7 +53,7 @@ end
 local function is_fun_dir()
   local cwd = vim.fn.getcwd()
   for _, dir in ipairs(FUN_DIRS) do
-    if cwd:find(CODE_HOME .. dir, 1, true) == 1 then return true end
+    if cwd:find(dir, 1, true) == 1 then return true end
   end
 end
 
