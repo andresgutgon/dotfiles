@@ -8,6 +8,28 @@
 -- stylua: ignore start
 local file_manager = require("plugins.editor.file_manager")
 
+-- Only show colorschemes that are actually installed (i.e. inside stdpath("data")).
+-- Without this filter Snacks would also list built-in Vim themes, which we never want.
+local function installed_colorschemes()
+  local data = vim.fn.stdpath("data")
+  Snacks.picker.colorschemes({
+    finder = function()
+      local rtp = vim.o.runtimepath
+      if package.loaded.lazy then
+        rtp = rtp .. "," .. table.concat(require("lazy.core.util").get_unloaded_rtp(""), ",")
+      end
+      local items = {}
+      for _, file in ipairs(vim.fn.globpath(rtp, "colors/*", false, true)) do
+        local ext = vim.fn.fnamemodify(file, ":e")
+        if (ext == "vim" or ext == "lua") and file:find(data, 1, true) then
+          items[#items + 1] = { text = vim.fn.fnamemodify(file, ":t:r"), file = file }
+        end
+      end
+      return items
+    end,
+  })
+end
+
 local plugins = {
   { "JoosepAlviste/nvim-ts-context-commentstring" },
   { "nvim-mini/mini.icons",                       version = false },
@@ -30,8 +52,11 @@ local plugins = {
       { "<leader>e",       function() Snacks.explorer() end,                     desc = "File Explorer" },
       -- git
       { "<leader>lg",      function() Snacks.lazygit.open() end,                 desc = "Open Lazygit" },
+      ---@diagnostic disable-next-line: undefined-field
       { "<leader>gws",     function() Snacks.picker.worktrees() end,             desc = "Switch worktrees" },
+      ---@diagnostic disable-next-line: undefined-field
       { "<leader>gwn",     function() Snacks.picker.worktrees_new() end,         desc = "New worktree" },
+      ---@diagnostic disable-next-line: undefined-field
       { "<leader>gwr",     function() Snacks.picker.worktrees_remove() end,      desc = "Remove worktree" },
       -- Grep
       { "<leader>sb",      function() Snacks.picker.lines() end,                 desc = "Buffer Lines" },
@@ -48,7 +73,7 @@ local plugins = {
       { "<leader>sk",      function() Snacks.picker.keymaps() end,               desc = "Keymaps" },
       { "<leader>sM",      function() Snacks.picker.man() end,                   desc = "Man Pages" },
       { "<leader>su",      function() Snacks.picker.undo() end,                  desc = "Undo History" },
-      { "<leader>uC",      function() Snacks.picker.colorschemes() end,          desc = "Colorschemes" },
+      { "<leader>uC",      installed_colorschemes,                               desc = "My Colorschemes" },
       -- LSP
       { "gd",              function() Snacks.picker.lsp_definitions() end,       desc = "Goto Definition" },
       { "gD",              function() Snacks.picker.lsp_declarations() end,      desc = "Goto Declaration" },

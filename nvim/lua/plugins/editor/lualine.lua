@@ -86,7 +86,7 @@ function M.setup()
   -- stylua: ignore
   require("lualine").setup({
     options = {
-      theme = 'catppuccin',
+      theme = 'auto',
       icons_enabled = true,
       component_separators = { left = "", right = "" },
       section_separators = { left = "", right = "" },
