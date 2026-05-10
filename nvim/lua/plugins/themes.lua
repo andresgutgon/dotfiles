@@ -11,6 +11,7 @@ local CODE_HOME = vim.fn.expand("~/code/")
 
 local FUN_DIRS = {
   CODE_HOME .. "opensource/gleam-learning",
+  CODE_HOME .. "opensource/gleam/gquery",
   vim.fn.expand("~/dotfiles"),
 }
 
