@@ -10,8 +10,7 @@ local DEFAULT_THEME_MODE = "dark"
 local CODE_HOME = vim.fn.expand("~/code/")
 
 local FUN_DIRS = {
-  CODE_HOME .. "opensource/gleam-learning",
-  CODE_HOME .. "opensource/gleam/gquery",
+  CODE_HOME .. "opensource/gleam",
   vim.fn.expand("~/dotfiles"),
 }
 
