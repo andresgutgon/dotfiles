@@ -1,12 +1,33 @@
 #!/usr/bin/env bash
 # Claude Code status line
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+LATITUDE_64=$(cat "$SCRIPT_DIR/latitude-logo.txt" 2>/dev/null)
+
 input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name')
-# five_hour=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0')
-five_hour=90
+five_hour=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0')
 seven_day=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0')
+
+claude_json=$(cat ~/.claude.json 2>/dev/null)
+email=$(echo "$claude_json" | jq -r '.oauthAccount.emailAddress // ""')
+display_name=$(echo "$claude_json" | jq -r '.oauthAccount.displayName // "Me"')
+org_type=$(echo "$claude_json" | jq -r '.oauthAccount.organizationType // ""')
+
+case "$org_type" in
+  claude_pro)         plan="Pro" ;;
+  claude_max_5x)      plan="Max 5x" ;;
+  claude_max_20x)     plan="Max 20x" ;;
+  claude_team*)       plan="Team" ;;
+  claude_enterprise*) plan="Enterprise" ;;
+  free|claude_free)   plan="Free" ;;
+  *)                  plan="$org_type" ;;
+esac
+
+is_personal=false
+[[ "$email" == *@gmail.com ]] && is_personal=true
+latitude_logo=$(printf '\033]1337;File=inline=1;width=auto;height=auto:%s\a' "$LATITUDE_64")
 
 RESET=$'\033[0m'
 GRAY=$'\033[38;2;160;160;160m'
@@ -40,9 +61,17 @@ five_bar=$(bar "$five_hour")
 seven_bar=$(bar "$seven_day")
 
 printf "⠀\n\n"
-printf "%s  5h %s %s%d%%%s  7d %s %s%d%%%s  %s%s%s\n" \
-  "${DIM}andresgutgon@gmail.com${RESET}" \
-  "$five_bar" "$GRAY" "$five_hour" "$RESET" \
-  "$seven_bar" "$GRAY" "$seven_day" "$RESET" \
-  "${MAGENTA}" "$model" "${RESET}"
+if $is_personal; then
+  printf "${DIM}%s – %s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s  %s%s%s\n" \
+    "$display_name" "$plan" \
+    "$five_bar" "$GRAY" "$five_hour" "$RESET" \
+    "$seven_bar" "$GRAY" "$seven_day" "$RESET" \
+    "${MAGENTA}" "$model" "${RESET}"
+else
+  printf "%s\n" "$latitude_logo"
+  printf "  5h %s %s%d%%%s  7d %s %s%d%%%s  %s%s%s\n" \
+    "$five_bar" "$GRAY" "$five_hour" "$RESET" \
+    "$seven_bar" "$GRAY" "$seven_day" "$RESET" \
+    "${MAGENTA}" "$model" "${RESET}"
+fi
 printf "⠀\n"
