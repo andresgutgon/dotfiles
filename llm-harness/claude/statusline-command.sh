@@ -24,8 +24,18 @@
 input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name')
-five_hour=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage // 0')
-seven_day=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage // 0')
+five_hour_raw=$(echo "$input" | jq -r '.rate_limits.five_hour.used_percentage | if . != null then round else "null" end')
+seven_day_raw=$(echo "$input" | jq -r '.rate_limits.seven_day.used_percentage | if . != null then round else "null" end')
+
+rate_cache="${HOME}/.claude/statusline-rate-cache.json"
+
+if [[ "$five_hour_raw" != "null" && "$seven_day_raw" != "null" ]]; then
+  printf '{"five_hour":%s,"seven_day":%s}' "$five_hour_raw" "$seven_day_raw" > "$rate_cache"
+elif [[ -f "$rate_cache" ]]; then
+  cached=$(cat "$rate_cache")
+  [[ "$five_hour_raw" == "null" ]] && five_hour_raw=$(echo "$cached" | jq -r '.five_hour')
+  [[ "$seven_day_raw" == "null" ]] && seven_day_raw=$(echo "$cached" | jq -r '.seven_day')
+fi
 
 claude_json=$(cat ~/.claude.json 2>/dev/null)
 email=$(echo "$claude_json" | jq -r '.oauthAccount.emailAddress // ""')
@@ -75,8 +85,21 @@ bar() {
   printf "%s" "$b"
 }
 
-five_bar=$(bar "$five_hour")
-seven_bar=$(bar "$seven_day")
+if [[ "$five_hour_raw" != "null" ]]; then
+  five_bar=$(bar "$five_hour_raw")
+  five_pct="${GRAY}${five_hour_raw}%${RESET}"
+else
+  five_bar="${DIM}──────────${RESET}"
+  five_pct="${DIM}–${RESET}"
+fi
+
+if [[ "$seven_day_raw" != "null" ]]; then
+  seven_bar=$(bar "$seven_day_raw")
+  seven_pct="${GRAY}${seven_day_raw}%${RESET}"
+else
+  seven_bar="${DIM}──────────${RESET}"
+  seven_pct="${DIM}–${RESET}"
+fi
 
 if $is_personal; then
   label="${DIM}${display_name} – ${plan}${RESET}"
@@ -85,8 +108,8 @@ else
 fi
 
 printf "⠀\n"
-printf "%s ${DIM}–${RESET} ${MAGENTA}%s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s\n" \
+printf "%s ${DIM}–${RESET} ${MAGENTA}%s${RESET}  5h %s %s  7d %s %s\n" \
   "$label" "$model" \
-  "$five_bar" "$GRAY" "$five_hour" "$RESET" \
-  "$seven_bar" "$GRAY" "$seven_day" "$RESET"
+  "$five_bar" "$five_pct" \
+  "$seven_bar" "$seven_pct"
 printf "⠀\n"
