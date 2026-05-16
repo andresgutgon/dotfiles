@@ -65,6 +65,7 @@ BOLD=$'\033[1m'
 bar() {
   local pct=$1
   local filled=$(( pct * 10 / 100 ))
+  [[ $pct -gt 0 && $filled -eq 0 ]] && filled=1
   local empty=$(( 10 - filled ))
   local color
   if [ "$pct" -ge 90 ]; then
