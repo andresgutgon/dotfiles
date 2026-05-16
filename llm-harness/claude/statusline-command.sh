@@ -1,5 +1,25 @@
 #!/usr/bin/env bash
-# Claude Code status line
+# Claude Code status line.
+#
+# Latitude logo glyph:
+#   This script prints the Latitude logo from a patched HackNerdFontMono font.
+#   The font is patched by ~/dotfiles/latitude-font-patch/repatch.sh (re-run it
+#   after `brew upgrade` if the Hack Nerd Font has been updated).
+#
+#   Four sizes are available, mapped to consecutive Private Use Area code points:
+#     U+E000  $'\xEE\x80\x80'   1x   fits inside one terminal cell (baseline)
+#     U+E001  $'\xEE\x80\x81'   2x   small overflow into neighbouring cells
+#     U+E002  $'\xEE\x80\x82'   3x   moderate overflow
+#     U+E003  $'\xEE\x80\x83'   4x   big overflow (needs blank space around it)
+#
+#   The 2x/3x/4x variants are a single colored glyph whose outline deliberately
+#   extends past its cell. They rely on iTerm2 (and Core Text) allowing glyphs
+#   to overflow their cell. They DO render correctly inside tmux in practice
+#   because the surrounding cells in this status line are empty.
+#
+#   If you switch sizes and adjacent text/bars get clobbered by the logo's
+#   horizontal overflow, either drop a size or add padding spaces in `label`
+#   (line 64 below) immediately after ${latitude_logo}.
 
 input=$(cat)
 
@@ -24,7 +44,7 @@ esac
 
 is_personal=false
 [[ "$email" == *@gmail.com ]] && is_personal=false
-latitude_logo=$'\xEE\x80\x80'
+latitude_logo=$'\xEE\x80\x82' # U+E001=2x  U+E002=3x  U+E003=4x  U+E000=1x
 
 RESET=$'\033[0m'
 GRAY=$'\033[38;2;160;160;160m'
@@ -61,7 +81,7 @@ seven_bar=$(bar "$seven_day")
 if $is_personal; then
   label="${DIM}${display_name} – ${plan}${RESET}"
 else
-  label="${BOLD}${latitude_logo}${RESET}${DIM} – ${plan}${RESET}"
+  label="${BOLD}${latitude_logo}${RESET}${DIM}   – ${plan}${RESET}"
 fi
 
 printf "⠀\n"
