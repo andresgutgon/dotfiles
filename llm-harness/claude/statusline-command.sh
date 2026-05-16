@@ -85,7 +85,7 @@ else
 fi
 
 printf "⠀\n"
-printf "%s  ${MAGENTA}%s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s\n" \
+printf "%s ${DIM}–${RESET} ${MAGENTA}%s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s\n" \
   "$label" "$model" \
   "$five_bar" "$GRAY" "$five_hour" "$RESET" \
   "$seven_bar" "$GRAY" "$seven_day" "$RESET"
