@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Claude Code status line
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-LATITUDE_64=$(cat "$SCRIPT_DIR/latitude-logo.txt" 2>/dev/null)
-
 input=$(cat)
 
 model=$(echo "$input" | jq -r '.model.display_name')
@@ -26,13 +23,14 @@ case "$org_type" in
 esac
 
 is_personal=false
-[[ "$email" == *@gmail.com ]] && is_personal=true
-latitude_logo=$(printf '\033]1337;File=inline=1;width=auto;height=auto:%s\a' "$LATITUDE_64")
+[[ "$email" == *@gmail.com ]] && is_personal=false
+latitude_logo=$'\xEE\x80\x80'
 
 RESET=$'\033[0m'
 GRAY=$'\033[38;2;160;160;160m'
 MAGENTA=$'\033[35m'
 DIM=$'\033[2m'
+BOLD=$'\033[1m'
 
 bar() {
   local pct=$1
@@ -60,18 +58,15 @@ bar() {
 five_bar=$(bar "$five_hour")
 seven_bar=$(bar "$seven_day")
 
-printf "⠀\n\n"
 if $is_personal; then
-  printf "${DIM}%s – %s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s  %s%s%s\n" \
-    "$display_name" "$plan" \
-    "$five_bar" "$GRAY" "$five_hour" "$RESET" \
-    "$seven_bar" "$GRAY" "$seven_day" "$RESET" \
-    "${MAGENTA}" "$model" "${RESET}"
+  label="${DIM}${display_name} – ${plan}${RESET}"
 else
-  printf "%s\n" "$latitude_logo"
-  printf "  5h %s %s%d%%%s  7d %s %s%d%%%s  %s%s%s\n" \
-    "$five_bar" "$GRAY" "$five_hour" "$RESET" \
-    "$seven_bar" "$GRAY" "$seven_day" "$RESET" \
-    "${MAGENTA}" "$model" "${RESET}"
+  label="${BOLD}${latitude_logo}${RESET}${DIM} – ${plan}${RESET}"
 fi
+
+printf "⠀\n"
+printf "%s  ${MAGENTA}%s${RESET}  5h %s %s%d%%%s  7d %s %s%d%%%s\n" \
+  "$label" "$model" \
+  "$five_bar" "$GRAY" "$five_hour" "$RESET" \
+  "$seven_bar" "$GRAY" "$seven_day" "$RESET"
 printf "⠀\n"

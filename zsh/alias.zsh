@@ -7,6 +7,10 @@ alias -g egrep="egrep --color=always"
 # NeoVim
 alias neo="nvim"
 
+# Latitude logo glyph patch for HackNerdFontMono. Run after `brew upgrade` if
+# the Hack Nerd Font has been updated. See ~/dotfiles/latitude-font-patch/.
+alias repatch-font="$HOME/dotfiles/latitude-font-patch/repatch.sh"
+
 # Git
 alias gp="git pull"
 alias gps="git push"
