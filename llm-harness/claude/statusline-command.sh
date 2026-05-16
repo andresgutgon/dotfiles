@@ -43,7 +43,7 @@ case "$org_type" in
 esac
 
 is_personal=false
-[[ "$email" == *@gmail.com ]] && is_personal=false
+[[ "$email" == *@gmail.com ]] && is_personal=true
 latitude_logo=$'\xEE\x80\x82' # U+E001=2x  U+E002=3x  U+E003=4x  U+E000=1x
 
 RESET=$'\033[0m'
