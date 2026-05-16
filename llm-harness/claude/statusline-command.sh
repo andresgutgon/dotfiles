@@ -17,16 +17,19 @@ bar() {
   local pct=$1
   local filled=$(( pct * 10 / 100 ))
   local empty=$(( 10 - filled ))
-  local b=""
+  local color
+  if [ "$pct" -ge 90 ]; then
+    color=$'\033[38;2;220;110;110m'
+  elif [ "$pct" -ge 40 ]; then
+    color=$'\033[38;2;210;190;100m'
+  else
+    color=$'\033[38;2;110;200;110m'
+  fi
+  local b="${color}"
   for ((i=0; i<filled; i++)); do
-    local v=$(( 80 + i * 175 / 9 ))
     local tip="━"
     (( i == filled - 1 )) && tip="╸"
-    if [ "$pct" -ge 80 ]; then
-      b+=$'\033'"[38;2;${v};100;100m${tip}"
-    else
-      b+=$'\033'"[38;2;100;${v};100m${tip}"
-    fi
+    b+="${tip}"
   done
   b+="${RESET}"
   for ((i=0; i<empty; i++)); do b+="─"; done
