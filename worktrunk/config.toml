@@ -2,4 +2,4 @@
 check = "git status --short"
 
 [aliases]
-promote = "wt remove --no-delete-branch --yes --foreground && wt switch {{ branch }}"
+promote = "wt remove --no-delete-branch --yes --foreground && wt -C {{ primary_worktree_path }} switch {{ branch }}"
