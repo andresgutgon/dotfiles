@@ -1,0 +1,5 @@
+[[aliases.land]]
+check = "git status --short"
+
+[aliases]
+promote = "wt remove --no-delete-branch --yes && wt switch {{ branch }}"
