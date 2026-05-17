@@ -1,5 +1,12 @@
-[[aliases.land]]
-check = "git status --short"
-
 [aliases]
+# Start a new worktree with the given branch name, based on main
+start = "wt switch --create {{ args }} --base main"
+
+# Start a new worktree with the given branch name, based on development
+dev_start = "wt switch --create {{ args }} --base development"
+
+# Start a new worktree with the given branch name, based on master
+master_start = "wt switch --create {{ args }} --base master"
+
+# End with this worktree
 promote = "wt remove --no-delete-branch --yes --foreground {{ branch }} && git -C {{ primary_worktree_path }} checkout {{ branch }}"
