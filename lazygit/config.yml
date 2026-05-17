@@ -31,13 +31,13 @@ customCommands:
       NEW_PATH=$(git worktree list | grep -F "[$BRANCH]" | awk '{print $1}');
       echo "$NEW_PATH" > ~/.nvim_cwd;
       [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $NEW_PATH')" 2>/dev/null;
-      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr 'execute("bdelete!")' 2>/dev/null;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null;
       fi
 
   - key: '<space>'
     description: 'Switch to this worktree (nvim + shell)'
     context: 'worktrees'
-    command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''cd {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr ''execute("bdelete!")'' 2>/dev/null'
+    command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''cd {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null'
 
   - key: 'p'
     description: 'Promote worktree (wt promote)'
