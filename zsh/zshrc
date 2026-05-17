@@ -93,3 +93,16 @@ if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)
 
 # bun completions
 [ -s "/Users/andres/.bun/_bun" ] && source "/Users/andres/.bun/_bun"
+
+# ------------------------------
+# cd to worktree path written by lazygit when nvim is stopped in background
+# ------------------------------
+function _nvim_cwd_precmd() {
+  if [[ -f ~/.nvim_cwd ]] && jobs | grep -q nvim; then
+    local new_cwd
+    new_cwd=$(< ~/.nvim_cwd)
+    rm -f ~/.nvim_cwd
+    [[ -d "$new_cwd" ]] && cd "$new_cwd"
+  fi
+}
+add-zsh-hook precmd _nvim_cwd_precmd

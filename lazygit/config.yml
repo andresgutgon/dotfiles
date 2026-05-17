@@ -1,0 +1,51 @@
+gui:
+  skipDiscardChangeWarning: true
+
+customCommands:
+  - key: 'n'
+    description: 'New worktree (wt switch --create)'
+    context: 'worktrees'
+    loadingText: 'Creating worktree...'
+    prompts:
+      - type: 'menu'
+        title: 'Branch prefix'
+        key: 'Prefix'
+        options:
+          - name: 'feature/'
+            value: 'feature/'
+          - name: 'fix/'
+            value: 'fix/'
+          - name: 'none'
+            value: ''
+      - type: 'input'
+        title: 'Branch name'
+        key: 'BranchName'
+    command: >-
+      BRANCH="{{.Form.Prefix}}{{.Form.BranchName}}";
+      BASE=$(case $(git rev-parse --show-toplevel) in
+      (*latitude/data-llm) echo development;;
+      (*latitude/llm) echo latitude-v1;;
+      (*) echo main;; esac);
+      if (git show-ref --verify --quiet refs/heads/$BRANCH && wt switch $BRANCH ||
+      wt switch --create $BRANCH --base $BASE); then
+      NEW_PATH=$(git worktree list | grep -F "[$BRANCH]" | awk '{print $1}');
+      echo "$NEW_PATH" > ~/.nvim_cwd;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $NEW_PATH')" 2>/dev/null;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr 'execute("bdelete!")' 2>/dev/null;
+      fi
+
+  - key: '<space>'
+    description: 'Switch to this worktree (nvim + shell)'
+    context: 'worktrees'
+    command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''cd {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr ''execute("bdelete!")'' 2>/dev/null'
+
+  - key: 'p'
+    description: 'Promote worktree (wt promote)'
+    context: 'worktrees'
+    command: >-
+      BRANCH=$(git branch --show-current);
+      PRIMARY=$(git worktree list | awk 'NR==1{print $1}');
+      echo "$PRIMARY" > ~/.nvim_cwd;
+      nohup sh -c "sleep 2 && wt remove --no-delete-branch --yes '$BRANCH' && git -C '$PRIMARY' checkout '$BRANCH'" >/tmp/wt_promote.log 2>&1 &;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $PRIMARY')" 2>/dev/null;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null
