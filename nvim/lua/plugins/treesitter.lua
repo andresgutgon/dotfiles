@@ -26,6 +26,7 @@ return {
         "sql",
         "javascript",
         "typescript",
+        "tsx",
         "python",
         "svelte",
         "markdown",

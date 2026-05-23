@@ -44,6 +44,7 @@ return {
         "expert",
         "sql-formatter",
         "stylelint",
+        "tsgo",
       },
     },
     config = function(_, opts)
@@ -123,44 +124,6 @@ return {
         desc = "Document errors",
       },
     },
-  },
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "neovim/nvim-lspconfig",
-    },
-    opts = {},
-    config = function()
-      require("typescript-tools").setup({
-        root_dir = function(bufnr, onDir)
-          local util = require("lspconfig.util")
-          return onDir(util.root_pattern(".git")(bufnr))
-        end,
-        settings = {
-          separate_diagnostic_server = false,
-          tsserver_file_preferences = {
-            includeCompletionsForModuleExports = true,
-            allowRenameOfImportPath = true,
-            includeInlayParameterNameHints = "all",
-          },
-          tsserver = {
-            watchOptions = {
-              watchFile = "useFsEvents", -- or "usePolling" if issues persist
-              watchDirectory = "useFsEvents",
-              excludeDirectories = {
-                "node_modules",
-                ".pnpm",
-                ".next",
-                "dist",
-                "build",
-                "coverage",
-              },
-            },
-          },
-        },
-      })
-    end,
   },
   {
     "neovim/nvim-lspconfig",
