@@ -40,18 +40,6 @@ fi
 claude_json=$(cat ~/.claude.json 2>/dev/null)
 email=$(echo "$claude_json" | jq -r '.oauthAccount.emailAddress // ""')
 display_name=$(echo "$claude_json" | jq -r '.oauthAccount.displayName // "Me"')
-org_type=$(echo "$claude_json" | jq -r '.oauthAccount.organizationType // ""')
-
-case "$org_type" in
-  claude_pro)         plan="Pro" ;;
-  claude_max_5x)      plan="Max 5x" ;;
-  claude_max_20x)     plan="Max 20x" ;;
-  claude_team*)       plan="Team" ;;
-  claude_enterprise*) plan="Enterprise" ;;
-  free|claude_free)   plan="Free" ;;
-  *)                  plan="$org_type" ;;
-esac
-
 is_personal=false
 [[ "$email" == *@gmail.com ]] && is_personal=true
 latitude_logo=$'\xEE\x80\x82' # U+E001=2x  U+E002=3x  U+E003=4x  U+E000=1x
@@ -103,9 +91,9 @@ else
 fi
 
 if $is_personal; then
-  label="${DIM}${display_name} – ${plan}${RESET}"
+  label="${DIM}${display_name}${RESET} "
 else
-  label="${BOLD}${latitude_logo}${RESET}${DIM}   – ${plan}${RESET}"
+  label="${BOLD}${latitude_logo}${RESET} "
 fi
 
 printf "⠀\n"
