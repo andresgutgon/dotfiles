@@ -50,6 +50,85 @@ keymap("n", "m", ":resize +5<CR>", opts)
 keymap("n", "mm", ":vertical resize +10<CR>", opts)
 keymap("n", "qq", ":vertical resize -10<CR>", opts)
 
+-- Resize splits with Option+Shift + arrow keys.
+-- Arrow points in the direction the active boundary moves:
+-- grows when there's a real neighbor on that side, shrinks when at the edge.
+-- Helper panels (neo-tree, quickfix, etc.) are ignored so they don't count as neighbors.
+local RESIZE_SKIP_FT = {
+  ["neo-tree"] = true,
+  ["neo-tree-popup"] = true,
+  notify = true,
+  NvimTree = true,
+  qf = true,
+  help = true,
+  Trouble = true,
+  trouble = true,
+  aerial = true,
+  Outline = true,
+}
+local RESIZE_SKIP_BT = { quickfix = true }
+
+-- Run `fn` with only the listed windows free to resize; all other windows
+-- are temporarily pinned (winfixwidth/winfixheight) so the freed space
+-- is forced to flow into the unpinned ones. Original pin state is restored.
+local function with_only_unpinned(unpinned, fn)
+  local set = {}
+  for _, w in ipairs(unpinned) do set[w] = true end
+  local saved = {}
+  for _, w in ipairs(vim.api.nvim_list_wins()) do
+    saved[w] = { ww = vim.wo[w].winfixwidth, wh = vim.wo[w].winfixheight }
+    local pin = not set[w]
+    vim.wo[w].winfixwidth = pin
+    vim.wo[w].winfixheight = pin
+  end
+  local ok, err = pcall(fn)
+  for w, s in pairs(saved) do
+    if vim.api.nvim_win_is_valid(w) then
+      vim.wo[w].winfixwidth = s.ww
+      vim.wo[w].winfixheight = s.wh
+    end
+  end
+  if not ok then error(err) end
+end
+
+local function smart_resize(dir, amount)
+  local axes = {
+    left = { wincmd = "h", resize = "vertical resize" },
+    right = { wincmd = "l", resize = "vertical resize" },
+    up = { wincmd = "k", resize = "resize" },
+    down = { wincmd = "j", resize = "resize" },
+  }
+  local a = axes[dir]
+  local cur = vim.fn.winnr()
+  local nb = vim.fn.winnr(a.wincmd)
+  local has_neighbor = nb ~= cur
+  if has_neighbor then
+    local nb_buf = vim.api.nvim_win_get_buf(vim.fn.win_getid(nb))
+    local ft = vim.bo[nb_buf].filetype
+    local bt = vim.bo[nb_buf].buftype
+    if RESIZE_SKIP_FT[ft] or RESIZE_SKIP_BT[bt] then
+      has_neighbor = false
+    end
+  end
+  if has_neighbor then
+    local cur_id = vim.api.nvim_get_current_win()
+    local nb_id = vim.fn.win_getid(nb)
+    with_only_unpinned({ cur_id, nb_id }, function()
+      vim.fn.win_execute(nb_id, a.resize .. " -" .. amount)
+    end)
+    return
+  end
+  local cur_id = vim.api.nvim_get_current_win()
+  with_only_unpinned({ cur_id }, function()
+    vim.cmd(a.resize .. " -" .. amount)
+  end)
+end
+
+keymap_set({ "n", "i", "v", "t" }, "<M-S-Left>", function() smart_resize("left", 7) end, opts)
+keymap_set({ "n", "i", "v", "t" }, "<M-S-Right>", function() smart_resize("right", 7) end, opts)
+keymap_set({ "n", "i", "v", "t" }, "<M-S-Up>", function() smart_resize("up", 4) end, opts)
+keymap_set({ "n", "i", "v", "t" }, "<M-S-Down>", function() smart_resize("down", 4) end, opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
