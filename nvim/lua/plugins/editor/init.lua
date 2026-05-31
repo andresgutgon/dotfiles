@@ -248,6 +248,33 @@ local plugins = {
       })
     end,
   },
+  {
+    "catgoose/nvim-colorizer.lua",
+    event = "BufReadPre",
+    opts = {
+      filetypes = { "*" },
+      options = {
+        parsers = {
+          hex = { default = true, rrggbbaa = true, hash_aarrggbb = true },
+          rgb = { enable = true },
+          hsl = { enable = true },
+          oklch = { enable = true },
+          names = { enable = false },
+          tailwind = { enable = true, lsp = true },
+          sass = { enable = true, parsers = { css = true } },
+          css_var = { enable = true, parsers = { css = true } },
+        },
+        display = {
+          mode = "virtualtext",
+          virtualtext = {
+            char = "■",
+            position = "after",
+            hl_mode = "foreground",
+          },
+        },
+      },
+    },
+  }
 }
 
 for _, plugin in ipairs(file_manager) do

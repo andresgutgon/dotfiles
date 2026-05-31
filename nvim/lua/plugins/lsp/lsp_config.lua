@@ -143,9 +143,11 @@ M.setup = function()
     },
   })
 
-  -- Manually setup LSP servers that
-  -- are not installed via mason-lspconfig
-  local manual_servers = { "gleam", "tailwindcss", "tsgo" }
+  -- Manually setup LSP servers that need a clients/<name>.lua override.
+  -- (mason-lspconfig 2.x dropped the `handlers` option above, so the only way a
+  -- clients/<name>.lua runs is through this loop; "cssls" is here to apply its
+  -- unknownAtRules override — otherwise css-lsp boots with default config.)
+  local manual_servers = { "gleam", "tailwindcss", "tsgo", "cssls" }
 
   for _, server in ipairs(manual_servers) do
     local ok, client = pcall(require, "plugins.lsp.clients." .. server)
