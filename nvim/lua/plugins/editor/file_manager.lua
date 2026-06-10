@@ -26,8 +26,12 @@ return {
             enabled = true, -- Auto-follow current file
             leave_dirs_open = false,
           },
-          use_libuv_file_watcher = true, -- Auto-refresh when files change externally
-          scan_mode = "deep", -- Scan subdirectories for changes
+          -- libuv merges all watchers into one macOS FSEventStream and rebuilds
+          -- it on every add/remove (each expanded folder = one watcher). The
+          -- rebuild flakily fails on macOS and libuv broadcasts EMFILE to every
+          -- watcher in the process (the "file_event_callback: EMFILE" wall).
+          -- false = refresh via autocmds (writes/focus) instead of watchers.
+          use_libuv_file_watcher = false,
           filtered_items = {
             never_show = { ".DS_Store", "thumbs.db" },
             hide_dotfiles = false,
