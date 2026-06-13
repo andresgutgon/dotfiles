@@ -157,6 +157,24 @@ return {
         desc = "Detach a CLI Session",
       },
       {
+        "<leader>aK",
+        function()
+          -- Actually KILL this worktree's agent. sidekick's close()/<leader>ad
+          -- only detaches the nvim terminal; the tmux session keeps running. We
+          -- kill the underlying tmux session so the claude process is gone.
+          local State = require("sidekick.cli.state")
+          local cwd = require("sidekick.cli.session").cwd()
+          for _, s in ipairs(State.get({ name = "claude" })) do
+            if s.session and s.session.cwd == cwd and s.session.mux_session then
+              vim.fn.jobstart({ "tmux", "kill-session", "-t", s.session.mux_session })
+              return
+            end
+          end
+          vim.notify("No claude agent found for " .. cwd, vim.log.levels.WARN)
+        end,
+        desc = "Kill this worktree's agent",
+      },
+      {
         "<leader>at",
         function()
           require("sidekick.cli").send({ msg = "{this}", filter = { cwd = true } })
