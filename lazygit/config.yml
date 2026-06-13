@@ -44,6 +44,10 @@ customCommands:
     context: 'worktrees'
     command: >-
       WT='{{.SelectedWorktree.Path}}';
+      if [ -n "$(git -C "$WT" status --porcelain)" ]; then
+      echo "Promote aborted: $WT has uncommitted changes. Commit or stash first." >&2;
+      exit 1;
+      fi;
       BRANCH=$(git -C "$WT" branch --show-current);
       PRIMARY=$(git -C "$WT" worktree list | awk 'NR==1{print $1}');
       echo "$PRIMARY" > ~/.nvim_cwd;
