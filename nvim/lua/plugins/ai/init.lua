@@ -8,9 +8,11 @@
 local PLAN_FINDER = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h") .. "/find_plan.py"
 local worktree = require("utils.worktree")
 
--- Resolve the cwd of the focused (or otherwise visible) sidekick terminal,
--- using the session id sidekick stamps onto its terminal window.
-local function sidekick_panel_cwd()
+-- Resolve the sidekick session shown in the focused (or otherwise visible)
+-- terminal, using the session id sidekick stamps onto its terminal window.
+-- This targets "the agent I'm looking at" regardless of nvim's cwd, which can
+-- drift away from the agent (e.g. after a promote `cd` or an agent `/cd`).
+local function sidekick_panel_session()
   local ok, State = pcall(require, "sidekick.cli.state")
   if not ok then
     return nil
@@ -19,10 +21,10 @@ local function sidekick_panel_cwd()
   if not ok_states or type(states) ~= "table" then
     return nil
   end
-  local function cwd_for(session_id)
+  local function by_id(session_id)
     for _, st in ipairs(states) do
-      if st.session and st.session.id == session_id and st.session.cwd then
-        return st.session.cwd
+      if st.session and st.session.id == session_id then
+        return st
       end
     end
   end
@@ -36,12 +38,17 @@ local function sidekick_panel_cwd()
   for _, w in ipairs(wins) do
     local okv, sid = pcall(vim.api.nvim_win_get_var, w, "sidekick_session_id")
     if okv and sid and sid ~= "" then
-      local cwd = cwd_for(sid)
-      if cwd then
-        return cwd
+      local st = by_id(sid)
+      if st then
+        return st
       end
     end
   end
+end
+
+local function sidekick_panel_cwd()
+  local s = sidekick_panel_session()
+  return s and s.session and s.session.cwd or nil
 end
 
 local function open_current_plan()
@@ -151,26 +158,37 @@ return {
       {
         "<leader>ad",
         function()
-          -- scope to this worktree's session so it doesn't prompt to pick one
-          require("sidekick.cli").close({ filter = { cwd = true } })
+          -- Detach the agent shown in the panel (robust to nvim's cwd drifting
+          -- from the agent). Fall back to this cwd's session if no panel is up.
+          local s = sidekick_panel_session()
+          require("sidekick.cli").close(s and { filter = { session = s.session.id } } or { filter = { cwd = true } })
         end,
         desc = "Detach a CLI Session",
       },
       {
         "<leader>aK",
         function()
-          -- Actually KILL this worktree's agent. sidekick's close()/<leader>ad
-          -- only detaches the nvim terminal; the tmux session keeps running. We
-          -- kill the underlying tmux session so the claude process is gone.
-          local State = require("sidekick.cli.state")
-          local cwd = require("sidekick.cli.session").cwd()
-          for _, s in ipairs(State.get({ name = "claude" })) do
-            if s.session and s.session.cwd == cwd and s.session.mux_session then
-              vim.fn.jobstart({ "tmux", "kill-session", "-t", s.session.mux_session })
-              return
+          -- Actually KILL the agent shown in the panel. close()/<leader>ad only
+          -- detaches the nvim terminal; the tmux session keeps running. Kill the
+          -- underlying tmux session so the claude process is gone.
+          local s = sidekick_panel_session()
+          local mux = s and s.session and s.session.mux_session
+          if not mux then
+            -- no panel up: fall back to this worktree's session
+            local State = require("sidekick.cli.state")
+            local cwd = require("sidekick.cli.session").cwd()
+            for _, c in ipairs(State.get({ name = "claude" })) do
+              if c.session and c.session.cwd == cwd and c.session.mux_session then
+                mux = c.session.mux_session
+                break
+              end
             end
           end
-          vim.notify("No claude agent found for " .. cwd, vim.log.levels.WARN)
+          if mux then
+            vim.fn.jobstart({ "tmux", "kill-session", "-t", mux })
+          else
+            vim.notify("No claude agent found to kill", vim.log.levels.WARN)
+          end
         end,
         desc = "Kill this worktree's agent",
       },
