@@ -30,14 +30,14 @@ customCommands:
       wt switch --create $BRANCH --base $BASE); then
       NEW_PATH=$(git worktree list | grep -F "[$BRANCH]" | awk '{print $1}');
       echo "$NEW_PATH" > ~/.nvim_cwd;
-      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $NEW_PATH')" 2>/dev/null;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('WorktreeSwitch $NEW_PATH')" 2>/dev/null;
       [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null;
       fi
 
   - key: '<space>'
     description: 'Switch to this worktree (nvim + shell)'
     context: 'worktrees'
-    command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''cd {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null'
+    command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''WorktreeSwitch {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null'
 
   - key: 'p'
     description: 'Promote worktree (wt promote)'
@@ -47,5 +47,5 @@ customCommands:
       PRIMARY=$(git worktree list | awk 'NR==1{print $1}');
       echo "$PRIMARY" > ~/.nvim_cwd;
       nohup sh -c "sleep 2 && wt remove --no-delete-branch --yes '$BRANCH' && git -C '$PRIMARY' checkout '$BRANCH'" >/tmp/wt_promote.log 2>&1 &;
-      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $PRIMARY')" 2>/dev/null;
+      [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('WorktreeSwitch $PRIMARY')" 2>/dev/null;
       [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null

@@ -6,6 +6,7 @@
 -- several Claude sessions run at once — the newest plan often belongs to a
 -- different project.
 local PLAN_FINDER = vim.fn.fnamemodify(debug.getinfo(1, "S").source:sub(2), ":h") .. "/find_plan.py"
+local worktree = require("utils.worktree")
 
 -- Resolve the cwd of the focused (or otherwise visible) sidekick terminal,
 -- using the session id sidekick stamps onto its terminal window.
@@ -81,6 +82,9 @@ return {
   },
   {
     "folke/sidekick.nvim",
+    init = function()
+      worktree.setup()
+    end,
     opts = {
       -- add any options here
       cli = {
