@@ -22,6 +22,14 @@ BRANCH="$3"
 # Don't sit inside the worktree we're about to remove.
 cd "$PRIMARY" 2>/dev/null || true
 
+# Refuse a dirty worktree. `wt remove` would fail on it anyway, and crucially we
+# must not move the agent away with `/cd` before we know the promote can finish
+# -- otherwise the agent ends up in main while the worktree is still there.
+if [ -n "$(git -C "$WT" status --porcelain 2>/dev/null)" ]; then
+  echo "promote: '$WT' has uncommitted changes -- commit or stash first; not promoting." >&2
+  exit 1
+fi
+
 # Find the tmux session whose active pane sits in the worktree -- that's the
 # Claude agent for this branch (sidekick- or spawn-task-started). Matches by cwd
 # only; in this workflow a worktree's pane is the agent.

@@ -43,9 +43,9 @@ customCommands:
     description: 'Promote worktree (wt promote)'
     context: 'worktrees'
     command: >-
-      BRANCH=$(git branch --show-current);
-      PRIMARY=$(git worktree list | awk 'NR==1{print $1}');
-      WT=$(git rev-parse --show-toplevel);
+      WT='{{.SelectedWorktree.Path}}';
+      BRANCH=$(git -C "$WT" branch --show-current);
+      PRIMARY=$(git -C "$WT" worktree list | awk 'NR==1{print $1}');
       echo "$PRIMARY" > ~/.nvim_cwd;
       nohup ~/dotfiles/worktrunk/promote.sh "$WT" "$PRIMARY" "$BRANCH" >/tmp/wt_promote.log 2>&1 &;
       [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute('cd $PRIMARY')" 2>/dev/null;
