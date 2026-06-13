@@ -19,6 +19,7 @@ ln -sfv "$DOTFILES_DIR/zsh/alias.zsh" ~/.oh-my-zsh/custom/alias.zsh
 ln -sfv "$DOTFILES_DIR/zsh/fzf.zsh" ~/.oh-my-zsh/custom/fzf.zsh
 ln -sfv "$DOTFILES_DIR/zsh/p10k.zsh" ~/.p10k.zsh
 ln -sfv "$DOTFILES_DIR/zsh/lastscreenshot.zsh" ~/.oh-my-zsh/custom/lastscreenshot.zsh
+ln -sfv "$DOTFILES_DIR/zsh/worktrunk.zsh" ~/.oh-my-zsh/custom/worktrunk.zsh
 
 # ZSH file
 ln -sfv "$DOTFILES_DIR/zsh/zshrc" ~/.zshrc
@@ -35,3 +36,7 @@ ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 
 message "NeoVim"
 ln -snf "${DOTFILES_DIR}/nvim" ~/.config/nvim
+
+# Claude Code global instructions
+mkdir -p ~/.claude
+ln -sfv "$DOTFILES_DIR/llm-harness/claude/CLAUDE.md" ~/.claude/CLAUDE.md
