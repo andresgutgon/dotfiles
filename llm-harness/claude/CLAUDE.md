@@ -23,15 +23,21 @@ re-attaches it in Sidekick. Defined in `~/dotfiles/zsh/worktrunk.zsh`; requires
 being inside tmux.
 
 You don't strictly need the function — you can create the worktree and launch a
-detached-in-tmux `claude` yourself. The rule that matters: for this "I'll drive
-them from my editor" workflow, launch **real detached `claude` processes in
-tmux**, never ephemeral subagents (the Task/Agent tool). Subagents get buried in
-your own session, aren't independently resumable, and never show up when I
-switch to the worktree.
+detached-in-tmux `claude` yourself. The one rule, and it applies **only to this
+editor-driven workflow**: launch real detached `claude` processes in tmux, not
+subagents — a subagent would get buried in your own session, isn't independently
+resumable, and never shows up when I switch to the worktree. (Subagents are great
+everywhere else — see below.)
 
-## Background agents / subagents — your call
+## Subagents & background agents — use them freely
 
-If I *don't* specifically ask for tmux worktree sessions, use your own judgment
-about subagents vs. native background agents (`claude agents`) vs. doing the work
-inline. I only insist on the tmux-worktree approach above when I say I want to
-work on several tasks in parallel and switch between them myself.
+The rule above is *only* about tasks I intend to open and drive myself. For
+anything I'm **not** going to sit in — research, delegated or parallel subtasks,
+fan-out exploration, verification, work whose result you just hand back to me —
+reach for subagents (the Task/Agent tool) and native background agents (`claude
+agents`) **without hesitation**. That's exactly what they're for. Don't avoid
+them, and don't grind through everything inline to stay out of them: spinning up
+a subagent to go research or parallelize something is a *good* default, not
+something you need to clear with me first. The tmux-worktree approach is a narrow
+exception for work I'll drive myself — not a signal that I dislike agents. If
+anything, lean into them.
