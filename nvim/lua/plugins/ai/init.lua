@@ -151,14 +151,15 @@ return {
       {
         "<leader>ad",
         function()
-          require("sidekick.cli").close()
+          -- scope to this worktree's session so it doesn't prompt to pick one
+          require("sidekick.cli").close({ filter = { cwd = true } })
         end,
         desc = "Detach a CLI Session",
       },
       {
         "<leader>at",
         function()
-          require("sidekick.cli").send({ msg = "{this}" })
+          require("sidekick.cli").send({ msg = "{this}", filter = { cwd = true } })
         end,
         mode = { "x", "n" },
         desc = "Send This",
@@ -166,14 +167,14 @@ return {
       {
         "<leader>af",
         function()
-          require("sidekick.cli").send({ msg = "{file}" })
+          require("sidekick.cli").send({ msg = "{file}", filter = { cwd = true } })
         end,
         desc = "Send File",
       },
       {
         "<leader>av",
         function()
-          require("sidekick.cli").send({ msg = "{selection}" })
+          require("sidekick.cli").send({ msg = "{selection}", filter = { cwd = true } })
         end,
         mode = { "x" },
         desc = "Send Visual Selection",
@@ -199,6 +200,7 @@ return {
         function()
           require("sidekick.cli").send({
             msg = "Read the image: $(source ~/dotfiles/zsh/lastscreenshot.zsh && lastshot) and ",
+            filter = { cwd = true },
           })
         end,
         desc = "Send Last Screenshot",
