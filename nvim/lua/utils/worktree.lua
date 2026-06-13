@@ -16,14 +16,20 @@ local function open()
     local Terminal = require("sidekick.cli.terminal")
     local cwd = Session.cwd()
 
-    -- A live, sidekick-managed claude for this worktree can be re-attached and
-    -- embedded. External tmux sessions can't be opened in a terminal, and a
-    -- placeholder has no session yet -- in both cases we start/resume our own
-    -- embeddable session instead.
-    local live, placeholder
+    -- Classify the claude candidates for this worktree:
+    --   live        -- a sidekick-managed session (its tmux session is named
+    --                  with sidekick's own sid), directly embeddable.
+    --   external    -- a session sidekick discovered but didn't create, e.g. a
+    --                  `spawn-task` agent in a branch-named tmux session.
+    --   placeholder -- no session yet; we'll start one.
+    local live, external, placeholder
     for _, s in ipairs(State.get({ name = "claude" })) do
-      if s.session and s.session.cwd == cwd and not s.external then
-        live = s
+      if s.session and s.session.cwd == cwd then
+        if s.external then
+          external = external or s
+        else
+          live = s
+        end
       elseif not s.session then
         placeholder = s
       end
@@ -45,6 +51,13 @@ local function open()
     -- driven from lazygit, not from a deliberate jump into chat.
     if live then
       State.attach(live, { show = true, focus = false })
+    elseif external then
+      -- A `spawn-task` (or otherwise externally-started) agent: reuse it instead
+      -- of starting a parallel one. sidekick only embeds a session whose sid
+      -- matches its tmux session name, so point sid at the discovered session
+      -- name -- attach then opens `tmux attach-session -t <name>` in the panel.
+      external.session.sid = external.session.mux_session
+      State.attach(external, { show = true, focus = false })
     elseif placeholder then
       -- No embeddable agent yet: start one. Resume the worktree's last
       -- conversation (`claude --continue`) only when one exists on disk -- a
