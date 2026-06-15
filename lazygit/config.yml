@@ -40,7 +40,7 @@ customCommands:
     command: 'echo "{{.SelectedWorktree.Path}}" > ~/.nvim_cwd; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-expr "execute(''WorktreeSwitch {{.SelectedWorktree.Path}}'')" 2>/dev/null; [ -n "$NVIM" ] && nvim --server "$NVIM" --remote-send "q" 2>/dev/null'
 
   - key: 'p'
-    description: 'Promote worktree (wt promote)'
+    description: 'Promote worktree (promote.sh)'
     context: 'worktrees'
     command: >-
       WT='{{.SelectedWorktree.Path}}';

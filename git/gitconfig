@@ -75,9 +75,11 @@
   autosetuprebase = always
 
 [push]
-  # 'git push' will push the current branch to its tracking branch
-  # the usual default is to push all branches
-  default = tracking
+  # 'git push' pushes the current branch to a same-named remote branch,
+  # ignoring the upstream. Worktree branches track origin/development (created
+  # `--base development`) for wt rebases, so `tracking`/`upstream` here would
+  # send a bare push to trunk; `current` routes it to the branch's own ref.
+  default = current
   autoSetupRemote = true
 
 [pull]

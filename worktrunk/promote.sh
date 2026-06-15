@@ -50,3 +50,15 @@ fi
 
 wt remove --no-delete-branch --yes "$BRANCH"
 git -C "$PRIMARY" checkout "$BRANCH"
+
+# The branch inherited `origin/development` as its upstream at creation
+# (`wt ... --base development`). That's correct while it lives in its own
+# worktree (wt rebases onto / compares against trunk), but now that it's in main
+# for push/PR a bare `git push` (push.default=tracking) would target development.
+# Re-point the upstream to the branch's own remote ref; if it was never pushed,
+# clear it and let push.autoSetupRemote create + link it on the first push.
+if git -C "$PRIMARY" rev-parse --verify --quiet "refs/remotes/origin/$BRANCH" >/dev/null; then
+  git -C "$PRIMARY" branch --set-upstream-to="origin/$BRANCH" "$BRANCH"
+else
+  git -C "$PRIMARY" branch --unset-upstream "$BRANCH"
+fi

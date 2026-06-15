@@ -8,5 +8,7 @@ dev_start = "wt switch --create {{ args }} --base development"
 # Start a new worktree with the given branch name, based on master
 master_start = "wt switch --create {{ args }} --base master"
 
-# End with this worktree
-promote = "wt remove --no-delete-branch --yes --foreground {{ branch }} && git -C {{ primary_worktree_path }} checkout {{ branch }}"
+# Promote (worktree -> main, carrying the Claude agent + repointing upstream)
+# lives in worktrunk/promote.sh, invoked by lazygit's `p` key. Intentionally not
+# a `wt` alias: it needs the promoted worktree's path, which aliases don't expose,
+# and a divergent alias would silently orphan the agent and skip the upstream fix.
