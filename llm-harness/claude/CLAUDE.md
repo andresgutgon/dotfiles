@@ -29,6 +29,24 @@ subagents — a subagent would get buried in your own session, isn't independent
 resumable, and never shows up when I switch to the worktree. (Subagents are great
 everywhere else — see below.)
 
+### Lifecycle of a spawned task — it runs to a PR, not to a pause
+
+A detached worktree agent's job is to make the change **fast**, run the repo's
+typecheck/tests, then **commit and open a PR** (following the repo's
+branch/base-branch + PR conventions). `spawn-task` injects this contract into
+every seeded prompt automatically, so the agent does it without being asked. An
+open PR is my **manual-review surface — not a claim the work is finished or
+ready**, so the agent never waits for my sign-off before committing/opening it.
+This is the deliberate **exception** to my usual "make edits, then stop and wait
+for review before committing" rule: that rule governs inline main-session work;
+detached worktree agents commit and PR on their own.
+
+I then review by jumping between worktrees in my editor (lazygit / Sidekick).
+For each worktree I accept I **promote** it — lazygit `p` / `promote.sh` carries
+that worktree's branch *and its live agent* into `main` (it refuses if the
+worktree is dirty) — and then analyze the combined result. So a branch showing
+up in `main` is a deliberate promote, never a mistake.
+
 ## Subagents & background agents — use them freely
 
 The rule above is *only* about tasks I intend to open and drive myself. For

@@ -3,6 +3,12 @@
 # path, so `claude -c` resumes it and the lazygit worktree switch re-attaches it
 # in Sidekick.
 #
+# Lifecycle: each agent runs to a PR, not a pause — it makes the change, runs
+# typecheck/tests, commits, and opens a PR (this contract is appended to the
+# seeded task below). An open PR is the manual-review surface, not a "ready"
+# claim; I then promote accepted worktrees into main (lazygit `p`). Full flow in
+# ~/.claude/CLAUDE.md.
+#
 # Usage: spawn-task <branch> <task description...>
 #   - New branch      -> created off the repo's default branch (wt's default).
 #                        Override the base with SPAWN_TASK_BASE: a branch name,
@@ -22,6 +28,13 @@ spawn-task() {
 
   local branch="$1"; shift
   local task="$*"
+
+  # Detached worktree agents run to a PR, not to a pause. The "wait for sign-off
+  # before committing" rule is for inline main-session work — here the open PR IS
+  # the review surface, so the agent commits and opens it without waiting.
+  task="${task}
+
+Workflow contract (this is a detached worktree agent): make the change quickly, run the repo's typecheck/tests, then commit and open a PR for review, following the repo's branch/base-branch and PR conventions. Opening the PR is how the work gets reviewed manually — it is NOT a claim that the change is finished or ready, so open it rather than waiting for further sign-off. Then summarize what you did and where review should focus."
 
   # tmux session names can't contain "." or ":"
   local session="${branch//\//-}"

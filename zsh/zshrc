@@ -15,9 +15,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   macos
   git
-  tmux
   zsh-syntax-highlighting
-  zsh-nvm
 )
 
 source $ZSH/oh-my-zsh.sh
