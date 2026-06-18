@@ -12,6 +12,11 @@ task:
 
     spawn-task <branch> <task description...>
 
+When the task comes from a Linear issue, put the Linear issue ID in the branch
+name (e.g. `eng-1234-fix-foo`) so the branch — and the PR it opens — trace back
+to the issue. Use whatever ID I give you, or pull it from the issue if I point
+you at one.
+
 For a new branch it creates the worktree off the repo's default branch (no
 convention — `wt` figures that out); pass `SPAWN_TASK_BASE` to base it on
 something else (a branch name, or a `wt` shortcut like `@` for the current
