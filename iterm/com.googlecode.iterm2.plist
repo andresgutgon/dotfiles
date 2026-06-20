@@ -1945,12 +1945,38 @@
 					<key>Text</key>
 					<string>[1;2D</string>
 				</dict>
+				<key>0xf702-0x260000-0x7b</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Apply Mode</key>
+					<integer>1</integer>
+					<key>Escaping</key>
+					<integer>2</integer>
+					<key>Text</key>
+					<string>[1;6D</string>
+					<key>Version</key>
+					<integer>2</integer>
+				</dict>
 				<key>0xf703-0x220000-0x0</key>
 				<dict>
 					<key>Action</key>
 					<integer>10</integer>
 					<key>Text</key>
 					<string>[1;2C</string>
+				</dict>
+				<key>0xf703-0x260000-0x7c</key>
+				<dict>
+					<key>Action</key>
+					<integer>10</integer>
+					<key>Apply Mode</key>
+					<integer>1</integer>
+					<key>Escaping</key>
+					<integer>2</integer>
+					<key>Text</key>
+					<string>[1;6C</string>
+					<key>Version</key>
+					<integer>2</integer>
 				</dict>
 				<key>0xf704-0x20000-0x0</key>
 				<dict>
