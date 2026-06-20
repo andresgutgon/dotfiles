@@ -85,9 +85,12 @@ eval "$(mise activate zsh)"
 typeset -U path PATH
 
 # ------------------------------
-# Warp terminal integration (if installed)
+# worktrunk (wt) shell integration (if installed)
 # ------------------------------
-if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+# `wt config shell init zsh` emits a stray `\033[0m` (ANSI reset) on stderr;
+# $(...) only captures stdout, so without 2>/dev/null that escape leaks to the
+# terminal after p10k's instant-prompt preamble and trips its console-I/O warning.
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh 2>/dev/null)"; fi
 
 # bun completions
 [ -s "/Users/andres/.bun/_bun" ] && source "/Users/andres/.bun/_bun"
