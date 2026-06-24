@@ -43,4 +43,4 @@ ffmpeg -i ~/Desktop/my-video.mov -f yuv4mpegpipe - | gifski -o ~/Desktop/my-gif-
 
 ## Vim registers
 
-Nice post about [using vim registers](https://www.brianstorti.com/vim-registers/)
+Nice post about [using vim registers](https://www.brianstorti.com/vim-registers/) you can do `<leader>"` to view all registers.

@@ -110,5 +110,73 @@ return {
     vim.keymap.set("n", "<leader>sn", function()
       builtin.find_files({ cwd = vim.fn.stdpath("config") })
     end, { desc = "[S]earch [N]eovim files" })
+
+    -- Registers, with a previewer that shows the raw (multi-line) contents.
+    -- The default picker collapses newlines to "\n" in the result line, so the
+    -- preview pane is where you actually read multi-line registers.
+    --
+    -- What each special register holds (see `:help registers`):
+    local register_help = {
+      ['"'] = "Unnamed register: last delete or yank",
+      ["-"] = "Small delete: deletes of less than one line",
+      ["0"] = "Yank register: text from the most recent yank",
+      ["#"] = "Alternate file name (the # in commands)",
+      ["="] = "Expression register: <CR> opens the = prompt to type an expression, then p to paste",
+      ["/"] = "Last search pattern",
+      ["*"] = "Selection register (PRIMARY on X11)",
+      ["+"] = "System clipboard (CLIPBOARD)",
+      [":"] = "Last command-line",
+      ["."] = "Last inserted text",
+      ["%"] = "Current file name",
+    }
+    -- 1-9 are the numbered delete/change history; a-z are your named registers.
+    for i = 1, 9 do
+      register_help[tostring(i)] = "Numbered register: delete/change history (1 = most recent)"
+    end
+    for c = string.byte("a"), string.byte("z") do
+      register_help[string.char(c)] = 'Named register "' .. string.char(c) .. '" (set with "' .. string.char(c) .. ')'
+    end
+
+    local register_previewer = require("telescope.previewers").new_buffer_previewer({
+      title = "Register Contents",
+      define_preview = function(self, entry)
+        local desc = register_help[entry.value] or "Register"
+        local lines = { "# [" .. entry.value .. "] " .. desc, "" }
+        local content = entry.content or ""
+        if content == "" then
+          table.insert(lines, "(empty)")
+        else
+          for _, l in ipairs(vim.split(content, "\n")) do
+            table.insert(lines, l)
+          end
+        end
+        vim.api.nvim_buf_set_lines(self.state.bufnr, 0, -1, false, lines)
+        -- Light up the header line so it reads as a label, not register content.
+        vim.api.nvim_buf_add_highlight(self.state.bufnr, -1, "Comment", 0, 0, -1)
+      end,
+    })
+    local actions = require("telescope.actions")
+    local action_state = require("telescope.actions.state")
+    vim.keymap.set("n", '<leader>"', function()
+      builtin.registers({
+        previewer = register_previewer,
+        -- The builtin's own attach_mappings runs first (it sets <CR> = paste and
+        -- <C-e> = edit), then ours runs and overrides <CR> only for "=", which
+        -- has nothing to paste: instead we replicate native `"=` and drop into
+        -- the expression command-line so you can type an expression, then `p`.
+        attach_mappings = function(_, _map)
+          actions.select_default:replace(function(prompt_bufnr)
+            local entry = action_state.get_selected_entry()
+            if entry and entry.value == "=" then
+              actions.close(prompt_bufnr)
+              vim.api.nvim_feedkeys('"=', "n", false)
+            else
+              actions.paste_register(prompt_bufnr)
+            end
+          end)
+          return true
+        end,
+      })
+    end, { desc = '[ ] Search [\"]Registers' })
   end,
 }
