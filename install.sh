@@ -37,6 +37,7 @@ ln -sfv "$DOTFILES_DIR/git/gitignore_global" ~/.gitignore_global
 message "NeoVim"
 ln -snf "${DOTFILES_DIR}/nvim" ~/.config/nvim
 
-# Claude Code global instructions
+# Claude Code global instructions + settings
 mkdir -p ~/.claude
 ln -sfv "$DOTFILES_DIR/llm-harness/claude/CLAUDE.md" ~/.claude/CLAUDE.md
+ln -sfv "$DOTFILES_DIR/llm-harness/claude/settings.json" ~/.claude/settings.json
