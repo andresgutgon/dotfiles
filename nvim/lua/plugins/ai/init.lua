@@ -99,6 +99,21 @@ return {
           backend = "tmux",
           enabled = true,
         },
+        tools = {
+          -- Claude Code 2.x runs as a full-screen alternate-screen TUI and
+          -- scrolls its own conversation. On an alt-screen pane there is no host
+          -- scrollback for nvim/tmux to capture (`tmux capture-pane` only sees
+          -- the current frame), so sidekick's dump-scrollback is useless here and
+          -- worse, it hijacks the mouse wheel to show that frozen frame instead
+          -- of letting the wheel reach Claude. native_scroll tells sidekick the
+          -- tool scrolls itself: it disables the dump path so the wheel passes
+          -- through to Claude's TUI. (Bundled claude spec omits this; opencode --
+          -- also a fullscreen TUI -- sets it.)
+          -- Docs: https://code.claude.com/docs/en/fullscreen.md
+          claude = {
+            native_scroll = true,
+          },
+        },
       },
     },
     keys = {
