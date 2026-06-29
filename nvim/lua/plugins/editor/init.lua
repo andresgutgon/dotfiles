@@ -43,6 +43,10 @@ local plugins = {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
+    init = function()
+      -- Let a single <c-s> reach lazygit by managing tmux's C-s prefix.
+      require("utils.lazygit").setup()
+    end,
     keys = {
       -- Top Pickers & Explorer
       { "<leader><space>", function() Snacks.picker.smart() end,                 desc = "Smart Find Files" },
